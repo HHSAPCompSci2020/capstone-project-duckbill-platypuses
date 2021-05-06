@@ -63,5 +63,5 @@ Credits:
 [Gives credit for project components. This includes both internal credit (your group members) and external credit (other people, websites, libraries). To do this:
 * Itai: Person (superclass), Zombie, Map. 
 * Ido: Player, Classroom, 
-* Ophir: Question+Answer Class, Drawing Surface, Main. 
+* Ophir: Problem, Drawing Surface, Main. 
 * External Credit: We used the processing library for graphics.
