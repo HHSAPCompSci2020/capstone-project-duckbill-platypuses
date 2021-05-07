@@ -30,6 +30,7 @@ Want-to-have Features:[c]
 *  When you reach i5 you need to face a final boss, which will be a free response question that will pop up instead of nothing that will force a challenging final boss. 
 *  Each classroom has a different image. So the history might have a globe, and the math might have trig functions on the walls. 
 * More dialogue - Before a challenge appears a teacher can say something fitting. For example, the math room might say “Remember: No Calculators” or “You only get root 9 minutes for the questions”. For intro to java, “Remember to smile, it brings oxygen to your brain”
+* More images for zombies
 
 
 Stretch Features:[d]
@@ -37,13 +38,12 @@ Stretch Features:[d]
 *  Players can add their own questions, and transform the game into a quizlet type program, where the players can study in a fun way for specific tests. The game would become more generic, and not divided into subjects based on homestead buildings.
 *  Add a multiplayer option to the game, in which players compete against each other to complete the game the fastest.
 * More animations: For example, when a zombie kills you or injures you, an animation screen comes showing you dying or becoming more infected  (Like among us). When you hit the final button, an animation showing all students turning back into humans appears. 
+* The images to change directions depending on how the character us moving
 
 
 
 
 Class List:
-
-
 Main - Run the program
 Map - The map of the program, with all the classes and the locked final class. 
 Classroom - Has properties of each room, mainly the question/answer object. Also, any other images needed (globe for history for example). 
@@ -58,7 +58,9 @@ Credits:
 Itai: Person (superclass), Zombie, Map. 
 Ido: Player, Classroom, 
 Ophir: Problem, Drawing Surface, Main. 
-External Credit: We used the processing library for graphics. 
+External Credit: 
+* We used the processing library for graphics. 
+* Mr. Shelby’s code was used as a template for the Main class.
 [a]we haven't done this yet...
 [b][These are features that we agree you will definitely have by the project due date. A good final project would have all of these completed. At least 5 are required. Each feature should be fully described (at least a few full sentences for each)]
 [c][These are features that you would like to have by the project due date, but you’re unsure whether you’ll hit all of them. A good final project would have perhaps half of these completed. At least 5 are required. Again, fully describe each.]
