@@ -2,8 +2,8 @@
 /**
  * The main class that runs the program.
  *  * 
- * @author Ophir
- * @version 5/6
+ * @author Ophir Peleg
+ * @version 05/06/2021
  */
 public class Main {
 

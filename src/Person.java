@@ -6,8 +6,8 @@ import processing.core.PImage;
 /**
  * The person class represents a person that can move left, right, up, and down.
  * 
- * @author Itai
- * @version 5/6
+ * @author Itai Reingold Nutman
+ * @version 05/06/2021
  */
 public class Person {
 

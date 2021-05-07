@@ -3,8 +3,8 @@ import processing.core.PImage;
 /**
  * The player class is a person, which moves through user interactions.
  *  * 
- * @author Ido
- * @version 5/6
+ * @author Ido Ofek
+ * @version 05/06/2021
  */
 public class Player extends Person {
 

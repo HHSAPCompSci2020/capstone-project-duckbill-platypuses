@@ -3,8 +3,8 @@ import processing.core.PImage;
 /**
  * The zombie class is a person, that moves by following the player. 
  *  * 
- * @author Itai
- * @version 5/6
+ * @author Itai Reingold Nutman
+ * @version 05/06/2021
  */
 public class Zombie extends Person{
 

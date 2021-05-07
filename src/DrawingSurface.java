@@ -3,8 +3,8 @@
  * The DrawingSurface class uses all other classes, excluding main, to draw
  * the entire project.
  *  * 
- * @author Ophir
- * @version 5/6
+ * @author Ophir Peleg
+ * @version 05/06/2021
  */
 public class DrawingSurface {
 		
