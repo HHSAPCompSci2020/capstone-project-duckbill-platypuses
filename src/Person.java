@@ -82,5 +82,25 @@ public class Person {
 	public void show() {
 		shown = true;
 	}
+	
+
+	/**
+	 * Returns the x coordinate of the person
+	 * 
+	 * @return x-coordinate of the person
+	 */
+	public int getX() {
+		return x;
+	}
+	
+
+	/**
+	 * Returns the y coordinate of the person
+	 * 
+	 * @return y-coordinate of the person
+	 */
+	public int getY() {
+		return y;
+	}
 
 }
