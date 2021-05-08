@@ -1,3 +1,4 @@
+import processing.core.PApplet;
 
 /**
  * The map class represents the map of the school, which the user
@@ -8,4 +9,22 @@
  */
 public class Map {
 
+	
+	public Map () {
+		
+		
+		
+	}
+	
+	
+	public void draw(PApplet marker) {
+		
+		
+		
+		
+		
+	}
+	
+	
+	
 }
