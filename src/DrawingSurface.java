@@ -60,7 +60,7 @@ public class DrawingSurface extends PApplet {
 				//convert points to rectangles +- answerSizes, 
 				//if person is touching the rectangle of answers (if tL,TR,BL, BR = any answer) (checks if the person is touching any of the sides of the answers)
 				//if so, classroom[setting]checkanswer(char answer) (checks if the answer that they put in makes sense)
-				//If their answer is correct then send the player back to the map and 
+				//If their answer is correct then send the player back to the map and then changes settings
 				
 				
 		//
