@@ -9,7 +9,7 @@ import processing.core.PApplet;
  */
 public class Map {
 
-	
+	//x y, width, height
 	public Map () {
 		
 		
@@ -25,6 +25,8 @@ public class Map {
 		
 	}
 	
+	//start retuyrn point.
 	
-	
+	//boolean isPersonInClass(Player)
+
 }
