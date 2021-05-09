@@ -53,13 +53,14 @@ public class DrawingSurface extends PApplet {
 		//if { !0
 			
 				//classroom[setting].draw()
-				//player.setX, //classroom[setting].StartibgPOintX
-				//player.setY, //Class1StartibgPOintY
+				//player.setX, //classroom[setting].StartingPointX
+				//player.setY, //Class1StartingPointY
 				//draw player
-				//locAnswers classroom[setting] (gets a list of points from classroom with the x and y coordinates of all the answers a =0, b = 1 ... d = 3)
+				//locAnswers classroom[setting] (gets a list of points from classroom with the x and y coordinates of all the answers a = 0, b = 1 ... d = 3)
 				//convert points to rectangles +- answerSizes, 
-				//if person is touching the rectangle of answers (if tL,TR,BL, BR = any answer)
-				//if so, checkanswer()
+				//if person is touching the rectangle of answers (if tL,TR,BL, BR = any answer) (checks if the person is touching any of the sides of the answers)
+				//if so, classroom[setting]checkanswer(char answer) (checks if the answer that they put in makes sense)
+				//If their answer is correct then send the player back to the map and 
 				
 				
 		//

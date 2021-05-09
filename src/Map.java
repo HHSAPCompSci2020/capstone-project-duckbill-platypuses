@@ -20,7 +20,8 @@ public class Map {
 	public void draw(PApplet marker) {
 		
 		
-		
+		//draw the map
+		//Check
 		
 		
 	}
