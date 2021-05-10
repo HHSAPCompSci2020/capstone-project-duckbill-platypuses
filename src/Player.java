@@ -1,3 +1,4 @@
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -7,36 +8,77 @@ import processing.core.PImage;
  * @version 05/06/2021
  */
 public class Player extends Person {
-	
-	//booleanHall = true; 
+
+	//boolean Hall = true; 
+	boolean map = true;
 	//field, size of class,
-	//heifghtMap, widhtMap, x map, y map
-	//x , y 
+	double roomX;
+	double roomY;
+	double roomHeight;
+	double roomWidth;
+
 
 	public Player(int x, int y, PImage img, boolean shown) {
 		super(x, y, img, shown);
+
+		//roomX;
+		//roomY;
+		//roomHeight;
+		//roomWidth;
 	}
-	
-	//updateWhere = string input(A method that changeds the boolean map, if the string is class then change it to false and it it is map change it to a map); 
+
 
 	//draw method(){
-	
-	
-	/*
-	if(surface.keyPressed) {
+	public void draw(PApplet marker) {
+		super.draw(marker);
 
-		if(surface.key == surface.CODED && surface.keyCode == surface.UP) {
+		if(marker.keyPressed) {
+
+			if(marker.key == marker.CODED && marker.keyCode == marker.UP) {
+				if(!(super.getY() < 2)) {
+					super.setY(super.getY() - 1);
+				}
+
+			}else if(marker.key == marker.CODED && marker.keyCode == marker.DOWN) {
+				if(!(super.getY() + super.getHeight() > roomHeight - 2)) {
+					super.setY(super.getY() + 1);
+				}
+
+				if(marker.key == marker.CODED && marker.keyCode == marker.LEFT) {
+
+					if(!(super.getX() < 2)) {
+						super.setX(super.getX() - 1);
+					}
+
+
+				}else if(marker.key == marker.CODED && marker.keyCode == marker.RIGHT) {
+					if(!(super.getX() + super.getWidth() > roomWidth - 2)) {
+						super.setX(super.getX() + 1);
+					}
+
+
+				}
+
+			}
+
+
+			/*
+	if(marker.keyPressed) {
+
+		if(marker.key == marker.CODED && marker.keyCode == marker.UP) {
 		{if class{ can up in class (before you move to a certain location check wherther you are in a class or a map and see if you are going to go out of bounds. Leave it blank if you are on the edge )
 			y--;
-		}else if(surface.key == surface.CODED && surface.keyCode == surface.DOWN) {
+		}else if(marker.key == marker.CODED && marker.keyCode == marker.DOWN) {
 			y++;
 		}
-		fly(background.getGrassY(), surface);
+		fly(background.getGrassY(), marker);
 
-		if(surface.key == surface.CODED && surface.keyCode == surface.LEFT) {
+		if(marker.key == marker.CODED && marker.keyCode == marker.LEFT) {
 			x--;
+}	
 }
-}
-*/
+			 */
+		}
+	}
 }
 

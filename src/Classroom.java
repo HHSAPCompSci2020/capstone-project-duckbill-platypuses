@@ -49,7 +49,7 @@ public class Classroom {
 		Changes finished to true;
 	}
 	
-	finishedClass{
+	isFinished{
 	   returns finished
 	}
 	
