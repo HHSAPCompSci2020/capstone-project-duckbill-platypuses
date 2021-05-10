@@ -9,4 +9,16 @@
 
 public class Problem {
 
+	
+	//ArrayList<Strings> answers;
+	//char answer;
+	//String question;
+	
+	//constructor (ArrayList<Strings> answers, char answer , String question)
+	
+	
+	//returnAnswer ()
+	
+	
+	
 }

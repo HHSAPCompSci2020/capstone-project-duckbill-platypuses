@@ -15,9 +15,9 @@ public class Zombie extends Person{
 	}
 	
 	public void followPlayer (Player p) {
-//		moveX((p.getX() - getX())/2);
-//		moveY((p.getY() - getY())/2);
-		//do move methods to follow
+		moveX((p.getX() - getX())/4);
+		moveY((p.getY() - getY())/4);
+		
 
 	}
 	
