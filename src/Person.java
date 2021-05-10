@@ -125,6 +125,25 @@ public class Person {
 		 y = yIn;
 	}
 	
+	/**
+	 * Returns the width of the person
+	 * 
+	 * @return width of the person
+	 */
+	public int getWidth() {
+		return width;
+	}
+	
+
+	/**
+	 * Returns the height  of the person
+	 * 
+	 * @return height of the person
+	 */
+	public int getHeight() {
+		return height;
+	}
+	
 	
 	
 
