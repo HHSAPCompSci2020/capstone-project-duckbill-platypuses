@@ -1,3 +1,5 @@
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -49,7 +51,22 @@ public class DrawingSurface extends PApplet {
 		
 		if (setting == 0) {
 			map.draw(this);
-			player.s
+			player.setX(map.startPointX());
+			player.setY(map.startPointY());
+			player.draw(this);
+			ArrayList<Point> doorsCoord  = map.doorLocations();
+			ArrayList<Rectangle> doorsRect  = new ArrayList<Rectangle>(doorsCoord.size());
+			for (int i = 0; i < doorsCoord.size(); i++) {
+				doorsRect.add( new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors, sizeDoors*2, sizeDoors*2)); 
+			}
+			for (int i = 0; i < doorsCoord.size(); i++) {
+				if (doorsRect.get(i).contains(player.getX(), player.getY()) ||
+					doorsRect.get(i).contains(player.getX() +i , player.getY()) ||
+					doorsRect.get(i).contains(player.getX(), player.getY()) ||
+					doorsRect.get(i).contains(player.getX(), player.getY())) {
+					
+				}
+			}
 		}
 		
 		

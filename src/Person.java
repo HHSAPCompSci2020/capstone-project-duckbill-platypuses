@@ -15,6 +15,8 @@ public class Person {
 	private int y;
 	private PImage img;
 	boolean shown;
+	private int width;
+	private int height;
 
 	/**
 	 * Initializes a person to an initial x coordinate, y coordinate, image, and
@@ -30,6 +32,9 @@ public class Person {
 		this.y = y;
 		this.img = img;
 		this.shown = shown;
+		width = 20;
+		height = 40;
+		
 	}
 
 	/**
@@ -60,7 +65,7 @@ public class Person {
 	public void draw(PApplet marker) {
 
 		if (shown) {
-			marker.image(img, (float) x, (float) y);
+			marker.image(img, (float) x, (float) y, (float)width, (float) height);
 		}
 
 	}
