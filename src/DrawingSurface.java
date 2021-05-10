@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  * The DrawingSurface class uses all other classes, excluding main, to draw
@@ -15,12 +16,26 @@ public class DrawingSurface extends PApplet {
 	private ArrayList<Zombie> zombies;
 	private Player player;
 	private Map map;
-	//sizeofDoors
-	//sizeofDoors
-	///int setting; 0== hallway, cl -1, cl - 5
+	int sizeDoors = 10;
+	int sizeAnswers = 5;
+	int setting;
+	
 	
 	public DrawingSurface() {
-		super();
+		classroom = new ArrayList<Classroom>(5);
+		zombies = new ArrayList<Zombie>(5);
+		PImage img = loadImage("characters/Player.png");
+		player = new Player(0,0,img,true);
+		PImage img2 = loadImage("characters/Zombie.png");
+		for (int i = 0; i < zombies.size(); i ++) {
+			zombies.set(i, new Zombie(0,0,img2,false));
+		}
+		setting = 0;
+		map = new Map();
+//		for (int i = 0; i < zombies.size(); i ++) { // add questions into classrooms
+		
+//			zombies.set(i, new Zombie(0,0,img2,false));
+//		}
 	}
 	
 	public void setup() {
@@ -30,6 +45,12 @@ public class DrawingSurface extends PApplet {
 	public void draw() {
 		background(255);
 		
+		
+		
+		if (setting == 0) {
+			map.draw(this);
+			player.s
+		}
 		
 		
 		//if { 0 

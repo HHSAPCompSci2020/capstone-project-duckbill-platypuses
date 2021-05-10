@@ -103,6 +103,23 @@ public class Person {
 		return y;
 	}
 	
+	/**
+	 * Returns the y coordinate of the person
+	 * @param xIn - x to change to
+	 */
+	public void setX(int xIn) {
+		 x = xIn;
+	}
+	
+
+	/**
+	 * set the y coordinate of the person
+	 * @param yIn - y to change to
+	 */
+	public void setY(int yIn) {
+		 y = yIn;
+	}
+	
 	
 	
 
