@@ -61,9 +61,13 @@ public class DrawingSurface extends PApplet {
 			}
 			for (int i = 0; i < doorsCoord.size(); i++) {
 				if (doorsRect.get(i).contains(player.getX(), player.getY()) ||
-					doorsRect.get(i).contains(player.getX() + playe, player.getY()) ||
-					doorsRect.get(i).contains(player.getX(), player.getY()) ||
-					doorsRect.get(i).contains(player.getX(), player.getY())) {
+					doorsRect.get(i).contains(player.getX() + player.getWidth(), player.getY()) ||
+					doorsRect.get(i).contains(player.getX(), player.getY() + player.getHeight()) ||
+					doorsRect.get(i).contains(player.getX()  +player.getWidth(), player.getY() + player.getHeight())) {
+						
+					if (classroom.get(i).isFinished() == false) {
+					setting = i; 
+					}
 					
 				}
 			}
