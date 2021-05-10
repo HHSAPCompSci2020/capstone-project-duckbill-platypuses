@@ -49,9 +49,12 @@ public class DrawingSurface extends PApplet {
 	public void draw() {
 		background(255);
 		
+		if (setting == -1) {
+			
+		}
 		
 		
-		if (setting == 0) {
+		else if (setting == 0) {
 			map.draw(this);
 			player.setX(map.startPointX());
 			player.setY(map.startPointY());
@@ -82,12 +85,17 @@ public class DrawingSurface extends PApplet {
 	
 		else if (setting != 0) {
 			
-			classroom[setting].draw();
-			player.setX(classroom[setting].startPointX());
-			player.setY(classroom[setting].startPointY());
+			classroom.get(setting).draw(this);
+			player.setX(classroom.get(setting).startPointX());
+			player.setY(classroom.get(setting).startPointY());
 			player.draw(this);
+			for (int i = 0; i < zombies.size(); i ++) {
+				zombies.get(i).spawnLoc(player);
+				zombies.get(i).draw(this);
+			}
+			
 
-			ArrayList<Point> answerCoord  = classroom[setting].answerLocations();
+			ArrayList<Point> answerCoord  = classroom.get(setting).answerLocations();
 			ArrayList<Rectangle> answerRect  = new ArrayList<Rectangle>(answerCoord.size());
 			for (int i = 0; i < answerCoord.size(); i++) {
 				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers, answerCoord.get(i).y - sizeAnswers, sizeAnswers*2, sizeAnswers*2)); 
@@ -98,9 +106,17 @@ public class DrawingSurface extends PApplet {
 					answerRect.get(i).contains(player.getX(), player.getY() + player.getHeight()) ||
 					answerRect.get(i).contains(player.getX()  +player.getWidth(), player.getY() + player.getHeight())) {
 						
-					if (classroom[setting].correctAnswer == setting) {
-						classroom[setting].changeClassToFinished();
+					if (classroom.get(setting).correctAnswer == setting) {
+						classroom.get(setting).changeClassToFinished();
 						setting = 0; 
+					}
+					else if (classroom.get(setting).getLives() == 1 ) {
+						classroom.get(setting).removeLives();
+						setting = -1;
+					}
+					else if (classroom.get(setting).getLives() == 2) {
+						classroom.get(setting).removeLives();
+						classroom.removeAnswer(i);
 					}
 					
 					
@@ -109,27 +125,36 @@ public class DrawingSurface extends PApplet {
 			
 			if (timer % 100 == 0) {
 				timer = 0; 
-				if (zombies[0].isShown() == false) {
-					zombies[0].makeShown;
+				if (zombies.get(0).isShown() == false) {
+					zombies.get(0).makeShown();
 				}
-				else if (zombies[1].isShown() == false) {
-					zombies[1].makeShown;
+				else if (zombies.get(1).isShown() == false) {
+					zombies.get(1).makeShown();
 				}
-				else if (zombies[2].isShown() == false) {
-					zombies[2].makeShown;
+				else if (zombies.get(2).isShown() == false) {
+					zombies.get(2).makeShown();
 				}
-				else if (zombies[3].isShown() == false) {
-					zombies[3].makeShown;
+				else if (zombies.get(3).isShown() == false) {
+					zombies.get(3).makeShown();
 				}
-				else if (zombies[4].isShown() == false) {
-					zombies[4].makeShown;
+				else if (zombies.get(4).isShown() == false) {
+					zombies.get(4).makeShown();
 				}
 			}
 			else {
 				timer ++;
 			}
 			
+			for (int i = 0; i < zombies.size(); i ++) {
+				if (zombies.get(i).isTouching(player)) {
+					setting = -1;
+				}
+			}
+			
+			
 		}
+		
+		
 
 	}
 	
