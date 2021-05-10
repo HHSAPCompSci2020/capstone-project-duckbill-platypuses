@@ -55,9 +55,9 @@ Problem - A class that holds a question and possible answers. Also holds the amo
 
 
 Credits:
-Itai: Person (superclass), Zombie, Map. 
-Ido: Player, Classroom, 
-Ophir: Problem, Drawing Surface, Main. 
+Itai: Person (superclass), Zombie,Drawing Surface
+Ido: Player, Classroom, Drawing Surface
+Ophir: Problem, Main, Map
 External Credit: 
 * We used the processing library for graphics. 
 * Mr. Shelby’s code was used as a template for the Main class.
