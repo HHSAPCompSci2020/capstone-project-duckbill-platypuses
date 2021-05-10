@@ -21,6 +21,7 @@ public class DrawingSurface extends PApplet {
 	int sizeDoors = 10;
 	int sizeAnswers = 5;
 	int setting;
+	int timer; 
 	
 	
 	public DrawingSurface() {
@@ -34,6 +35,7 @@ public class DrawingSurface extends PApplet {
 		}
 		setting = 0;
 		map = new Map();
+		timer = 0; 
 //		for (int i = 0; i < zombies.size(); i ++) { // add questions into classrooms
 		
 //			zombies.set(i, new Zombie(0,0,img2,false));
@@ -69,46 +71,66 @@ public class DrawingSurface extends PApplet {
 					setting = i; 
 					}
 					
+					
 				}
 			}
+			
+			
 		}
 		
 		
-		//if { 0 
-		//drawMap(0
-		//player.setX, //MapStartibgPOintX
-		//player.setY, //MapStartibgPOintY
-		//draw player
-		//call doorloc map // list of points.
-		//convert points to rectangles +- size of doors, 
-		//if person is touching the rectangle of doors (if tL, bL, tR, bR touching rectangle)
-		//if so, change setting to that classroom
-	//	player.updatewhere("Class")
-		
-		
-		//if not, do nothing. 
-		
-		
-		
-	//}
-		
-		//if { !0
+	
+		else if (setting != 0) {
 			
-				//classroom[setting].draw()
-				//player.setX, //classroom[setting].StartingPointX
-				//player.setY, //Class1StartingPointY
-				//draw player
-				//locAnswers classroom[setting] (gets a list of points from classroom with the x and y coordinates of all the answers a = 0, b = 1 ... d = 3)
-				//convert points to rectangles +- answerSizes, 
-				//if person is touching the rectangle of answers (if tL,TR,BL, BR = any answer) (checks if the person is touching any of the sides of the answers)
-				//if so, classroom[setting]checkanswer(char answer) (checks if the answer that they put in makes sense)
-				//If their answer is correct then send the player back to the map and then changes settings
-				
-				
-		//
-				
-				
-			//}
+			classroom[setting].draw();
+			player.setX(classroom[setting].startPointX());
+			player.setY(classroom[setting].startPointY());
+			player.draw(this);
+
+			ArrayList<Point> answerCoord  = classroom[setting].answerLocations();
+			ArrayList<Rectangle> answerRect  = new ArrayList<Rectangle>(answerCoord.size());
+			for (int i = 0; i < answerCoord.size(); i++) {
+				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers, answerCoord.get(i).y - sizeAnswers, sizeAnswers*2, sizeAnswers*2)); 
+			}
+			for (int i = 0; i < answerCoord.size(); i++) {
+				if (answerRect.get(i).contains(player.getX(), player.getY()) ||
+					answerRect.get(i).contains(player.getX() + player.getWidth(), player.getY()) ||
+					answerRect.get(i).contains(player.getX(), player.getY() + player.getHeight()) ||
+					answerRect.get(i).contains(player.getX()  +player.getWidth(), player.getY() + player.getHeight())) {
+						
+					if (classroom[setting].correctAnswer == setting) {
+						classroom[setting].changeClassToFinished();
+						setting = 0; 
+					}
+					
+					
+				}
+			}
+			
+			if (timer % 100 == 0) {
+				timer = 0; 
+				if (zombies[0].isShown() == false) {
+					zombies[0].makeShown;
+				}
+				else if (zombies[1].isShown() == false) {
+					zombies[1].makeShown;
+				}
+				else if (zombies[2].isShown() == false) {
+					zombies[2].makeShown;
+				}
+				else if (zombies[3].isShown() == false) {
+					zombies[3].makeShown;
+				}
+				else if (zombies[4].isShown() == false) {
+					zombies[4].makeShown;
+				}
+			}
+			else {
+				timer ++;
+			}
+			
+		}
+
 	}
 	
 	
