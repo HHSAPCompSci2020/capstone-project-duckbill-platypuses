@@ -19,7 +19,6 @@ public class Zombie extends Person{
 		moveY((p.getY() - getY())/4);
 		
 
-
 	}
 	
 	

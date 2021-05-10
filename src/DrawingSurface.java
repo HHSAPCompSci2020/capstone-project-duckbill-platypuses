@@ -5,7 +5,7 @@ import processing.core.PApplet;
  * The DrawingSurface class uses all other classes, excluding main, to draw
  * the entire project.
  *  * 
- * @author Ophir Peleg
+ * @author Itai Reingold - Nutman
  * @version 05/06/2021
  */
 
