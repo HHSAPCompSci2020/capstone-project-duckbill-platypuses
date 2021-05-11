@@ -21,13 +21,15 @@ public class Map {
 		
 		
 		//draw the map
-		//Check
+		//Check (call itai to see what to check)
 		
 		
 	}
 	
-	//start retuyrn point.
+	//start return point.
 	
-	//boolean isPersonInClass(Player)
+//	public boolean isPersonInClass(Player player) {
+//		
+//	}
 
 }

@@ -34,13 +34,18 @@ public class DrawingSurface extends PApplet {
 			zombies.set(i, new Zombie(0,0,img2,false));
 		}
 		setting = 0;
-		map = new Map();
+		map = new Map(); // set stuff
 		timer = 0; 
 		for (int i = 0; i < classroom.size(); i ++) { // add questions into classrooms
 		
 			ArrayList<Problem> problems = new ArrayList<Problem>(1); 
 			problems.get(0).setQuestion("Qtest");
-			problems.get(0).setAnswer("A1", "A2", "A3", "A4"); //four answer, with indexes 0 -3. 
+			ArrayList<String> possibleAnswers = new ArrayList<String>();
+			possibleAnswers.add("A1");
+			possibleAnswers.add("A2");
+			possibleAnswers.add("A3");
+			possibleAnswers.add("A4");
+			problems.get(0).setPossibleAnswers(possibleAnswers); //four answer, with indexes 0 -3. 
 			problems.get(0).setCorrectAnswer(2); //imput index of correct (Answer A3)
 			
 			
