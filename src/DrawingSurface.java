@@ -36,10 +36,15 @@ public class DrawingSurface extends PApplet {
 		setting = 0;
 		map = new Map();
 		timer = 0; 
-//		for (int i = 0; i < zombies.size(); i ++) { // add questions into classrooms
+		for (int i = 0; i < classroom.size(); i ++) { // add questions into classrooms
 		
-//			zombies.set(i, new Zombie(0,0,img2,false));
-//		}
+			ArrayList<Problem> problems = new ArrayList<Problem>(1); 
+			problems.get(0).setQuestion("Qtest");
+			problems.get(0).setAnswer("A1", "A2", "A3", "A4"); //four answer, with indexes 0 -3. 
+			problems.get(0).setCorrectAnswer(2); //imput index of correct (Answer A3)
+			
+			
+		}
 	}
 	
 	public void setup() {
@@ -59,7 +64,7 @@ public class DrawingSurface extends PApplet {
 			player.setX(map.startPointX());
 			player.setY(map.startPointY());
 			player.draw(this);
-			ArrayList<Point> doorsCoord  = map.doorLocations();
+			ArrayList<Point> doorsCoord  = map.doorLocations(); //x y loc should be middle of door
 			ArrayList<Rectangle> doorsRect  = new ArrayList<Rectangle>(doorsCoord.size());
 			for (int i = 0; i < doorsCoord.size(); i++) {
 				doorsRect.add( new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors, sizeDoors*2, sizeDoors*2)); 
@@ -95,7 +100,7 @@ public class DrawingSurface extends PApplet {
 			}
 			
 
-			ArrayList<Point> answerCoord  = classroom.get(setting).answerLocations();
+			ArrayList<Point> answerCoord  = classroom.get(setting).answerLocations(); //x y loc should be middle of answer
 			ArrayList<Rectangle> answerRect  = new ArrayList<Rectangle>(answerCoord.size());
 			for (int i = 0; i < answerCoord.size(); i++) {
 				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers, answerCoord.get(i).y - sizeAnswers, sizeAnswers*2, sizeAnswers*2)); 
@@ -106,7 +111,7 @@ public class DrawingSurface extends PApplet {
 					answerRect.get(i).contains(player.getX(), player.getY() + player.getHeight()) ||
 					answerRect.get(i).contains(player.getX()  +player.getWidth(), player.getY() + player.getHeight())) {
 						
-					if (classroom.get(setting).correctAnswer == setting) {
+					if (classroom.get(setting).getCorrectAnswer == setting) {
 						classroom.get(setting).changeClassToFinished();
 						setting = 0; 
 					}
@@ -116,7 +121,8 @@ public class DrawingSurface extends PApplet {
 					}
 					else if (classroom.get(setting).getLives() == 2) {
 						classroom.get(setting).removeLives();
-						classroom.removeAnswer(i);
+						classroom.removeAnswer(i); // a b c d, loc: 0 1 2 3, loc 0 1 2 3, a null c d
+						//If an answer is removed then you shouldn't draw it. (Only draw the answers that aren't null)
 					}
 					
 					

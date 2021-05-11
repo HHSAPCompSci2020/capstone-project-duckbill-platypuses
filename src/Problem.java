@@ -19,6 +19,6 @@ public class Problem {
 	
 	//returnAnswer ()
 	
-	
+	//get + set methods for all fields
 	
 }

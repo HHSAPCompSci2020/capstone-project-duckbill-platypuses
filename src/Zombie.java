@@ -57,7 +57,7 @@ public class Zombie extends Person{
 		for (int i = 0; i < 1; i ++) {
 			int xZom = (int)Math.random()*800;
 			int yZom = (int)Math.random()*400;
-			if (r.contains(xZom, yZom)) {
+			if (!r.contains(xZom, yZom)) {
 			setX(xZom);
 			setY(yZom);
 			return;

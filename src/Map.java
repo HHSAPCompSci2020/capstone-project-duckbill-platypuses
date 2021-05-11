@@ -9,7 +9,7 @@ import processing.core.PApplet;
  */
 public class Map {
 
-	//x y, width, height
+	//x y, width, height, img image
 	public Map () {
 		
 		
