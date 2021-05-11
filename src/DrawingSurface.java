@@ -66,10 +66,10 @@ public class DrawingSurface extends PApplet {
 		
 		else if (setting == 0) {
 			map.draw(this);
-			player.setX(map.startPointX());
-			player.setY(map.startPointY());
+			player.setX(map.returnStartPointX()); //for the person
+			player.setY(map.returnStartPointY());
 			player.draw(this);
-			ArrayList<Point> doorsCoord  = map.doorLocations(); //x y loc should be middle of door
+			ArrayList<Point> doorsCoord  = map.returnDoorLocations(); //x y loc should be middle of door
 			ArrayList<Rectangle> doorsRect  = new ArrayList<Rectangle>(doorsCoord.size());
 			for (int i = 0; i < doorsCoord.size(); i++) {
 				doorsRect.add( new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors, sizeDoors*2, sizeDoors*2)); 
