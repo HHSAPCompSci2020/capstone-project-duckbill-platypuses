@@ -1,3 +1,9 @@
+import java.awt.Point;
+import java.util.ArrayList;
+
+import processing.core.PApplet;
+import processing.core.PImage;
+
 /**
  * The classroom class represents a class where the user will complete a challenge. 
  *  * 
@@ -6,7 +12,79 @@
  */
 public class Classroom {
 
+	boolean finished;
+	Problem randomProblem;
+	PImage classImage;
+	String question1;
+	String question2;
+	String question3;
+	String question4;
+	double width;
+	double height;
+	
+	public Classroom(ArrayList<Problem> problems, PImage image) {
+		
+		randomProblem = problems.get((int) (Math.random() * 1));
+		classImage = image;
+		finished = false;
+		width = 1600;
+		height = 1200;
+	}
+	
+	public void draw(PApplet marker){
+		
+		marker.image(classImage, 0,0,1600,1200);
+		
+		//Question
+		marker.text(randomProblem.getQuestion(), (float)(width/2), (float)(height /8));	
+	
+		//Answer 1
+		if(randomProblem.getPossibleAnswers().get(0) != null) {
+			marker.text(randomProblem.getPossibleAnswers().get(0), (float)200, (float)200);
+		}
+			
+		//Answer 2
+		if(randomProblem.getPossibleAnswers().get(0) != null) {
+			marker.text(randomProblem.getPossibleAnswers().get(1), (float)200, (float)1400 );	
+		}
+		
+		//Answer 3
+		if(randomProblem.getPossibleAnswers().get(0) != null) {
+			marker.text(randomProblem.getPossibleAnswers().get(2), (float)1400, (float)200);	
+		}
+		
+		//Answer 4
+		if(randomProblem.getPossibleAnswers().get(0) != null) {
+			marker.text(randomProblem.getPossibleAnswers().get(3), (float)1400, (float)1400);	
+		}
+		
+	}
+
+	public boolean isFinished() {
+		return finished;
+	}
+
+	public int startPointX() {
+		return 50;
+	}
+
+	public int startPointY() {
+		return (int) (height / 2);
+	}
+
+	public ArrayList<Point> answerLocations() {
+		ArrayList<Point> locations = new ArrayList<>();
+		locations.add(new Point(200,200));
+		locations.add(new Point(200,1400));
+		locations.add(new Point(1400,200));
+		locations.add(new Point(1400,1400));
+		return locations;
+	}
+	
+	
+	
 /*	
+ * 
  *
  	//boolean finished
 	//problem randomProb;
@@ -30,7 +108,7 @@ public class Classroom {
 	 * draw B
 	 * draw C
 	 * draw D
-	 * (draw all of the answer rectangles)
+	 * (draw all of the text answer if they aren't null)
 	
 }
 
