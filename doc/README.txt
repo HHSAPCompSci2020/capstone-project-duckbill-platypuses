@@ -12,11 +12,11 @@ What is the goal - The goal is to answer the questions in each classroom that is
 Who will use our program - Students looking for a fun way to study. The game will allow people to enjoy a nice challenging game, while simultaneously learning. 
 
 
-What are the primary features of your program? - [a]
+What are the primary features of your program? - 
 
 
 Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
-Must-have Features:[b]
+Must-have Features:
 * The question + answer - Text at the top of the screen which will explain the questions and provide the answer choices. 
 * A, B, C, D, etc, (Answer letters)- The letters in the classroom which you will need to walk to and hover over to select. 
 * Zombies infecting you: Zombies that will chase you in the classrooms while you need to answer the questions. 
@@ -24,7 +24,7 @@ Must-have Features:[b]
 * The map - The map of the school the person should move through and enter classrooms
 
 
-Want-to-have Features:[c]
+Want-to-have Features:
 *  A transition when you change rooms.
 *  A progress bar showing how many classrooms you have done and need to do still. 
 *  When you reach i5 you need to face a final boss, which will be a free response question that will pop up instead of nothing that will force a challenging final boss. 
@@ -33,7 +33,7 @@ Want-to-have Features:[c]
 * More images for zombies
 
 
-Stretch Features:[d]
+Stretch Features:
 *  Save the highest player score - the program would be able to save the time it took a person to complete the entire program, and present the highest score to other players.
 *  Players can add their own questions, and transform the game into a quizlet type program, where the players can study in a fun way for specific tests. The game would become more generic, and not divided into subjects based on homestead buildings.
 *  Add a multiplayer option to the game, in which players compete against each other to complete the game the fastest.
@@ -56,12 +56,8 @@ Problem - A class that holds a question and possible answers. Also holds the amo
 
 Credits:
 Itai: Person (superclass), Zombie,Drawing Surface
-Ido: Player, Classroom, Drawing Surface
+Ido: Player, Classroom
 Ophir: Problem, Main, Map
 External Credit: 
 * We used the processing library for graphics. 
 * Mr. Shelby’s code was used as a template for the Main class.
-[a]we haven't done this yet...
-[b][These are features that we agree you will definitely have by the project due date. A good final project would have all of these completed. At least 5 are required. Each feature should be fully described (at least a few full sentences for each)]
-[c][These are features that you would like to have by the project due date, but you’re unsure whether you’ll hit all of them. A good final project would have perhaps half of these completed. At least 5 are required. Again, fully describe each.]
-[d][These are features that we agree a fully complete version of this program would have, but that you probably will not have time to implement. A good final project does not necessarily need to have any of these completed at all. At least 3 are required. Again, fully describe each.]
