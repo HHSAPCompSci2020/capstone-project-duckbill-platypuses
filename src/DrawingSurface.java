@@ -78,7 +78,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3.add("Itai");
 		possibleAnswers3.add("Ophir");
 		possibleAnswers3.add("None");
-		Problem p3 = new Problem(possibleAnswers3, 1, "Who is better at coding?");
+		Problem p3 = new Problem(possibleAnswers3, 0, "Who is better at coding?");
 		problems3.add(p3);
 		classroom.add(new Classroom(problems3, classImg));
 
@@ -130,8 +130,6 @@ public class DrawingSurface extends PApplet {
 			PImage WinScreen = loadImage("images/WinScreen.png");
 			image(WinScreen, 0, 0, (float) width, (float) height);
 
-			System.out.println("Win");
-
 		}
 
 		if (setting == -1) {
@@ -139,7 +137,6 @@ public class DrawingSurface extends PApplet {
 			PImage looseScreen = loadImage("images/LooseScreen.png");
 			image(looseScreen, 0, 0, (float) width, (float) height);
 
-			System.out.println("Lost");
 
 		} else if (setting == -3) {
 
@@ -232,18 +229,15 @@ public class DrawingSurface extends PApplet {
 						firstSetNot0 = true;
 						player.setX(map.returnStartPointX());
 						player.setY(map.returnStartPointY());
-						System.out.println("Correct");
 
 					} else if (classroom.get(setting).getLives() == 1) {
 						classroom.get(setting).removeLives();
 						setting = -1;
-						System.out.println("Second wrong");
 					} else if (classroom.get(setting).getLives() == 2) {
 						player.setX(classroom.get(i).startPointX());
 						player.setY(classroom.get(i).startPointY());
 						classroom.get(setting).removeLives();
 						classroom.get(setting).removeAnswer(i);
-						System.out.println("First wrong");
 					}
 
 				}
