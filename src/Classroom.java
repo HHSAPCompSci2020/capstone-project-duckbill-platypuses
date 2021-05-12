@@ -35,24 +35,27 @@ public class Classroom {
 		//Question
 		marker.text(randomProblem.getQuestion(), (float)(width/2), (float)(height /8));	
 	
+	
+	
+	marker.fill(0,0,0);
 		//Answer 1
 		if(randomProblem.getPossibleAnswers().get(0) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(0), (float)200, (float)200);
+			marker.text(randomProblem.getPossibleAnswers().get(0), (float)170, (float)185);
 		}
 			
 		//Answer 2
 		if(randomProblem.getPossibleAnswers().get(1) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(1), (float)200, (float)1400 );	
+			marker.text(randomProblem.getPossibleAnswers().get(1), (float)170, (float)490 );	
 		}
 		
 		//Answer 3
 		if(randomProblem.getPossibleAnswers().get(2) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(2), (float)1400, (float)200);	
+			marker.text(randomProblem.getPossibleAnswers().get(2), (float)640, (float)185);	
 		}
 		
 		//Answer 4
 		if(randomProblem.getPossibleAnswers().get(3) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(3), (float)1400, (float)1400);	
+			marker.text(randomProblem.getPossibleAnswers().get(3), (float)640, (float)490);	
 		}
 		
 	}
@@ -62,11 +65,11 @@ public class Classroom {
 	}
 
 	public int startPointX() {
-		return (int)(width / 4);
+		return (int)(width / 2);
 	}
 
 	public int startPointY() {
-		return (int) (height / 2);
+		return (int) (height / 4);
 	}
 
 	public ArrayList<Point> answerLocations() {

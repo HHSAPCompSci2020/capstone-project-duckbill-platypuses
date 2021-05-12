@@ -11,12 +11,12 @@ import processing.core.PImage;
  */
 public class Person {
 
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	private PImage img;
 	boolean shown;
-	private int width;
-	private int height;
+	private double width;
+	private double height;
 
 	/**
 	 * Initializes a person to an initial x coordinate, y coordinate, image, and
@@ -42,7 +42,7 @@ public class Person {
 	 * 
 	 * @param xDistance The change that will be done to the X-coordinate.
 	 */
-	public void moveX(int xDistance) {
+	public void moveX(double xDistance) {
 		x = x + xDistance;
 	}
 
@@ -51,7 +51,7 @@ public class Person {
 	 * 
 	 * @param yDistance The change that will be done to the X-coordinate.
 	 */
-	public void moveY(int yDistance) {
+	public void moveY(double yDistance) {
 		y = y + yDistance;
 	}
 
@@ -94,7 +94,7 @@ public class Person {
 	 * 
 	 * @return x-coordinate of the person
 	 */
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 	
@@ -104,7 +104,7 @@ public class Person {
 	 * 
 	 * @return y-coordinate of the person
 	 */
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	
@@ -112,7 +112,7 @@ public class Person {
 	 * Returns the y coordinate of the person
 	 * @param xIn - x to change to
 	 */
-	public void setX(int xIn) {
+	public void setX(double xIn) {
 		 x = xIn;
 	}
 	
@@ -121,7 +121,7 @@ public class Person {
 	 * set the y coordinate of the person
 	 * @param yIn - y to change to
 	 */
-	public void setY(int yIn) {
+	public void setY(double yIn) {
 		 y = yIn;
 	}
 	
@@ -130,7 +130,7 @@ public class Person {
 	 * 
 	 * @return width of the person
 	 */
-	public int getWidth() {
+	public double getWidth() {
 		return width;
 	}
 	
@@ -140,7 +140,7 @@ public class Person {
 	 * 
 	 * @return height of the person
 	 */
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 	

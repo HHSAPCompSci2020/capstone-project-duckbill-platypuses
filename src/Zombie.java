@@ -1,5 +1,6 @@
 import java.awt.Rectangle;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -16,9 +17,23 @@ public class Zombie extends Person{
 		
 	}
 	
+	public void draw(PApplet marker, Player p) {
+		super.draw(marker);
+		
+		followPlayer(p);
+	
+		//System.out.println("Hello World");
+		
+	}
+	
 	public void followPlayer (Player p) {
-		moveX((p.getX() - getX())/4);
-		moveY((p.getY() - getY())/4);
+		
+		moveX((p.getX() - getX())/300);
+		moveY((p.getY() - getY())/300);
+		//System.out.println("Hello World");
+		//setX(getX()+0.1);
+	
+		
 		
 
 	}
@@ -33,7 +48,7 @@ public class Zombie extends Person{
 	
 	public boolean isTouching(Player p) {
 		
-		Rectangle playerR = new Rectangle(p.getX(), p.getY(), p.getWidth(), p.getHeight());
+		Rectangle playerR = new Rectangle((int)p.getX(), (int)p.getY(),(int) p.getWidth(),(int) p.getHeight());
 		
 		
 		if (playerR.contains(getX(), getY()) ||
@@ -53,7 +68,7 @@ public class Zombie extends Person{
 	}
 	
 	public void spawnLoc(Player p) {
-		Rectangle r = new Rectangle(p.getX()-30, p.getY()-30, 60, 60);
+		Rectangle r = new Rectangle((int)p.getX()-30,(int) p.getY()-30, 60, 60);
 		for (int i = 0; i < 1; i ++) {
 			int xZom = (int)Math.random()*800;
 			int yZom = (int)Math.random()*400;

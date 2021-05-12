@@ -22,6 +22,7 @@ public class DrawingSurface extends PApplet {
 	int sizeAnswers = 30;
 	int setting;
 	int timer; 
+	boolean firstSetNot0;
 
 
 	public DrawingSurface() {
@@ -39,11 +40,11 @@ public class DrawingSurface extends PApplet {
 		PImage classImg = loadImage("images/Classroom.png");
 		ArrayList<Problem> problems = new ArrayList<Problem>(); 
 		ArrayList<String> possibleAnswers = new ArrayList<String>();
-		possibleAnswers.add("A1");
-		possibleAnswers.add("A2");
-		possibleAnswers.add("A3");
-		possibleAnswers.add("A4");
-		Problem p = new Problem(possibleAnswers, 2,  "Test" );
+		possibleAnswers.add("3.1");
+		possibleAnswers.add("2");
+		possibleAnswers.add("5");
+		possibleAnswers.add("3.14159");
+		Problem p = new Problem(possibleAnswers, 3,  "What is pi?" );
 		problems.add(p);
 		
 		for (int i = 0; i < 5; i ++) {
@@ -66,6 +67,7 @@ public class DrawingSurface extends PApplet {
 		
 		player.setX(map.returnStartPointX());
 		player.setY(map.returnStartPointY());
+		firstSetNot0 = true;
 	}
 
 	public void draw() {
@@ -109,12 +111,20 @@ public class DrawingSurface extends PApplet {
 		} else if (setting != 0) { //in a class
 
 			classroom.get(setting).draw(this);
-			//			player.setX(classroom.get(setting).startPointX());
-			//			player.setY(classroom.get(setting).startPointY());
 			player.draw(this);
+			if (firstSetNot0) {
 			for (int i = 0; i < zombies.size(); i ++) {
-				zombies.get(i).spawnLoc(player);
-				zombies.get(i).draw(this);
+				zombies.get(i).setX(40);
+				zombies.get(i).setY(100*i);
+				firstSetNot0 = false;
+			}
+			}
+			
+			for (int i = 0; i < zombies.size(); i ++) {
+				if (zombies.get(i).isShown()) {
+				zombies.get(i).draw(this, player);
+				}
+				
 			}
 
 
@@ -148,7 +158,7 @@ public class DrawingSurface extends PApplet {
 				}
 			}
 
-			if (timer % 100 == 0) {
+			if (timer > 200) {
 				timer = 0; 
 				if (zombies.get(0).isShown() == false) {
 					zombies.get(0).makeShown();
