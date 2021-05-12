@@ -75,6 +75,8 @@ public class DrawingSurface extends PApplet {
 
 		if (setting == -1) {
 
+			background(0);
+			
 		} else if (setting == 0) {
 			map.draw(this);
 			player.draw(this);
@@ -131,7 +133,7 @@ public class DrawingSurface extends PApplet {
 			ArrayList<Rectangle> answerRect  = new ArrayList<Rectangle>(answerCoord.size());
 			for (int i = 0; i < answerCoord.size(); i++) {
 				//rect(answerCoord.get(i).x - sizeAnswers*3, answerCoord.get(i).y - sizeAnswers*2, sizeAnswers*6, sizeAnswers*4);
-				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers*3, answerCoord.get(i).y - sizeAnswers*2, sizeAnswers*6, sizeAnswers*4)); 
+				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers*2, answerCoord.get(i).y - sizeAnswers*1, sizeAnswers*4, sizeAnswers*2)); 
 			}
 			for (int i = 0; i < answerCoord.size(); i++) {
 				if (answerRect.get(i).contains(player.getX(), player.getY()) ||
@@ -148,10 +150,11 @@ public class DrawingSurface extends PApplet {
 						setting = -1;
 					}
 					else if (classroom.get(setting).getLives() == 2) {
+						player.setX(classroom.get(i).startPointX());
+						player.setY(classroom.get(i).startPointY());
 						classroom.get(setting).removeLives();
 						classroom.get(setting).removeAnswer(i);
-						// a b c d, loc: 0 1 2 3, loc 0 1 2 3, a null c d
-						//If an answer is removed then you shouldn't draw it. (Only draw the answers that aren't null)
+						
 					}
 
 				}
@@ -180,7 +183,7 @@ public class DrawingSurface extends PApplet {
 			}
 
 			for (int i = 0; i < zombies.size(); i ++) {
-				if (zombies.get(i).isTouching(player)) {
+				if (zombies.get(i).isTouching(player, this)) {
 					setting = -1;
 				}
 			}

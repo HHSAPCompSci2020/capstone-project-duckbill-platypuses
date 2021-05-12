@@ -46,15 +46,26 @@ public class Zombie extends Person{
 		return shown;
 	}
 	
-	public boolean isTouching(Player p) {
+	public boolean isTouching(Player p, PApplet m) {
 		
 		Rectangle playerR = new Rectangle((int)p.getX(), (int)p.getY(),(int) p.getWidth(),(int) p.getHeight());
 		
+//		m.line((float)getX(), (float)getY(), (float)(getX() + getWidth()), (float)getY());
+//		m.line((float)getX(), (float)getY(), (float)(getX() ), (float)( getY() + getHeight()));
+//		m.line((float)(getX() + getWidth()), (float)(getY() + getHeight()), (float)(getX() + getWidth()), (float)getY());
+//		m.line((float)(getX() + getWidth()), (float)(getY() + getHeight()), (float)(getX() ), (float)( getY() + getHeight()));
 		
-		if (playerR.contains(getX(), getY()) ||
-			playerR.contains(getX() + getWidth(), getY()) ||
-			playerR.contains(getX(), getY() + getHeight()) ||
-			playerR.contains(getX() + getWidth(), getY() + getHeight()) ) {
+//		m.line((float)getX() + 32, (float)getY() + 32, (float)(getX() + getWidth()/2) + 32, (float)getY() + 32);
+//		m.line((float)getX() + 32, (float)getY() + 32, (float)(getX() ) + 32, (float)( getY() + getHeight()/2) + 32);
+//		m.line((float)(getX() + getWidth()/2) + 32, (float)(getY() + getHeight()/2) + 32, (float)(getX() + getWidth()/2) + 32, (float)getY() + 32);
+//		m.line((float)(getX() + getWidth()/2) + 32, (float)(getY() + getHeight()/2) + 32, (float)(getX() ) + 32, (float)( getY() + getHeight()/2) + 32);
+//		
+		
+		//fix this if game too hard. 
+		if (playerR.contains((float)getX() + 32, (float)getY() + 32) || //Tl
+			playerR.contains((float)getX() + 32 + (((float)(getX() + getWidth()/2) + 32) - ((float)getX() + 32)), (float)getY() + 32) || //TR
+			playerR.contains((float)getX() + 32, (float)getY() + 32 + (((float)(getY() + getHeight()/2) + 32)-((float)getY() + 32))) || //BL
+			playerR.contains((float)getX() + 32 + (((float)(getX() + getWidth()/2) + 32) - ((float)getX() + 32)), (float)getY() + 32 + (((float)(getY() + getHeight()/2) + 32)-((float)getY() + 32))) ) {
 			
 			return true;
 			
