@@ -18,8 +18,8 @@ public class DrawingSurface extends PApplet {
 	private ArrayList<Zombie> zombies;
 	private Player player;
 	private Map map;
-	int sizeDoors = 10;
-	int sizeAnswers = 5;
+	int sizeDoors = 80;
+	int sizeAnswers = 30;
 	int setting;
 	int timer; 
 
@@ -63,8 +63,7 @@ public class DrawingSurface extends PApplet {
 		PImage mapIm = loadImage("images/Map.png");
 		map = new Map(mapIm);
 		timer = 0; 
-		System.out.println(classroom.size());
-		System.out.println(zombies.size());
+		
 		player.setX(map.returnStartPointX());
 		player.setY(map.returnStartPointY());
 	}
@@ -74,22 +73,26 @@ public class DrawingSurface extends PApplet {
 
 		if (setting == -1) {
 
-		}
-
-
-		else if (setting == 0) {
+		} else if (setting == 0) {
 			map.draw(this);
 			player.draw(this);
 			ArrayList<Point> doorsCoord  = map.returnDoorLocations(); //x y loc should be middle of door
 			ArrayList<Rectangle> doorsRect  = new ArrayList<Rectangle>(doorsCoord.size());
 			for (int i = 0; i < doorsCoord.size(); i++) {
+				rect(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors, sizeDoors*2, sizeDoors*2);
 				doorsRect.add( new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors, sizeDoors*2, sizeDoors*2)); 
+				
 			}
 			for (int i = 0; i < doorsCoord.size(); i++) {
+	
+				
 				if (doorsRect.get(i).contains(player.getX(), player.getY()) ||
 						doorsRect.get(i).contains(player.getX() + player.getWidth(), player.getY()) ||
 						doorsRect.get(i).contains(player.getX(), player.getY() + player.getHeight()) ||
-						doorsRect.get(i).contains(player.getX()  +player.getWidth(), player.getY() + player.getHeight())) {
+						doorsRect.get(i).contains(player.getX()  + player.getWidth(), player.getY() + player.getHeight())) {
+					
+					
+					System.out.println(classroom.get(i).isFinished() );
 
 					if (classroom.get(i).isFinished() == false) {
 						setting = i; 
@@ -103,11 +106,7 @@ public class DrawingSurface extends PApplet {
 			}
 
 
-		}
-
-
-
-		else if (setting != 0) {
+		} else if (setting != 0) { //in a class
 
 			classroom.get(setting).draw(this);
 			//			player.setX(classroom.get(setting).startPointX());

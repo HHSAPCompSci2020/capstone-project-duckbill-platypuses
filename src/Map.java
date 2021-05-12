@@ -28,11 +28,11 @@ public class Map {
 		width = 800;
 		height = 600;
 		doorLocations = new ArrayList<Point>();
-		doorLocations.add(new Point(50, 0));
-		doorLocations.add(new Point(400, 0));
-		doorLocations.add(new Point(50, (int)(height - 25)));
-		doorLocations.add(new Point(400, (int)(height - 25)));
-		doorLocations.add(new Point((int)(width - 25), (int)(height/2)));
+		doorLocations.add(new Point(160, -5));
+		doorLocations.add(new Point(550, -5));
+		doorLocations.add(new Point(170, (int)(height - 5)));
+		doorLocations.add(new Point(600, (int)(height - 5)));
+		doorLocations.add(new Point((int)(width - 20), (int)(277)));
 	}
 	
 	
