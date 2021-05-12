@@ -27,9 +27,9 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		classroom = new ArrayList<Classroom>(5);
 		zombies = new ArrayList<Zombie>(5);
-		PImage img = loadImage("characters/Player.png");
+		PImage img = loadImage("images/Player.png");
 		player = new Player(0,0,img,true);
-		PImage img2 = loadImage("characters/Zombie.png");
+		PImage img2 = loadImage("images/Zombie.png");
 		for (int i = 0; i < zombies.size(); i ++) {
 			zombies.set(i, new Zombie(0,0,img2,false));
 		}
