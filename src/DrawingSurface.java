@@ -34,7 +34,7 @@ public class DrawingSurface extends PApplet {
 			zombies.set(i, new Zombie(0,0,img2,false));
 		}
 		setting = 0;
-		map = new Map(); // set stuff
+		map = new Map(); // pass in the image for the map
 		timer = 0; 
 		for (int i = 0; i < classroom.size(); i ++) { // add questions into classrooms
 		
