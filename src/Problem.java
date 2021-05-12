@@ -9,53 +9,93 @@ import java.util.ArrayList;
  */
 
 public class Problem {
-
 	
 	private ArrayList<String> possibleAnswers;
 	private int correctAnswer;
 	private String question;
 	
-	// Constructor
+	/**
+	 * Constructs a Problem object, that holds a question, the possible answers,
+	 * and the correct answer.
+	 * 
+	 * @param answers all possible answers to the problem, String ArrayList
+	 * @param answer the correct answer to the problem, int
+	 * @param question the question asked in the problem, String
+	 * @post possibleAnswers = answers
+	 * @post correctAnswer = answer
+	 * @post question = parameter question
+	 */
+	
 	public Problem(ArrayList<String> answers, int answer, String question) {
 		possibleAnswers = answers;
 		correctAnswer = answer;
 		this.question = question;
 	}
 	
-	// Setters
+	/**
+	 * Fills the possibleAnswers ArrayList with the values
+	 * entered in the parameter ArrayList.
+	 * 
+	 * @param answers all possible answers to the problem,String ArrayList
+	 * @post possibleAnswers = answers
+	 */
+	
 	public void setPossibleAnswers(ArrayList<String> answers) {
 		possibleAnswers = answers;
 	}
+	
+	/**
+	 * Sets the index of the correct answer to the parameter.
+	 * 
+	 * @param index the index of the correct answer in the 
+	 *        possibleAnswers ArrayList, int
+	 * @post correctAnswer = index
+	 */
 	
 	public void setCorrectAnswer(int index) {
 		correctAnswer = index;
 	}
 	
+	/**
+	 * Sets the question field to the question in the parameter.
+	 * 
+	 * @param question the question asked in the problem, String
+	 * @post question = parameter question
+	 */
+	
 	public void setQuestion(String question) {
 		this.question = question;
 	}
 	
-	// Getters
+	/**
+	 * Returns an ArrayList of possible answers to
+	 * the problem.
+	 * 
+	 * @return the ArrayList of possible answers.
+	 */
+	
 	public ArrayList<String> getPossibleAnswers() {
 		return possibleAnswers;
 	}
+	
+	/**
+	 * Returns the index of the correct answer in 
+	 * the possibleAnswers ArrayList.
+	 * 
+	 * @return index of the correct answer.
+	 */
 	
 	public int getCorrectAnswer() {
 		return correctAnswer;
 	}
 	
+	/**
+	 * Returns the question of this Problem
+	 * 
+	 * @return the question
+	 */
+	
 	public String getQuestion() {
 		return question;
 	}
-	
-	
-	
-	
-	
-	
-	
-	//returnAnswer ()
-	
-	//get + set methods for all fields
-	
 }

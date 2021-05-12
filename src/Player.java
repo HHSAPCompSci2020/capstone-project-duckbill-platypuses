@@ -34,6 +34,9 @@ public class Player extends Person {
 
 		//setX(getX()+1); 		
 
+		
+		
+		
 
 		if(marker.keyPressed) {
 
@@ -49,15 +52,15 @@ public class Player extends Person {
 			}
 			if(marker.key == marker.CODED && marker.keyCode == marker.LEFT) {
 
-				//if((super.getX() < 2)) {
+				if((super.getX() > -30 )) {
 				super.setX(super.getX() - 2);
-				//}
+				}
 
 
 			}else  if(marker.key == marker.CODED && marker.keyCode == marker.RIGHT) {
-				//if(((super.getX() + super.getWidth())>  800)) {
+				if(((super.getX() + super.getWidth()) <  830 )) {
 				super.setX(super.getX() + 2);
-				//}
+				}
 
 
 			}
