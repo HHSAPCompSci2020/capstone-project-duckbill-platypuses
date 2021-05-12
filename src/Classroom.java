@@ -65,19 +65,19 @@ public class Classroom {
 	}
 
 	public int startPointX() {
-		return (int)(width / 2);
+		return (int)(350);
 	}
 
 	public int startPointY() {
-		return (int) (height / 4);
+		return (int) (260);
 	}
 
 	public ArrayList<Point> answerLocations() {
 		ArrayList<Point> locations = new ArrayList<>();
-		locations.add(new Point(200,200));
-		locations.add(new Point(200,1400));
-		locations.add(new Point(1400,200));
-		locations.add(new Point(1400,1400));
+		locations.add(new Point(170,185));
+		locations.add(new Point(170,490));
+		locations.add(new Point(640,185));
+		locations.add(new Point(640,490));
 		return locations;
 	}
 

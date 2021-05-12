@@ -94,7 +94,6 @@ public class DrawingSurface extends PApplet {
 						doorsRect.get(i).contains(player.getX()  + player.getWidth(), player.getY() + player.getHeight())) {
 					
 					
-					System.out.println(classroom.get(i).isFinished() );
 
 					if (classroom.get(i).isFinished() == false) {
 						setting = i; 
@@ -131,7 +130,8 @@ public class DrawingSurface extends PApplet {
 			ArrayList<Point> answerCoord  = classroom.get(setting).answerLocations(); //x y loc should be middle of answer
 			ArrayList<Rectangle> answerRect  = new ArrayList<Rectangle>(answerCoord.size());
 			for (int i = 0; i < answerCoord.size(); i++) {
-				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers, answerCoord.get(i).y - sizeAnswers, sizeAnswers*2, sizeAnswers*2)); 
+				//rect(answerCoord.get(i).x - sizeAnswers*3, answerCoord.get(i).y - sizeAnswers*2, sizeAnswers*6, sizeAnswers*4);
+				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers*3, answerCoord.get(i).y - sizeAnswers*2, sizeAnswers*6, sizeAnswers*4)); 
 			}
 			for (int i = 0; i < answerCoord.size(); i++) {
 				if (answerRect.get(i).contains(player.getX(), player.getY()) ||
@@ -139,7 +139,7 @@ public class DrawingSurface extends PApplet {
 						answerRect.get(i).contains(player.getX(), player.getY() + player.getHeight()) ||
 						answerRect.get(i).contains(player.getX()  +player.getWidth(), player.getY() + player.getHeight())) {
 
-					if (classroom.get(setting).getCorrectAnswer() == setting) {
+					if (classroom.get(setting).getCorrectAnswer() == i) {
 						classroom.get(setting).changeClassToFinished();
 						setting = 0; 
 					}
@@ -153,7 +153,6 @@ public class DrawingSurface extends PApplet {
 						// a b c d, loc: 0 1 2 3, loc 0 1 2 3, a null c d
 						//If an answer is removed then you shouldn't draw it. (Only draw the answers that aren't null)
 					}
-
 
 				}
 			}
