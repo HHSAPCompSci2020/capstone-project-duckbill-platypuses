@@ -50,6 +50,8 @@ public class Zombie extends Person{
 		
 		Rectangle playerR = new Rectangle((int)p.getX(), (int)p.getY(),(int) p.getWidth(),(int) p.getHeight());
 		
+		m.rect((float)p.getX() + 32, (float)p.getY() + 32,(int) p.getWidth()/2, (int) p.getHeight()/2);
+		
 //		m.line((float)getX(), (float)getY(), (float)(getX() + getWidth()), (float)getY());
 //		m.line((float)getX(), (float)getY(), (float)(getX() ), (float)( getY() + getHeight()));
 //		m.line((float)(getX() + getWidth()), (float)(getY() + getHeight()), (float)(getX() + getWidth()), (float)getY());
