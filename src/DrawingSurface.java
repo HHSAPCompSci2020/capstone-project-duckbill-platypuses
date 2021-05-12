@@ -113,7 +113,7 @@ public class DrawingSurface extends PApplet {
 		for (int i = 0; i < 5; i ++) {
 			zombies.add(new Zombie(0,0,img2,false));
 		}
-		setting = 0;
+		setting = -3;
 		PImage mapIm = loadImage("images/Map.png");
 		map = new Map(mapIm);
 		timer = 0; 
@@ -142,7 +142,7 @@ public class DrawingSurface extends PApplet {
 			
 			System.out.println("Lost");
 
-		} else if (setting == 0) {
+		} else if (setting == -3) {
 			
 			int counter = 0;
 			for (int i = 0; i < classroom.size(); i ++) {
@@ -152,7 +152,7 @@ public class DrawingSurface extends PApplet {
 				}
 				
 			}
-			if (counter >= 4) {
+			if (counter >= 5) {
 				setting = -2;
 			}
 			
@@ -188,7 +188,7 @@ public class DrawingSurface extends PApplet {
 			}
 
 
-		} else if (setting > 0) { //in a class
+		} else if (setting >= 0) { //in a class
 
 			classroom.get(setting).draw(this);
 			player.draw(this);
@@ -228,7 +228,7 @@ public class DrawingSurface extends PApplet {
 
 					if (classroom.get(setting).getCorrectAnswer() == i) {
 						classroom.get(setting).changeClassToFinished();
-						setting = 0;
+						setting = -3;
 						firstSetNot0 = true;
 						player.setX(map.returnStartPointX());
 						player.setY(map.returnStartPointY());
