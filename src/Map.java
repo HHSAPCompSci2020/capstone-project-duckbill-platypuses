@@ -14,14 +14,22 @@ import processing.core.PImage;
  */
 public class Map {
 
-	//x y, width, height, img image
-//	private double x;
-//	private double y;
 	private double width;
 	private double height;
 	private PImage mapImage;
 	private ArrayList<Point> doorLocations; //make up locations that make sense
 	
+	/**
+	 * Constructs a Map object.
+	 * 
+	 * @param image image of the map, PImage.
+	 * @post mapImage = image
+	 * @post width = 800
+	 * @post height = 600
+	 * @post doorLocations is an arrayList of Points that holds
+	 *       five points, which are the locations of the doors in
+	 *       the map.
+	 */
 	
 	public Map(PImage image) {
 		mapImage = image;
@@ -35,34 +43,49 @@ public class Map {
 		doorLocations.add(new Point((int)(width - 20), (int)(277)));
 	}
 	
+	/**
+	 * Draws the map, which is an image located in
+	 * the images folder.
+	 * 
+	 * @param marker graphics used to draw the line, PApplet
+	 */
 	
 	public void draw(PApplet marker) {
-		
 		marker.image(mapImage,0,0,(float)width,(float)height);
-		
-		//draw the map
-		//Check (call itai to see what to check)
-		
-		
 	}
 
-
+	/**
+	 * Returns an ArrayList of Points for the doors'
+	 * locations on the map.
+	 * 
+	 * @return an ArrayList of Points of the door's locations.
+	 */
+	
 	public ArrayList<Point> returnDoorLocations() {
 		return doorLocations;
 	}
 
+	/**
+	 * Returns the x-coordinate of the player's 
+	 * starting point on the map.
+	 * 
+	 * @return x-coordinate of the player's 
+	 * starting point
+	 */
+	
 	public int returnStartPointX() {
 		return (int)(20);
 	}
 
+	/**
+	 * Returns the y-coordinate of the player's 
+	 * starting point on the map.
+	 * 
+	 * @return y-coordinate of the player's 
+	 * starting point
+	 */
+	
 	public int returnStartPointY() {
 		return (int)(height/2);
 	}
-	
-	//start return point.
-	
-//	public boolean isPersonInClass(Player player) {
-//		
-//	}
-
 }
