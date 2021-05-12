@@ -22,6 +22,8 @@ public class Classroom {
 	public Classroom(ArrayList<Problem> problems, PImage image) {
 		
 		randomProblem = problems.get((int) (Math.random() * 1));
+		//System.out.println(problems.size());
+		//randomProblem = problems.get(0);
 		classImage = image;
 		finished = false;
 		width = 800;
