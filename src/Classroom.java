@@ -99,22 +99,5 @@ public class Classroom {
 		randomProblem.getPossibleAnswers().set(remove, null);
 	}
 	
-/*	
- * 
- *
-
-	
-	
-}
-
-	changeClassToFinished(){
-		Changes finished to true;
-	}
-	
-	isFinished{
-	   returns finished
-	}
-	
-	*/
 	
 }
