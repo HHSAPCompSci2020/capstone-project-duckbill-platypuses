@@ -18,11 +18,11 @@ public class DrawingSurface extends PApplet {
 	private ArrayList<Zombie> zombies;
 	private Player player;
 	private Map map;
-	int sizeDoors = 80;
-	int sizeAnswers = 30;
-	int setting;
-	int timer; 
-	boolean firstSetNot0;
+	private int sizeDoors = 80;
+	private int sizeAnswers = 30;
+	private int setting;
+	private int timer; 
+	private boolean firstSetNot0;
 
 
 	public DrawingSurface() {
@@ -126,11 +126,36 @@ public class DrawingSurface extends PApplet {
 	public void draw() {
 
 
-		if (setting == -1) {
+		if (setting == -2) { //win
 
+			PImage WinScreen = loadImage("images/WinScreen.png");
+			image(WinScreen,0,0,(float)width,(float)height);
+			
+			System.out.println("Win");
+
+		}
+		
+		if (setting == -1) { //loose
+
+			PImage looseScreen = loadImage("images/LooseScreen.png");
+			image(looseScreen,0,0,(float)width,(float)height);
+			
 			System.out.println("Lost");
 
 		} else if (setting == 0) {
+			
+			int counter = 0;
+			for (int i = 0; i < classroom.size(); i ++) {
+				
+				if (classroom.get(i).isFinished()){
+					counter ++;
+				}
+				
+			}
+			if (counter >= 4) {
+				setting = -2;
+			}
+			
 			map.draw(this);
 			player.draw(this);
 			ArrayList<Point> doorsCoord  = map.returnDoorLocations(); //x y loc should be middle of door
@@ -163,7 +188,7 @@ public class DrawingSurface extends PApplet {
 			}
 
 
-		} else if (setting != 0) { //in a class
+		} else if (setting > 0) { //in a class
 
 			classroom.get(setting).draw(this);
 			player.draw(this);

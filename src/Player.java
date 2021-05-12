@@ -10,12 +10,12 @@ import processing.core.PImage;
 public class Player extends Person {
 
 	//boolean Hall = true; 
-	boolean map = true;
+	private boolean map = true;
 	//field, size of class,
-	double roomX;
-	double roomY;
-	double roomHeight;
-	double roomWidth;
+	private double roomX;
+	private double roomY;
+	private double roomHeight;
+	private double roomWidth;
 
 
 	public Player(int x, int y, PImage img, boolean shown) {

@@ -12,12 +12,12 @@ import processing.core.PImage;
  */
 public class Classroom {
 
-	boolean finished;
-	Problem randomProblem;
-	PImage classImage;
-	double width;
-	double height;
-	int lives = 2;
+	private boolean finished;
+	private Problem randomProblem;
+	private PImage classImage;
+	private double width;
+	private double height;
+	private int lives = 2;
 	
 	public Classroom(ArrayList<Problem> problems, PImage image) {
 		

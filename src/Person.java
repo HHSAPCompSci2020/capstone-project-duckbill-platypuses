@@ -14,7 +14,7 @@ public class Person {
 	private double x;
 	private double y;
 	private PImage img;
-	boolean shown;
+	private boolean shown;
 	private double width;
 	private double height;
 
@@ -142,6 +142,15 @@ public class Person {
 	 */
 	public double getHeight() {
 		return height;
+	}
+	
+	public void setShown(boolean t) {
+		shown = t;
+	}
+	
+	
+	public boolean getShown() {
+		return shown;
 	}
 	
 	

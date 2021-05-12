@@ -39,21 +39,21 @@ public class Zombie extends Person{
 	}
 	
 	public void makeShown() {
-		shown = true;
+		setShown(true);
 	}
 	
 
 	public void makeHidden() {
-		shown = false;
+		setShown(false);
 	}
 	
 	public boolean isShown() {
-		return shown;
+		return getShown();
 	}
 	
 	public boolean isTouching(Player p, PApplet m) {
 		
-		if (shown) {
+		if (getShown()) {
 			Rectangle playerR = new Rectangle((int)p.getX(), (int)p.getY(),(int) p.getWidth(),(int) p.getHeight());
 
 			//m.rect((float)p.getX() + 32, (float)p.getY() + 32,(int) p.getWidth()/2, (int) p.getHeight()/2);
