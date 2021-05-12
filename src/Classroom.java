@@ -24,13 +24,13 @@ public class Classroom {
 		randomProblem = problems.get((int) (Math.random() * 1));
 		classImage = image;
 		finished = false;
-		width = 1600;
-		height = 1200;
+		width = 800;
+		height = 600;
 	}
 	
 	public void draw(PApplet marker){
 		
-		marker.image(classImage, 0,0,1600,1200);
+		marker.image(classImage, 0,0,800,600);
 		
 		//Question
 		marker.text(randomProblem.getQuestion(), (float)(width/2), (float)(height /8));	
@@ -62,7 +62,7 @@ public class Classroom {
 	}
 
 	public int startPointX() {
-		return 50;
+		return (int)(width / 4);
 	}
 
 	public int startPointY() {
