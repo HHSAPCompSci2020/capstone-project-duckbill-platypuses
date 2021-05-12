@@ -1,4 +1,3 @@
-import java.awt.Image;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -34,7 +33,7 @@ public class Person {
 		this.shown = shown;
 		width = 150;
 		height = 150;
-		
+
 	}
 
 	/**
@@ -65,7 +64,7 @@ public class Person {
 	public void draw(PApplet marker) {
 
 		if (shown) {
-			marker.image(img, (float) x, (float) y, (float)width, (float) height);
+			marker.image(img, (float) x, (float) y, (float) width, (float) height);
 		}
 
 	}
@@ -87,7 +86,6 @@ public class Person {
 	public void show() {
 		shown = true;
 	}
-	
 
 	/**
 	 * Returns the x coordinate of the person
@@ -97,7 +95,6 @@ public class Person {
 	public double getX() {
 		return x;
 	}
-	
 
 	/**
 	 * Returns the y coordinate of the person
@@ -107,24 +104,25 @@ public class Person {
 	public double getY() {
 		return y;
 	}
-	
+
 	/**
 	 * Returns the y coordinate of the person
+	 * 
 	 * @param xIn - x to change to
 	 */
 	public void setX(double xIn) {
-		 x = xIn;
+		x = xIn;
 	}
-	
 
 	/**
 	 * set the y coordinate of the person.
+	 * 
 	 * @param yIn - y to change to.
 	 */
 	public void setY(double yIn) {
-		 y = yIn;
+		y = yIn;
 	}
-	
+
 	/**
 	 * Returns the width of the person.
 	 * 
@@ -133,27 +131,25 @@ public class Person {
 	public double getWidth() {
 		return width;
 	}
-	
 
 	/**
-	 * Returns the height  of the person.
+	 * Returns the height of the person.
 	 * 
 	 * @return height of the person.
 	 */
 	public double getHeight() {
 		return height;
 	}
-	
+
 	/**
-	 * Make the shown field the input. 
+	 * Make the shown field the input.
 	 * 
 	 * @param t the boolean to change it to.
 	 */
 	public void setShown(boolean t) {
 		shown = t;
 	}
-	
-	
+
 	/**
 	 * Returns the visibility of the person.
 	 * 
@@ -162,8 +158,5 @@ public class Person {
 	public boolean getShown() {
 		return shown;
 	}
-	
-	
-	
 
 }

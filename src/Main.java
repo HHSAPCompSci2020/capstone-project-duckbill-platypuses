@@ -13,22 +13,20 @@ import processing.core.PApplet;
  */
 public class Main {
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		DrawingSurface panel = new DrawingSurface();
-		PApplet.runSketch(new String[]{""}, panel);
+		PApplet.runSketch(new String[] { "" }, panel);
 		PSurfaceAWT surf = (PSurfaceAWT) panel.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
-		JFrame window = (JFrame)canvas.getFrame();
+		JFrame window = (JFrame) canvas.getFrame();
 
 		window.setSize(800, 600);
-		window.setMinimumSize(new Dimension(800,600));
+		window.setMinimumSize(new Dimension(800, 600));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
 
 		window.setVisible(true);
 		canvas.requestFocus();
 	}
-	
-}
 
+}
