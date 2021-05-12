@@ -25,13 +25,27 @@ public class DrawingSurface extends PApplet {
 	private boolean firstSetNot0;
 
 
+	/**
+	 * Initializes a drawing surface, which will contain all things you need on the drawin surface, 
+	 * such as the players, zombies, and map. 
+	 * 
+	 */
 	public DrawingSurface() {
 
 	}
 
+	/**
+	 * Initializes the setting of the drawing surface. 
+	 * 
+	 */
 	public void settings() {
 		size(800, 600);  
 	}
+	
+	/**
+	 * Initializes the fields of the drawing surface. 
+	 * 
+	 */
 	public void setup() {
 		background(255);
 
@@ -99,12 +113,6 @@ public class DrawingSurface extends PApplet {
 		classroom.add(new Classroom(problems5 ,classImg));
 
 		
-		
-//		//for (int i = 0; i < 5; i ++) {
-//
-//			classroom.add(new Classroom(problems ,classImg));
-//
-//		//}
 		zombies = new ArrayList<Zombie>(5);
 		PImage img2 = loadImage("images/Zombie.png");
 		PImage img = loadImage("images/Player.png");
@@ -123,11 +131,14 @@ public class DrawingSurface extends PApplet {
 		firstSetNot0 = true;
 	}
 
+	/**
+	 * Draws the drawing surface with all settings and characters. 
+	 * 
+	 */
 	public void draw() {
 
 
-		if (setting == -2) { //win
-
+		if (setting == -2) { 
 			PImage WinScreen = loadImage("images/WinScreen.png");
 			image(WinScreen,0,0,(float)width,(float)height);
 			
@@ -135,7 +146,7 @@ public class DrawingSurface extends PApplet {
 
 		}
 		
-		if (setting == -1) { //loose
+		if (setting == -1) { 
 
 			PImage looseScreen = loadImage("images/LooseScreen.png");
 			image(looseScreen,0,0,(float)width,(float)height);
@@ -158,10 +169,9 @@ public class DrawingSurface extends PApplet {
 			
 			map.draw(this);
 			player.draw(this);
-			ArrayList<Point> doorsCoord  = map.returnDoorLocations(); //x y loc should be middle of door
+			ArrayList<Point> doorsCoord  = map.returnDoorLocations();
 			ArrayList<Rectangle> doorsRect  = new ArrayList<Rectangle>(doorsCoord.size());
 			for (int i = 0; i < doorsCoord.size(); i++) {
-				//rect(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors, sizeDoors*2, sizeDoors*2);
 				doorsRect.add( new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors, sizeDoors*2, sizeDoors*2)); 
 
 			}
@@ -188,7 +198,7 @@ public class DrawingSurface extends PApplet {
 			}
 
 
-		} else if (setting >= 0) { //in a class
+		} else if (setting >= 0) {
 
 			classroom.get(setting).draw(this);
 			player.draw(this);
@@ -209,18 +219,12 @@ public class DrawingSurface extends PApplet {
 			}
 
 
-			ArrayList<Point> answerCoord  = classroom.get(setting).answerLocations(); //x y loc should be middle of answer
+			ArrayList<Point> answerCoord  = classroom.get(setting).answerLocations();
 			ArrayList<Rectangle> answerRect  = new ArrayList<Rectangle>(answerCoord.size());
 			for (int i = 0; i < answerCoord.size(); i++) {
-				//rect(answerCoord.get(i).x - sizeAnswers*2, answerCoord.get(i).y - sizeAnswers*1, sizeAnswers*4, sizeAnswers*2);
 				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers*2, answerCoord.get(i).y - sizeAnswers*1, sizeAnswers*4, sizeAnswers*2)); 
 			}
-			for (int i = 0; i < answerCoord.size(); i++) {
-				//				circle((float) (player.getX() + 32), (float)player.getY() + 32, 30);
-				//				circle((float)(player.getX() + 32 + (((float)(player.getX() + player.getWidth()/2) + 32) - ((float)player.getX() + 32))), (float)(player.getY() + 32), 30);
-				//				circle((float)(player.getX() + 32), (float)player.getY() + 32 + (((float)(player.getY() + player.getHeight()/2) + 32)-((float)player.getY() + 32)), 30);
-				//				circle((float)(player.getX() + 32 + (((float)(player.getX() + player.getWidth()/2) + 32) - ((float)player.getX() + 32))), (float)player.getY() + 32 + (((float)(player.getY() + player.getHeight()/2) + 32)-((float)player.getY() + 32)), 30);
-				//				 
+			for (int i = 0; i < answerCoord.size(); i++) {			 
 				if (answerRect.get(i).contains((float) (player.getX() + 32), (float)player.getY() + 32) ||
 						answerRect.get(i).contains(player.getX() + 32 + (((float)(player.getX() + player.getWidth()/2) + 32) - ((float)player.getX() + 32)), (float)(player.getY() + 32)) ||
 						answerRect.get(i).contains((float)(player.getX() + 32), (float)player.getY() + 32 + (((float)(player.getY() + player.getHeight()/2) + 32)-((float)player.getY() + 32))) ||
@@ -272,7 +276,7 @@ public class DrawingSurface extends PApplet {
 			}
 
 			for (int i = 0; i < zombies.size(); i ++) {
-				if (zombies.get(i).isTouching(player, this)) {
+				if (zombies.get(i).isTouching(player)) {
 					System.out.println("Zombeilost????");
 					setting = -1;
 					

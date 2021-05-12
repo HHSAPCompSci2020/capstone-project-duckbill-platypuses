@@ -118,17 +118,17 @@ public class Person {
 	
 
 	/**
-	 * set the y coordinate of the person
-	 * @param yIn - y to change to
+	 * set the y coordinate of the person.
+	 * @param yIn - y to change to.
 	 */
 	public void setY(double yIn) {
 		 y = yIn;
 	}
 	
 	/**
-	 * Returns the width of the person
+	 * Returns the width of the person.
 	 * 
-	 * @return width of the person
+	 * @return width of the person.
 	 */
 	public double getWidth() {
 		return width;
@@ -136,19 +136,29 @@ public class Person {
 	
 
 	/**
-	 * Returns the height  of the person
+	 * Returns the height  of the person.
 	 * 
-	 * @return height of the person
+	 * @return height of the person.
 	 */
 	public double getHeight() {
 		return height;
 	}
 	
+	/**
+	 * Make the shown field the input. 
+	 * 
+	 * @param t the boolean to change it to.
+	 */
 	public void setShown(boolean t) {
 		shown = t;
 	}
 	
 	
+	/**
+	 * Returns the visibility of the person.
+	 * 
+	 * @return visibility of the person.
+	 */
 	public boolean getShown() {
 		return shown;
 	}
