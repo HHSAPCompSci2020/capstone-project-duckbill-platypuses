@@ -15,12 +15,9 @@ public class Classroom {
 	boolean finished;
 	Problem randomProblem;
 	PImage classImage;
-	String question1;
-	String question2;
-	String question3;
-	String question4;
 	double width;
 	double height;
+	int lives = 2;
 	
 	public Classroom(ArrayList<Problem> problems, PImage image) {
 		
@@ -44,17 +41,17 @@ public class Classroom {
 		}
 			
 		//Answer 2
-		if(randomProblem.getPossibleAnswers().get(0) != null) {
+		if(randomProblem.getPossibleAnswers().get(1) != null) {
 			marker.text(randomProblem.getPossibleAnswers().get(1), (float)200, (float)1400 );	
 		}
 		
 		//Answer 3
-		if(randomProblem.getPossibleAnswers().get(0) != null) {
+		if(randomProblem.getPossibleAnswers().get(2) != null) {
 			marker.text(randomProblem.getPossibleAnswers().get(2), (float)1400, (float)200);	
 		}
 		
 		//Answer 4
-		if(randomProblem.getPossibleAnswers().get(0) != null) {
+		if(randomProblem.getPossibleAnswers().get(3) != null) {
 			marker.text(randomProblem.getPossibleAnswers().get(3), (float)1400, (float)1400);	
 		}
 		
@@ -80,49 +77,36 @@ public class Classroom {
 		locations.add(new Point(1400,1400));
 		return locations;
 	}
+
+	public void changeClassToFinished() {
+		finished = true;
+	}
+
+	public int getLives() {
+		return lives;
+	}
+
+	public void removeLives() {
+		lives--;
+		
+	}
+
+	public int getCorrectAnswer() {
+		return randomProblem.getCorrectAnswer();
+	}
 	
-	
+	public void removeAnswer(int remove) {
+		randomProblem.getPossibleAnswers().set(remove, null);
+	}
 	
 /*	
  * 
  *
- 	//boolean finished
-	//problem randomProb;
-	//image classImage;
-	//width
-	//height
-	
-	
-	
-	//constructor(arraylist problem , image){
-	 * randomProb = selectRandomProblem(problem)
-	 * Set the rest of the fields
-	 * }
 
 	
-	//draw(){
-	 * 
-	 * draw image to width height
-	 * draw randomProb
-	 * draw A
-	 * draw B
-	 * draw C
-	 * draw D
-	 * (draw all of the text answer if they aren't null)
 	
 }
 
-// return locA() Return the location of rectangle A ( a point with x,y)
- *return LocB() Return the location of rectangle B ( a point with x,y)
- *return LocC() Return the location of rectangle C ( a point with x,y)
-  return locD() Return the location of rectangle D ( a point with x,y)
-	
-	
-		//start retuyrn point. (returns the x,y coordinates of where the player should spawn in when he loads into the classroom)
-
-	
-	//selectRandomProblem() (Selects a random problem from the arraykist and retuns it)
-	
 	changeClassToFinished(){
 		Changes finished to true;
 	}

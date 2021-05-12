@@ -116,7 +116,7 @@ public class DrawingSurface extends PApplet {
 					answerRect.get(i).contains(player.getX(), player.getY() + player.getHeight()) ||
 					answerRect.get(i).contains(player.getX()  +player.getWidth(), player.getY() + player.getHeight())) {
 						
-					if (classroom.get(setting).getCorrectAnswer == setting) {
+					if (classroom.get(setting).getCorrectAnswer() == setting) {
 						classroom.get(setting).changeClassToFinished();
 						setting = 0; 
 					}
@@ -126,7 +126,8 @@ public class DrawingSurface extends PApplet {
 					}
 					else if (classroom.get(setting).getLives() == 2) {
 						classroom.get(setting).removeLives();
-						classroom.removeAnswer(i); // a b c d, loc: 0 1 2 3, loc 0 1 2 3, a null c d
+						classroom.get(setting).removeAnswer(i);
+						// a b c d, loc: 0 1 2 3, loc 0 1 2 3, a null c d
 						//If an answer is removed then you shouldn't draw it. (Only draw the answers that aren't null)
 					}
 					
