@@ -3,6 +3,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  * The map class represents the map of the school, which the user
@@ -14,21 +15,29 @@ import processing.core.PApplet;
 public class Map {
 
 	//x y, width, height, img image
-	private double x;
-	private double y;
+//	private double x;
+//	private double y;
 	private double width;
 	private double height;
-	private Image image;
+	private PImage mapImage;
 	private ArrayList<Point> doorLocations; //make up locations that make sense
 	
 	
-	public Map() {
-		
+	public Map(PImage image) {
+		mapImage = image;
+		width = 800;
+		height = 600;
+		doorLocations.add(new Point(50, 0));
+		doorLocations.add(new Point(400, 0));
+		doorLocations.add(new Point(50, (int)(height - 25)));
+		doorLocations.add(new Point(400, (int)(height - 25)));
+		doorLocations.add(new Point((int)(width - 25), (int)(height/2)));
 	}
 	
 	
 	public void draw(PApplet marker) {
 		
+		marker.image(mapImage,0,0,(float)width,(float)height);
 		
 		//draw the map
 		//Check (call itai to see what to check)
@@ -42,11 +51,11 @@ public class Map {
 	}
 
 	public int returnStartPointX() {
-		return (int)x;
+		return (int)(20);
 	}
 
 	public int returnStartPointY() {
-		return (int)y;
+		return (int)(height/2);
 	}
 	
 	//start return point.
