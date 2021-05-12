@@ -32,34 +32,37 @@ public class Player extends Person {
 	public void draw(PApplet marker) {
 		super.draw(marker);
 
+		//setX(getX()+1); 		
+
+
 		if(marker.keyPressed) {
 
 			if(marker.key == marker.CODED && marker.keyCode == marker.UP) {
-				if(!(super.getY() < 2)) {
-					super.setY(super.getY() - 1);
+				if((super.getY() > 2)) {
+					super.setY(super.getY() - 2);
 				}
 
-			}else if(marker.key == marker.CODED && marker.keyCode == marker.DOWN) {
-				if(!(super.getY() + super.getHeight() > roomHeight - 2)) {
-					super.setY(super.getY() + 1);
+			} else if(marker.key == marker.CODED && marker.keyCode == marker.DOWN) {
+				if(((super.getY() + super.getHeight()) < 600)) {
+					super.setY(super.getY() + 2);
 				}
+			}
+			if(marker.key == marker.CODED && marker.keyCode == marker.LEFT) {
 
-				if(marker.key == marker.CODED && marker.keyCode == marker.LEFT) {
-
-					if(!(super.getX() < 2)) {
-						super.setX(super.getX() - 1);
-					}
-
-
-				}else if(marker.key == marker.CODED && marker.keyCode == marker.RIGHT) {
-					if(!(super.getX() + super.getWidth() > roomWidth - 2)) {
-						super.setX(super.getX() + 1);
-					}
+				//if((super.getX() < 2)) {
+				super.setX(super.getX() - 2);
+				//}
 
 
-				}
+			}else  if(marker.key == marker.CODED && marker.keyCode == marker.RIGHT) {
+				//if(((super.getX() + super.getWidth())>  800)) {
+				super.setX(super.getX() + 2);
+				//}
+
 
 			}
+
+		}
 
 
 			/*
@@ -80,5 +83,6 @@ public class Player extends Person {
 			 */
 		}
 	}
-}
+
+
 
