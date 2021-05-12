@@ -27,6 +27,7 @@ public class Map {
 		mapImage = image;
 		width = 800;
 		height = 600;
+		doorLocations = new ArrayList<Point>();
 		doorLocations.add(new Point(50, 0));
 		doorLocations.add(new Point(400, 0));
 		doorLocations.add(new Point(50, (int)(height - 25)));

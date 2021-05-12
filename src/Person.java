@@ -32,8 +32,8 @@ public class Person {
 		this.y = y;
 		this.img = img;
 		this.shown = shown;
-		width = 20;
-		height = 40;
+		width = 150;
+		height = 150;
 		
 	}
 

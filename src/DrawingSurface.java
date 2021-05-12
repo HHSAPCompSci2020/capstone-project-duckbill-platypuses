@@ -25,6 +25,42 @@ public class DrawingSurface extends PApplet {
 	
 	
 	public DrawingSurface() {
+//		classroom = new ArrayList<Classroom>(5);
+//		zombies = new ArrayList<Zombie>(5);
+//		PImage img = loadImage("images/Player.png");
+//		player = new Player(0,0,img,true);
+//		PImage img2 = loadImage("images/Zombie.png");
+//		for (int i = 0; i < zombies.size(); i ++) {
+//			zombies.set(i, new Zombie(0,0,img2,false));
+//		}
+//		setting = 0;
+//		PImage classImg = loadImage("images/Classroom.png");
+//		PImage mapIm = loadImage("images/Map.png");
+//		map = new Map(mapIm); // pass in the image for the map
+//		timer = 0; 
+//		for (int i = 0; i < classroom.size(); i ++) { // add questions into classrooms
+//		
+//			ArrayList<Problem> problems = new ArrayList<Problem>(1); 
+//			problems.get(0).setQuestion("Qtest");
+//			ArrayList<String> possibleAnswers = new ArrayList<String>();
+//			possibleAnswers.add("A1");
+//			possibleAnswers.add("A2");
+//			possibleAnswers.add("A3");
+//			possibleAnswers.add("A4");
+//			problems.get(0).setPossibleAnswers(possibleAnswers); //four answer, with indexes 0 -3. 
+//			problems.get(0).setCorrectAnswer(2); //imput index of correct (Answer A3)
+//			
+//			classroom.set(i, new Classroom(problems ,classImg));
+			
+		//}
+	}
+	
+	public void settings() {
+		size(800, 600);  
+	}
+	public void setup() {
+		background(255);
+		
 		classroom = new ArrayList<Classroom>(5);
 		zombies = new ArrayList<Zombie>(5);
 		PImage img = loadImage("images/Player.png");
@@ -34,7 +70,9 @@ public class DrawingSurface extends PApplet {
 			zombies.set(i, new Zombie(0,0,img2,false));
 		}
 		setting = 0;
-		map = new Map(); // set stuff
+		PImage classImg = loadImage("images/Classroom.png");
+		PImage mapIm = loadImage("images/Map.png");
+		map = new Map(mapIm); // pass in the image for the map
 		timer = 0; 
 		for (int i = 0; i < classroom.size(); i ++) { // add questions into classrooms
 		
@@ -48,16 +86,12 @@ public class DrawingSurface extends PApplet {
 			problems.get(0).setPossibleAnswers(possibleAnswers); //four answer, with indexes 0 -3. 
 			problems.get(0).setCorrectAnswer(2); //imput index of correct (Answer A3)
 			
-			
+			classroom.set(i, new Classroom(problems ,classImg));
 		}
 	}
 	
-	public void setup() {
-		
-	}
-	
 	public void draw() {
-		background(255);
+		
 		
 		if (setting == -1) {
 			
