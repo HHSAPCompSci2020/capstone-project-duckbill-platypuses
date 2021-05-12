@@ -8,7 +8,7 @@ import processing.core.PImage;
 /**
  * The map class represents the map of the school, which the user
  * will navigate through. 
- *  * 
+ * 
  * @author Ophir Peleg
  * @version 05/06/2021
  */

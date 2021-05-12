@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * The classroom class represents a class where the user will complete a challenge. 
+ * The classroom class represents a class where the user will answer a question that is written on the board.
  * 
  * @author Ido Ofek
  * @version 05/06/2021
@@ -20,10 +20,10 @@ public class Classroom {
 	private int lives = 2;
 	
 	/**
+	 * Initializes a classroom, which will is where the user has to answer a question.
 	 * 
-	 * 
-	 * @param problems
-	 * @param image
+	 * @param problems An ArrayList of possible problems that the user can choose from.
+	 * @param image An image that the classroom is set to.
 	 */
 	public Classroom(ArrayList<Problem> problems, PImage image) {
 		
@@ -35,10 +35,10 @@ public class Classroom {
 	}
 	
 	/*
-	 * Draws the Classroom to the given Processing PApplet.
+	 * Draws the classroom to the given Processing PApplet.
 	 * 
-	 * @param marker The Processing PApplet on which to draw the Circle.
-	 * @pre The Person will be drawn with attributes previously set on the given PApplet.
+	 * @param marker The Processing PApplet on which to draw the classroom.
+	 * @pre The classroom will be drawn with attributes previously set on the given PApplet.
 	 */
 	public void draw(PApplet marker){
 		

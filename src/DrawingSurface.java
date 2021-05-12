@@ -7,7 +7,7 @@ import processing.core.PImage;
 /**
  * The DrawingSurface class uses all other classes, excluding main, to draw
  * the entire project.
- *  * 
+ * 
  * @author Itai Reingold - Nutman
  * @version 05/06/2021
  */

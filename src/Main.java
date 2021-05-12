@@ -7,7 +7,7 @@ import processing.core.PApplet;
 
 /**
  * The main class that runs the program.
- *  * 
+ * 
  * @author Ophir Peleg
  * @version 05/06/2021
  */
