@@ -78,7 +78,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3.add("Itai");
 		possibleAnswers3.add("Ophir");
 		possibleAnswers3.add("None");
-		Problem p3 = new Problem(possibleAnswers3, 0, "Who is better at coding?");
+		Problem p3 = new Problem(possibleAnswers3, 1, "Who is better at coding?");
 		problems3.add(p3);
 		classroom.add(new Classroom(problems3, classImg));
 
@@ -262,7 +262,6 @@ public class DrawingSurface extends PApplet {
 
 			for (int i = 0; i < zombies.size(); i++) {
 				if (zombies.get(i).isTouching(player)) {
-					System.out.println("Zombeilost????");
 					setting = -1;
 
 				}
