@@ -26,10 +26,10 @@ public class DrawingSurface extends PApplet {
 	private PImage onButton;
 	private PImage offButton;
 	private boolean on; 
-	private int widthSwitch = 120; 
-	private int heightSwitch = 40; 
-	private int xSwitch = 635; 
-	private int ySwitch = 30; 
+	private int widthSwitch; 
+	private int heightSwitch;
+	private int xSwitch;
+	private int ySwitch; 
 	private int barX; 
 	private int barY;
 	private int barWidth; 
@@ -137,6 +137,10 @@ public class DrawingSurface extends PApplet {
 		barY = 100;
 		barWidth = 200;
 		barHeight = 30;
+	    widthSwitch = 120; 
+		heightSwitch = 40; 
+		xSwitch = 635; 
+		ySwitch = 30; 
 	}
 
 	/**
@@ -172,7 +176,7 @@ public class DrawingSurface extends PApplet {
 			if (counter >= 5) {
 				setting = -2;
 			}
-				
+			else {	
 			
 			map.draw(this);
 			player.draw(this);
@@ -219,6 +223,7 @@ public class DrawingSurface extends PApplet {
 					}
 
 				}
+			}
 			}
 
 		} else if (setting >= 0) {
