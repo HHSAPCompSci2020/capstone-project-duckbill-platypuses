@@ -25,16 +25,15 @@ public class DrawingSurface extends PApplet {
 	private boolean firstSetNot0;
 	private PImage onButton;
 	private PImage offButton;
-	private boolean on; 
-	private int widthSwitch; 
+	private boolean on;
+	private int widthSwitch;
 	private int heightSwitch;
 	private int xSwitch;
-	private int ySwitch; 
-	private int barX; 
+	private int ySwitch;
+	private int barX;
 	private int barY;
-	private int barWidth; 
-	private int barHeight; 
-	
+	private int barWidth;
+	private int barHeight;
 
 	/**
 	 * Initializes a drawing surface, which will contain all things you need on the
@@ -130,17 +129,17 @@ public class DrawingSurface extends PApplet {
 		player.setX(map.returnStartPointX());
 		player.setY(map.returnStartPointY());
 		firstSetNot0 = true;
-	    onButton = loadImage("images/On.png");
-	    offButton = loadImage("images/Off.png");
-	    on = false;
-	    barX = 300;
+		onButton = loadImage("images/On.png");
+		offButton = loadImage("images/Off.png");
+		on = false;
+		barX = 300;
 		barY = 100;
 		barWidth = 200;
 		barHeight = 30;
-	    widthSwitch = 120; 
-		heightSwitch = 40; 
-		xSwitch = 635; 
-		ySwitch = 30; 
+		widthSwitch = 120;
+		heightSwitch = 40;
+		xSwitch = 635;
+		ySwitch = 30;
 	}
 
 	/**
@@ -160,7 +159,6 @@ public class DrawingSurface extends PApplet {
 			PImage looseScreen = loadImage("images/LooseScreen.png");
 			image(looseScreen, 0, 0, (float) width, (float) height);
 
-
 		} else if (setting == -3) {
 
 			int counter = 0;
@@ -171,59 +169,56 @@ public class DrawingSurface extends PApplet {
 				}
 
 			}
-			
-			
+
 			if (counter >= 5) {
 				setting = -2;
-			}
-			else {	
-			
-			map.draw(this);
-			player.draw(this);
-			
-			if (on) {
-			image(onButton, xSwitch, ySwitch, widthSwitch,heightSwitch);
-			fill(255,255,255);
-			
-			rect(barX, barY, barWidth, barHeight);
-			fill(0, 255,0);
-			rect(barX, barY, (barWidth/5)*counter, barHeight);
-			for (int i = 1; i < 5; i ++) {
-				line(barX + (barWidth/5)*i, barY, barX + (barWidth/5)*i, barHeight + barY);
-			}
-			
-			
-			}
-			
-			else {
-				image(offButton,xSwitch, ySwitch, widthSwitch,heightSwitch);
+			} else {
 
-			}
-			
-			ArrayList<Point> doorsCoord = map.returnDoorLocations();
-			ArrayList<Rectangle> doorsRect = new ArrayList<Rectangle>(doorsCoord.size());
-			for (int i = 0; i < doorsCoord.size(); i++) {
-				doorsRect.add(new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors,
-						sizeDoors * 2, sizeDoors * 2));
+				map.draw(this);
+				player.draw(this);
 
-			}
-			for (int i = 0; i < doorsCoord.size(); i++) {
+				if (on) {
+					image(onButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
+					fill(255, 255, 255);
 
-				if (doorsRect.get(i).contains(player.getX(), player.getY())
-						|| doorsRect.get(i).contains(player.getX() + player.getWidth(), player.getY())
-						|| doorsRect.get(i).contains(player.getX(), player.getY() + player.getHeight())
-						|| doorsRect.get(i).contains(player.getX() + player.getWidth(),
-								player.getY() + player.getHeight())) {
-
-					if (classroom.get(i).isFinished() == false) {
-						setting = i;
-						player.setX(classroom.get(i).startPointX());
-						player.setY(classroom.get(i).startPointY());
-
+					rect(barX, barY, barWidth, barHeight);
+					fill(0, 255, 0);
+					rect(barX, barY, (barWidth / 5) * counter, barHeight);
+					for (int i = 1; i < 5; i++) {
+						line(barX + (barWidth / 5) * i, barY, barX + (barWidth / 5) * i, barHeight + barY);
 					}
 
 				}
-			}
+
+				else {
+					image(offButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
+
+				}
+
+				ArrayList<Point> doorsCoord = map.returnDoorLocations();
+				ArrayList<Rectangle> doorsRect = new ArrayList<Rectangle>(doorsCoord.size());
+				for (int i = 0; i < doorsCoord.size(); i++) {
+					doorsRect.add(new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors,
+							sizeDoors * 2, sizeDoors * 2));
+
+				}
+				for (int i = 0; i < doorsCoord.size(); i++) {
+
+					if (doorsRect.get(i).contains(player.getX(), player.getY())
+							|| doorsRect.get(i).contains(player.getX() + player.getWidth(), player.getY())
+							|| doorsRect.get(i).contains(player.getX(), player.getY() + player.getHeight())
+							|| doorsRect.get(i).contains(player.getX() + player.getWidth(),
+									player.getY() + player.getHeight())) {
+
+						if (classroom.get(i).isFinished() == false) {
+							setting = i;
+							player.setX(classroom.get(i).startPointX());
+							player.setY(classroom.get(i).startPointY());
+
+						}
+
+					}
+				}
 			}
 
 		} else if (setting >= 0) {
@@ -317,19 +312,19 @@ public class DrawingSurface extends PApplet {
 		}
 
 	}
-	
-	/* 
-	 *This method is called once after every time a mouse button is pressed. 
-	 *It then, depending on weather the user pressed the are of the switch, 
-	 *might change the switch to on or off. 
+
+	/*
+	 * This method is called once after every time a mouse button is pressed. It
+	 * then, depending on weather the user pressed the are of the switch, might
+	 * change the switch to on or off.
 	 */
-	public void mousePressed(){
-		
+	public void mousePressed() {
+
 		Rectangle r = new Rectangle(xSwitch, ySwitch, widthSwitch, heightSwitch);
 		if (r.contains(mouseX, mouseY)) {
 			on = !on;
 		}
-		
+
 	}
 
 }
