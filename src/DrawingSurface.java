@@ -23,6 +23,18 @@ public class DrawingSurface extends PApplet {
 	private int setting;
 	private int timer;
 	private boolean firstSetNot0;
+	private PImage onButton;
+	private PImage offButton;
+	private boolean on; 
+	private int widthSwitch = 120; 
+	private int heightSwitch = 40; 
+	private int xSwitch = 635; 
+	private int ySwitch = 30; 
+	private int barX; 
+	private int barY;
+	private int barWidth; 
+	private int barHeight; 
+	
 
 	/**
 	 * Initializes a drawing surface, which will contain all things you need on the
@@ -118,6 +130,13 @@ public class DrawingSurface extends PApplet {
 		player.setX(map.returnStartPointX());
 		player.setY(map.returnStartPointY());
 		firstSetNot0 = true;
+	    onButton = loadImage("images/On.png");
+	    offButton = loadImage("images/Off.png");
+	    on = false;
+	    barX = 300;
+		barY = 100;
+		barWidth = 200;
+		barHeight = 30;
 	}
 
 	/**
@@ -153,17 +172,28 @@ public class DrawingSurface extends PApplet {
 			if (counter >= 5) {
 				setting = -2;
 			}
-
+				
+			
 			map.draw(this);
 			player.draw(this);
 			
+			if (on) {
+			image(onButton, xSwitch, ySwitch, widthSwitch,heightSwitch);
 			fill(255,255,255);
 			
-			rect(250, 100, 200, 10);
+			rect(barX, barY, barWidth, barHeight);
 			fill(0, 255,0);
-			rect(250, 100, 40*counter, 10);
+			rect(barX, barY, (barWidth/5)*counter, barHeight);
 			for (int i = 1; i < 5; i ++) {
-				line(250 + 40*i, 100, 250 + 40*i, 110);
+				line(barX + (barWidth/5)*i, barY, barX + (barWidth/5)*i, barHeight + barY);
+			}
+			
+			
+			}
+			
+			else {
+				image(offButton,xSwitch, ySwitch, widthSwitch,heightSwitch);
+
 			}
 			
 			ArrayList<Point> doorsCoord = map.returnDoorLocations();
@@ -281,6 +311,15 @@ public class DrawingSurface extends PApplet {
 
 		}
 
+	}
+	
+	public void mousePressed(){
+		
+		Rectangle r = new Rectangle(xSwitch, ySwitch, widthSwitch, heightSwitch);
+		if (r.contains(mouseX, mouseY)) {
+			on = !on;
+		}
+		
 	}
 
 }
