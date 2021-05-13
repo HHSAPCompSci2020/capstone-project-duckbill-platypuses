@@ -34,21 +34,21 @@ public class Player extends Person {
 		super.draw(marker);
 
 		if (marker.keyPressed) {
-			if (marker.key == marker.CODED && marker.keyCode == marker.UP) {
+			if (marker.key == PApplet.CODED && marker.keyCode == PApplet.UP) {
 				if ((super.getY() > 2)) {
 					super.setY(super.getY() - 2);
 				}
-			} else if (marker.key == marker.CODED && marker.keyCode == marker.DOWN) {
+			} else if (marker.key == PApplet.CODED && marker.keyCode == PApplet.DOWN) {
 				if (((super.getY() + super.getHeight()) < 600)) {
 					super.setY(super.getY() + 2);
 				}
 			}
-			if (marker.key == marker.CODED && marker.keyCode == marker.LEFT) {
+			if (marker.key == PApplet.CODED && marker.keyCode == PApplet.LEFT) {
 				if ((super.getX() > -30)) {
 					super.setX(super.getX() - 2);
 				}
 
-			} else if (marker.key == marker.CODED && marker.keyCode == marker.RIGHT) {
+			} else if (marker.key == PApplet.CODED && marker.keyCode == PApplet.RIGHT) {
 				if (((super.getX() + super.getWidth()) < 830)) {
 					super.setX(super.getX() + 2);
 				}

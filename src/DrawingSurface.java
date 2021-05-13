@@ -318,6 +318,11 @@ public class DrawingSurface extends PApplet {
 
 	}
 	
+	/* 
+	 *This method is called once after every time a mouse button is pressed. 
+	 *It then, depending on weather the user pressed the are of the switch, 
+	 *might change the switch to on or off. 
+	 */
 	public void mousePressed(){
 		
 		Rectangle r = new Rectangle(xSwitch, ySwitch, widthSwitch, heightSwitch);
