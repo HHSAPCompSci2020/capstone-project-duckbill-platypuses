@@ -148,12 +148,24 @@ public class DrawingSurface extends PApplet {
 				}
 
 			}
+			
+			
 			if (counter >= 5) {
 				setting = -2;
 			}
 
 			map.draw(this);
 			player.draw(this);
+			
+			fill(255,255,255);
+			
+			rect(250, 100, 200, 10);
+			fill(0, 255,0);
+			rect(250, 100, 40*counter, 10);
+			for (int i = 1; i < 5; i ++) {
+				line(250 + 40*i, 100, 250 + 40*i, 110);
+			}
+			
 			ArrayList<Point> doorsCoord = map.returnDoorLocations();
 			ArrayList<Rectangle> doorsRect = new ArrayList<Rectangle>(doorsCoord.size());
 			for (int i = 0; i < doorsCoord.size(); i++) {
