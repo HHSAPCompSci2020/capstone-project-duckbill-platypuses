@@ -56,7 +56,7 @@ Problem - A class that holds a question and possible answers. Also holds the amo
 
 Credits:
 Itai: The lead classes Itai is responsible for are: Person, Zombie, and Drawing Surface. Itai also worked on debugging the code, which consisted of looking through all classes. Itai also added more features, such as the progress bar, and the on off button. 
-Ido: The lead classes Ido is responsible for are: Player, and Classroom. Ido also worked on debugging the code, which consisted of looking through all classes. Ido also worked on creating images for the rooms, and characters. 
+Ido: The lead classes Ido is responsible for are: Player and Classroom. Ido also worked on debugging the code, which consisted of looking through all classes. Ido also worked on creating images for the rooms, and characters. 
 Ophir: The lead classes Ophir is responsible for are:  Problem, Main, and Map. Ophir also worked on debugging which included looking through all classes. 
 External Credit: 
 * We used the processing library for graphics and key detection.  
