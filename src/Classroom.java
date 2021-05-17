@@ -153,5 +153,9 @@ public class Classroom {
 	public void removeAnswer(int remove) {
 		randomProblem.getPossibleAnswers().set(remove, null);
 	}
+	
+	public Problem getProblem() {
+		return randomProblem;
+	}
 
 }

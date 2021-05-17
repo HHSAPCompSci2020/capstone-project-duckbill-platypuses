@@ -83,17 +83,10 @@ public class Zombie extends Person {
 	public boolean isTouching(Player p) {
 
 		if (getShown()) {
-			Rectangle playerR = new Rectangle((int) p.getX(), (int) p.getY(), (int) p.getWidth(), (int) p.getHeight());
-			if (playerR.contains((float) getX() + 32, (float) getY() + 32) || // Tl
-					playerR.contains((float) getX() + 32 + (((float) (getX() + getWidth() / 2) + 32)
-							- ((float) getX() + 32)), (float) getY() + 32)
-					|| playerR.contains((float) getX() + 32,
-							(float) getY() + 32 + (((float) (getY() + getHeight() / 2) + 32) - ((float) getY() + 32)))
-					|| playerR.contains(
-							(float) getX() + 32 + (((float) (getX() + getWidth() / 2) + 32) - ((float) getX() + 32)),
-							(float) getY() + 32
-									+ (((float) (getY() + getHeight() / 2) + 32) - ((float) getY() + 32)))) {
-
+			
+			Rectangle playerR = new Rectangle((int) p.getX() + 32, (int) p.getY() + 32,(int) p.getWidth() / 2 + 8, (int) p.getHeight() / 2 + 8);			
+			Rectangle zombieR = new Rectangle((int) getX() + 32, (int) getY() + 32,(int) getWidth() / 2 + 8, (int) getHeight() / 2 + 8);			 	
+			if (playerR.intersects(zombieR)) {
 				return true;
 
 			}

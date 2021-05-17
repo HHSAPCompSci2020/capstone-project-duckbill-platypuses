@@ -34,6 +34,11 @@ public class DrawingSurface extends PApplet {
 	private int barY;
 	private int barWidth;
 	private int barHeight;
+	private ArrayList<Rectangle> answerRect;
+	ArrayList<Point> answerCoord;
+	Rectangle playerR;
+	ArrayList<Point> doorsCoord;
+	ArrayList<Rectangle> doorsRect;
 
 	/**
 	 * Initializes a drawing surface, which will contain all things you need on the
@@ -140,6 +145,20 @@ public class DrawingSurface extends PApplet {
 		heightSwitch = 40;
 		xSwitch = 635;
 		ySwitch = 30;
+
+		answerCoord = classroom.get(1).answerLocations();
+		answerRect = new ArrayList<Rectangle>(answerCoord.size());
+		for (int i = 0; i < answerCoord.size(); i++) {
+			answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers * 2, answerCoord.get(i).y - sizeAnswers * 1,
+					sizeAnswers * 4, sizeAnswers * 2));
+		}
+		doorsCoord = map.returnDoorLocations();
+		doorsRect = new ArrayList<Rectangle>(doorsCoord.size());
+		for (int i = 0; i < doorsCoord.size(); i++) {
+			doorsRect.add(new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors, sizeDoors * 2,
+					sizeDoors * 2));
+
+		}
 	}
 
 	/**
@@ -160,23 +179,17 @@ public class DrawingSurface extends PApplet {
 			image(looseScreen, 0, 0, (float) width, (float) height);
 
 		} else if (setting == -3) {
-
 			int counter = 0;
 			for (int i = 0; i < classroom.size(); i++) {
-
 				if (classroom.get(i).isFinished()) {
 					counter++;
 				}
-
 			}
-
 			if (counter >= 5) {
 				setting = -2;
 			} else {
-
 				map.draw(this);
 				player.draw(this);
-
 				if (on) {
 					image(onButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
 					fill(255, 255, 255);
@@ -187,36 +200,17 @@ public class DrawingSurface extends PApplet {
 					for (int i = 1; i < 5; i++) {
 						line(barX + (barWidth / 5) * i, barY, barX + (barWidth / 5) * i, barHeight + barY);
 					}
-
-				}
-
-				else {
+				} else {
 					image(offButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
-
 				}
-
-				ArrayList<Point> doorsCoord = map.returnDoorLocations();
-				ArrayList<Rectangle> doorsRect = new ArrayList<Rectangle>(doorsCoord.size());
+				Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
 				for (int i = 0; i < doorsCoord.size(); i++) {
-					doorsRect.add(new Rectangle(doorsCoord.get(i).x - sizeDoors, doorsCoord.get(i).y - sizeDoors,
-							sizeDoors * 2, sizeDoors * 2));
-
-				}
-				for (int i = 0; i < doorsCoord.size(); i++) {
-
-					if (doorsRect.get(i).contains(player.getX(), player.getY())
-							|| doorsRect.get(i).contains(player.getX() + player.getWidth(), player.getY())
-							|| doorsRect.get(i).contains(player.getX(), player.getY() + player.getHeight())
-							|| doorsRect.get(i).contains(player.getX() + player.getWidth(),
-									player.getY() + player.getHeight())) {
-
+					if (playerR.intersects(doorsRect.get(i))) {
 						if (classroom.get(i).isFinished() == false) {
 							setting = i;
 							player.setX(classroom.get(i).startPointX());
 							player.setY(classroom.get(i).startPointY());
-
 						}
-
 					}
 				}
 			}
@@ -241,48 +235,34 @@ public class DrawingSurface extends PApplet {
 
 			}
 
-			ArrayList<Point> answerCoord = classroom.get(setting).answerLocations();
-			ArrayList<Rectangle> answerRect = new ArrayList<Rectangle>(answerCoord.size());
+			Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
 			for (int i = 0; i < answerCoord.size(); i++) {
-				answerRect.add(new Rectangle(answerCoord.get(i).x - sizeAnswers * 2,
-						answerCoord.get(i).y - sizeAnswers * 1, sizeAnswers * 4, sizeAnswers * 2));
-			}
-			for (int i = 0; i < answerCoord.size(); i++) {
-				if (answerRect.get(i).contains((float) (player.getX() + 32), (float) player.getY() + 32)
-						|| answerRect.get(i)
-								.contains(player.getX() + 32
-										+ (((float) (player.getX() + player.getWidth() / 2) + 32)
-												- ((float) player.getX() + 32)),
-										(float) (player.getY() + 32))
-						|| answerRect.get(i).contains((float) (player.getX() + 32),
-								(float) player.getY() + 32
-										+ (((float) (player.getY() + player.getHeight() / 2) + 32)
-												- ((float) player.getY() + 32)))
-						|| answerRect.get(i).contains(
-								(float) (player.getX() + 32
-										+ (((float) (player.getX() + player.getWidth() / 2) + 32)
-												- ((float) player.getX() + 32))),
-								(float) player.getY() + 32 + (((float) (player.getY() + player.getHeight() / 2) + 32)
-										- ((float) player.getY() + 32)))) {
-
+			//	if (classroom.get(setting).getProblem().getPossibleAnswers().get(i) != null) {
+				if (playerR.intersects(answerRect.get(i))) {
 					if (classroom.get(setting).getCorrectAnswer() == i) {
 						classroom.get(setting).changeClassToFinished();
 						setting = -3;
 						firstSetNot0 = true;
 						player.setX(map.returnStartPointX());
 						player.setY(map.returnStartPointY());
+						System.out.println("correct");
 
 					} else if (classroom.get(setting).getLives() == 1) {
 						classroom.get(setting).removeLives();
 						setting = -1;
+						System.out.println("incorrect no lives left");
+
 					} else if (classroom.get(setting).getLives() == 2) {
 						player.setX(classroom.get(i).startPointX());
 						player.setY(classroom.get(i).startPointY());
 						classroom.get(setting).removeLives();
 						classroom.get(setting).removeAnswer(i);
-					}
+						System.out.println("incorrect 1 life left");
 
+					}
+			//	}
 				}
+
 			}
 
 			if (timer > 200) {
@@ -308,7 +288,6 @@ public class DrawingSurface extends PApplet {
 
 				}
 			}
-
 		}
 
 	}
