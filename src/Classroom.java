@@ -30,7 +30,7 @@ public class Classroom {
 	 */
 	public Classroom(ArrayList<Problem> problems, PImage image) {
 
-		randomProblem = problems.get((int) (Math.random() * 1));
+		randomProblem = problems.get((int) (Math.random() * problems.size()));
 		classImage = image;
 		finished = false;
 		width = 800;

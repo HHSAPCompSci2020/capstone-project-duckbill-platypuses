@@ -368,27 +368,108 @@ public class DrawingSurface extends PApplet {
 		classroom = new ArrayList<Classroom>(5);
 
 		PImage classImg = loadImage("images/Classroom.png");
-
+ //Math
 		ArrayList<Problem> problems1 = new ArrayList<Problem>(); // C1
 		ArrayList<String> possibleAnswers1 = new ArrayList<String>();
-		possibleAnswers1.add("3.1");
-		possibleAnswers1.add("2");
-		possibleAnswers1.add("5");
-		possibleAnswers1.add("3.14159");
-		Problem p1 = new Problem(possibleAnswers1, 3, "What is pi?");
+		possibleAnswers1.add("x^3");
+		possibleAnswers1.add("x");
+		possibleAnswers1.add("2x");
+		possibleAnswers1.add("3x^2");
+		Problem p1 = new Problem(possibleAnswers1, 3, "What is the derivative \n of x^3?");
 		problems1.add(p1);
+				
+		ArrayList<String> possibleAnswers1b = new ArrayList<String>();
+		possibleAnswers1b.add("3 cm");
+		possibleAnswers1b.add("5 cm");
+		possibleAnswers1b.add("6 cm");
+		possibleAnswers1b.add("2 cm");
+		Problem p1b = new Problem(possibleAnswers1b, 1, "A right triangle has legs of \n 3 cm, 4 cm. \n What is the hypotenuse");
+		problems1.add(p1b);
+		
+		ArrayList<String> possibleAnswers1c = new ArrayList<String>();
+		possibleAnswers1c.add("1");
+		possibleAnswers1c.add("0");
+		possibleAnswers1c.add("Undefined");
+		possibleAnswers1c.add("Infinity");
+		Problem p1c = new Problem(possibleAnswers1c, 2, "What is 0^0");
+		problems1.add(p1c);
+		
+		ArrayList<String> possibleAnswers1d = new ArrayList<String>();
+		possibleAnswers1d.add("heptagon");
+		possibleAnswers1d.add("hexagon");
+		possibleAnswers1d.add("pentagon");
+		possibleAnswers1d.add("nonagon");
+		Problem p1d = new Problem(possibleAnswers1d, 1, "What is a shape \n that has 6 sides?");
+		problems1.add(p1d);
+		
+		ArrayList<String> possibleAnswers1e = new ArrayList<String>();
+		possibleAnswers1e.add("√2/2");
+		possibleAnswers1e.add("√2");
+		possibleAnswers1e.add("√3/1");
+		possibleAnswers1e.add("1/√3");
+		Problem p1e = new Problem(possibleAnswers1e, 0, "Which of the following \n is sin(pi/4)");
+		problems1.add(p1e);
 		classroom.add(new Classroom(problems1, classImg));
-
+		
+		
+		
+		
+//History
 		ArrayList<Problem> problems2 = new ArrayList<Problem>(); // C2
 		ArrayList<String> possibleAnswers2 = new ArrayList<String>();
-		possibleAnswers2.add("School");
-		possibleAnswers2.add("Happiness");
-		possibleAnswers2.add("Love");
-		possibleAnswers2.add("42");
-		Problem p2 = new Problem(possibleAnswers2, 3, "What is the meaning of life?");
+		possibleAnswers2.add("Christopher Columbus");
+		possibleAnswers2.add("Leif Erikson");
+		possibleAnswers2.add("Holen F Rib");
+		possibleAnswers2.add("Sull Burg");
+		Problem p2 = new Problem(possibleAnswers2, 1, "Who first discovered America?");
 		problems2.add(p2);
+		
+		ArrayList<String> possibleAnswers2b = new ArrayList<String>();
+		possibleAnswers2b.add("July 4, 1776");
+		possibleAnswers2b.add("Jul 4, 1777");
+		possibleAnswers2b.add("August 2, 1776");
+		possibleAnswers2b.add("August 2, 1777");
+		Problem p2b = new Problem(possibleAnswers2b, 2, "When was the Declaration \n of Independence signed?");
+		problems2.add(p2b);
+		
+		ArrayList<String> possibleAnswers2c = new ArrayList<String>();
+		possibleAnswers2c.add("Germany");
+		possibleAnswers2c.add("Only United States");
+		possibleAnswers2c.add("France");
+		possibleAnswers2c.add("Tuvalu");
+		Problem p2c = new Problem(possibleAnswers2c, 2, "Who helped pay for the \n statue of liberty?");
+		problems2.add(p2c);
+		
+		
+		ArrayList<String> possibleAnswers2d = new ArrayList<String>();
+		possibleAnswers2d.add("Franklin Pierce");
+		possibleAnswers2d.add("Abraham Lincoln");
+		possibleAnswers2d.add("Zachary Taylor");
+		possibleAnswers2d.add("John Tyler");
+		Problem p2d = new Problem(possibleAnswers2d, 0, "Who was the 14th president");
+		problems2.add(p2d);
+		
+		
+		ArrayList<String> possibleAnswers2e = new ArrayList<String>();
+		possibleAnswers2e.add("1914");
+		possibleAnswers2e.add("1916");
+		possibleAnswers2e.add("1915");
+		possibleAnswers2e.add("2001");
+		Problem p2e = new Problem(possibleAnswers2e, 0, "When did ww1 start?");
+		problems2.add(p2e);
+		
+		
+		
+		
 		classroom.add(new Classroom(problems2, classImg));
 
+		
+		
+		
+		
+		
+		
+		
 		ArrayList<Problem> problems3 = new ArrayList<Problem>(); // C3
 		ArrayList<String> possibleAnswers3 = new ArrayList<String>();
 		possibleAnswers3.add("Ido");
