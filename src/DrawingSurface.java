@@ -65,12 +65,12 @@ public class DrawingSurface extends PApplet {
 		background(255);
 		makeQuestions();
 
-		zombies = new ArrayList<Zombie>(5);
+		zombies = new ArrayList<Zombie>(4);
 		PImage img2 = loadImage("images/Zombie.png");
 		PImage img = loadImage("images/Player.png");
 		player = new Player(0, 0, img, true);
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 4; i++) {
 			zombies.add(new Zombie(0, 0, img2, false));
 		}
 		setting = -3;
@@ -83,7 +83,7 @@ public class DrawingSurface extends PApplet {
 		firstSetNot0 = true;
 		onButton = loadImage("images/On.png");
 		offButton = loadImage("images/Off.png");
-		on = false;
+		on = true;
 		barX = 300;
 		barY = 100;
 		barWidth = 200;
@@ -115,19 +115,19 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 
-		if (setting == -1) { //Loose
+		if (setting == -1) { // Loose
 			settingNeg1();
 
-		} else if (setting == -2) { //Win
+		} else if (setting == -2) { // Win
 			settingNeg2();
 
-		} else if (setting == -3) { //Start
+		} else if (setting == -3) { // Start
 			settingNeg3();
 
-		} else if (setting >= 0) { //Rooms 1 - 4
+		} else if (setting >= 0 && setting < 4) { // Rooms 1 - 4
 			settingBiggerOr0();
-		} else if (setting == -4) { //Room 5
-			settingNeg4();
+		} else if (setting == 4) { // Room 5
+			setting4();
 		}
 
 	}
@@ -151,136 +151,155 @@ public class DrawingSurface extends PApplet {
 				counter++;
 			}
 		}
-		
-			map.draw(this);
-			player.draw(this);
-			if (on) {
-				image(onButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
-				fill(255, 255, 255);
 
-				rect(barX, barY, barWidth, barHeight);
-				fill(0, 255, 0);
-				rect(barX, barY, (barWidth / 4) * counter, barHeight);
-				for (int i = 1; i < 4; i++) {
-					line(barX + (barWidth / 4) * i, barY, barX + (barWidth / 4) * i, barHeight + barY);
-				}
-			} else {
-				image(offButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
+		map.draw(this);
+		player.draw(this);
+		if (on) {
+			image(onButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
+			fill(255, 255, 255);
+
+			rect(barX, barY, barWidth, barHeight);
+			fill(0, 255, 0);
+			rect(barX, barY, (barWidth / 4) * counter, barHeight);
+			for (int i = 1; i < 4; i++) {
+				line(barX + (barWidth / 4) * i, barY, barX + (barWidth / 4) * i, barHeight + barY);
 			}
-			Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
-					(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
-			for (int i = 0; i < doorsCoord.size(); i++) {
-				if (playerR.intersects(doorsRect.get(i))) {
-					if (i == 4 && counter >= 4) {
-						setting = -4;
-						player.setX(classroom.get(i).startPointX());
-						player.setY(classroom.get(i).startPointY());
-						System.out.println("Final");
-					}
-					else if (i == 4) {
-						System.out.println("dont go into this room, final not unlocked.");
-					}
-					else if (classroom.get(i).isFinished() == false) {
-						setting = i;
-						player.setX(classroom.get(i).startPointX());
-						player.setY(classroom.get(i).startPointY());
-					}
+		} else {
+			image(offButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
+		}
+		Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
+				(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
+		for (int i = 0; i < doorsCoord.size(); i++) {
+			if (playerR.intersects(doorsRect.get(i))) {
+				if (i == 4 && counter >= 4) {
+					setting = 4;
+					player.setX(classroom.get(i).startPointX());
+					player.setY(classroom.get(i).startPointY());
+					System.out.println("Final");
+				} else if (i == 4) {
+					System.out.println("dont go into this room, final not unlocked.");
+				} else if (classroom.get(i).isFinished() == false) {
+					setting = i;
+					player.setX(classroom.get(i).startPointX());
+					player.setY(classroom.get(i).startPointY());
 				}
 			}
 		}
+	}
 
-	
 	private void settingBiggerOr0() {
 
 		classroom.get(setting).draw(this);
 		player.draw(this);
+		ArrayList<Point> zombieLocations = new ArrayList<Point>();
+		zombieLocations.add(new Point(40, 0));
+		zombieLocations.add(new Point(40, 400));
+		zombieLocations.add(new Point(530, 400));
+		zombieLocations.add(new Point(530, 0));
+
 		if (firstSetNot0) {
 			for (int i = 0; i < zombies.size(); i++) {
 				zombies.get(i).makeHidden();
-				zombies.get(i).setX(40);
-				zombies.get(i).setY(100 * i);
+				int randomZombie = (int) (Math.random() * (4-i));
+				Point p = zombieLocations.get(randomZombie);
+				System.out.println(randomZombie + "Point: " + p);
+				zombieLocations.remove(randomZombie);
+				zombies.get(i).setX(p.getX());
+				zombies.get(i).setY(p.getY());
 				firstSetNot0 = false;
 			}
-		}
-
-		for (int i = 0; i < zombies.size(); i++) {
-			if (zombies.get(i).isShown()) {
-				zombies.get(i).draw(this, player);
 			}
 
-		}
+			for (int i = 0; i < zombies.size(); i++) {
+				if (zombies.get(i).isShown()) {
+					zombies.get(i).draw(this, player);
+				}
 
-		int tempSetting = setting;
-	
-		Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
-				(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
-		for (int i = 0; i < 4; i++) {
-			if (classroom.get(tempSetting).getProblem().getPossibleAnswers().get(i) != null) {
-				if (playerR.intersects(answerRect.get(i))) {
-					if (classroom.get(setting).getCorrectAnswer() == i) {
-						classroom.get(setting).changeClassToFinished();
-						setting = -3;
-						firstSetNot0 = true;
-						player.setX(map.returnStartPointX());
-						player.setY(map.returnStartPointY());
-						System.out.println("correct");
+			}
 
-					} else if (classroom.get(setting).getLives() == 1) {
-						classroom.get(setting).removeLives();
-						setting = -1;
-						System.out.println("incorrect no lives left");
+			int tempSetting = setting;
 
-					} else if (classroom.get(setting).getLives() == 2) {
-						player.setX(classroom.get(i).startPointX());
-						player.setY(classroom.get(i).startPointY());
-						classroom.get(setting).removeLives();
-						classroom.get(setting).removeAnswer(i);
-						System.out.println("incorrect 1 life left");
+			Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
+					(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
+			for (int i = 0; i < 4; i++) {
+				if (classroom.get(tempSetting).getProblem().getPossibleAnswers().get(i) != null) {
+					if (playerR.intersects(answerRect.get(i))) {
+						if (classroom.get(setting).getCorrectAnswer() == i) {
+							classroom.get(setting).changeClassToFinished();
+							setting = -3;
+							firstSetNot0 = true;
+							player.setX(map.returnStartPointX());
+							player.setY(map.returnStartPointY());
+							System.out.println("correct");
 
+						} else if (classroom.get(setting).getLives() == 1) {
+							classroom.get(setting).removeLives();
+							setting = -1;
+							System.out.println("incorrect no lives left");
+
+						} else if (classroom.get(setting).getLives() == 2) {
+							player.setX(classroom.get(i).startPointX());
+							player.setY(classroom.get(i).startPointY());
+							classroom.get(setting).removeLives();
+							classroom.get(setting).removeAnswer(i);
+							System.out.println("incorrect 1 life left");
+							firstSetNot0 = true;
+
+						}
 					}
 				}
-			}
-
-		}
-
-		if (timer > 200) {
-			timer = 0;
-			if (zombies.get(0).isShown() == false) {
-				zombies.get(0).makeShown();
-			} else if (zombies.get(1).isShown() == false) {
-				zombies.get(1).makeShown();
-			} else if (zombies.get(2).isShown() == false) {
-				zombies.get(2).makeShown();
-			} else if (zombies.get(3).isShown() == false) {
-				zombies.get(3).makeShown();
-			} else if (zombies.get(4).isShown() == false) {
-				zombies.get(4).makeShown();
-			}
-		} else {
-			timer++;
-		}
-
-		for (int i = 0; i < zombies.size(); i++) {
-			if (zombies.get(i).isTouching(player)) {
-				setting = -1;
 
 			}
-		}
-	}
+
+			if (timer > 200) {
+				timer = 0;
+				if (zombies.get(0).isShown() == false) {
+					zombies.get(0).makeShown();
+				} else if (zombies.get(1).isShown() == false) {
+					zombies.get(1).makeShown();
+				} else if (zombies.get(2).isShown() == false) {
+					zombies.get(2).makeShown();
+				} else if (zombies.get(3).isShown() == false) {
+					zombies.get(3).makeShown();
+				} else if (zombies.get(4).isShown() == false) {
+					zombies.get(4).makeShown();
+				}
+			} else {
+				timer++;
+			}
+
+			for (int i = 0; i < zombies.size(); i++) {
+				if (zombies.get(i).isTouching(player)) {
+					setting = -1;
+
+				}
+			}
 	
-	private void settingNeg4() {
-		setting = 4;
+	}
+
+	private void setting4() {
+		// setting = 4;
+		System.out.println("4");
 		classroom.get(setting).draw(this);
 		player.draw(this);
+		ArrayList<Point> zombieLocations = new ArrayList<Point>();
+		zombieLocations.add(new Point(40, 0));
+		zombieLocations.add(new Point(40, 400));
+		zombieLocations.add(new Point(530, 400));
+		zombieLocations.add(new Point(530, 0));
+
 		if (firstSetNot0) {
 			for (int i = 0; i < zombies.size(); i++) {
 				zombies.get(i).makeHidden();
-				zombies.get(i).setX(40);
-				zombies.get(i).setY(100 * i);
+				int randomZombie = (int) (Math.random() * (4-i));
+				Point p = zombieLocations.get(randomZombie);
+				System.out.println(randomZombie + "Point: " + p);
+				zombieLocations.remove(randomZombie);
+				zombies.get(i).setX(p.getX());
+				zombies.get(i).setY(p.getY());
 				firstSetNot0 = false;
 			}
-		}
-
+			}
 		for (int i = 0; i < zombies.size(); i++) {
 			if (zombies.get(i).isShown()) {
 				zombies.get(i).draw(this, player);
@@ -289,7 +308,7 @@ public class DrawingSurface extends PApplet {
 		}
 
 		int tempSetting = setting;
-	
+
 		Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
 				(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
 		for (int i = 0; i < 4; i++) {
@@ -308,6 +327,7 @@ public class DrawingSurface extends PApplet {
 						classroom.get(setting).removeLives();
 						classroom.get(setting).removeAnswer(i);
 						System.out.println("incorrect 1 life left");
+						firstSetNot0 = true;
 
 					}
 				}
@@ -338,13 +358,12 @@ public class DrawingSurface extends PApplet {
 
 			}
 		}
-		if(setting != -2) {
-		setting = -4;
+		if (setting != -2) {
+			// setting = -4;
 		}
 	}
 
 	private void makeQuestions() {
-		
 
 		classroom = new ArrayList<Classroom>(5);
 
@@ -400,6 +419,7 @@ public class DrawingSurface extends PApplet {
 		problems5.add(p5);
 		classroom.add(new Classroom(problems5, classImg));
 	}
+
 	/*
 	 * This method is called once after every time a mouse button is pressed. It
 	 * then, depending on weather the user pressed the are of the switch, might
