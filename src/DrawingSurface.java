@@ -159,6 +159,7 @@ public class DrawingSurface extends PApplet {
 					sizeDoors * 2));
 
 		}
+		
 	}
 
 	/**
@@ -235,32 +236,33 @@ public class DrawingSurface extends PApplet {
 
 			}
 
+			int tempSetting = setting;;
 			Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
-			for (int i = 0; i < answerCoord.size(); i++) {
-			//	if (classroom.get(setting).getProblem().getPossibleAnswers().get(i) != null) {
-				if (playerR.intersects(answerRect.get(i))) {
-					if (classroom.get(setting).getCorrectAnswer() == i) {
-						classroom.get(setting).changeClassToFinished();
-						setting = -3;
-						firstSetNot0 = true;
-						player.setX(map.returnStartPointX());
-						player.setY(map.returnStartPointY());
-						System.out.println("correct");
+			for (int i = 0; i < 4; i++) {
+				if (classroom.get(tempSetting).getProblem().getPossibleAnswers().get(i) != null) {
+					if (playerR.intersects(answerRect.get(i))) {
+						if (classroom.get(setting).getCorrectAnswer() == i) {
+							classroom.get(setting).changeClassToFinished();
+							setting = -3;
+							firstSetNot0 = true;
+							player.setX(map.returnStartPointX());
+							player.setY(map.returnStartPointY());
+							System.out.println("correct");
 
-					} else if (classroom.get(setting).getLives() == 1) {
-						classroom.get(setting).removeLives();
-						setting = -1;
-						System.out.println("incorrect no lives left");
+						} else if (classroom.get(setting).getLives() == 1) {
+							classroom.get(setting).removeLives();
+							setting = -1;
+							System.out.println("incorrect no lives left");
 
-					} else if (classroom.get(setting).getLives() == 2) {
-						player.setX(classroom.get(i).startPointX());
-						player.setY(classroom.get(i).startPointY());
-						classroom.get(setting).removeLives();
-						classroom.get(setting).removeAnswer(i);
-						System.out.println("incorrect 1 life left");
+						} else if (classroom.get(setting).getLives() == 2) {
+							player.setX(classroom.get(i).startPointX());
+							player.setY(classroom.get(i).startPointY());
+							classroom.get(setting).removeLives();
+							classroom.get(setting).removeAnswer(i);
+							System.out.println("incorrect 1 life left");
 
+						}
 					}
-			//	}
 				}
 
 			}
