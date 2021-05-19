@@ -54,7 +54,7 @@ public class DrawingSurface extends PApplet {
 	 * 
 	 */
 	public void settings() {
-		size(800, 600);
+		size(800, 620);
 	}
 
 	/**
@@ -423,7 +423,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers2.add("Sull Burg");
 		Problem p2 = new Problem(possibleAnswers2, 1, "Who first discovered America?");
 		problems2.add(p2);
-		
+	
 		ArrayList<String> possibleAnswers2b = new ArrayList<String>();
 		possibleAnswers2b.add("July 4, 1776");
 		possibleAnswers2b.add("Jul 4, 1777");
@@ -457,10 +457,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers2e.add("2001");
 		Problem p2e = new Problem(possibleAnswers2e, 0, "When did ww1 start?");
 		problems2.add(p2e);
-		
-		
-		
-		
+	
 		classroom.add(new Classroom(problems2, classImg));
 
 		
@@ -469,27 +466,110 @@ public class DrawingSurface extends PApplet {
 		
 		
 		
-		
+	//Science 	
 		ArrayList<Problem> problems3 = new ArrayList<Problem>(); // C3
 		ArrayList<String> possibleAnswers3 = new ArrayList<String>();
-		possibleAnswers3.add("Ido");
-		possibleAnswers3.add("Itai");
-		possibleAnswers3.add("Ophir");
-		possibleAnswers3.add("None");
-		Problem p3 = new Problem(possibleAnswers3, 1, "Who is better at coding?");
+		possibleAnswers3.add("F");
+		possibleAnswers3.add("NaCl");
+		possibleAnswers3.add("Lu");
+		possibleAnswers3.add("Rf");
+		Problem p3 = new Problem(possibleAnswers3, 1, "Which is a molecule");
 		problems3.add(p3);
+		
+		
+		ArrayList<String> possibleAnswers3b = new ArrayList<String>();
+		possibleAnswers3b.add("None of the above");
+		possibleAnswers3b.add("3.1415 * 10^22");
+		possibleAnswers3b.add("6.401 * 10^23");
+		possibleAnswers3b.add("60.22 * 10^23");
+		Problem p3b = new Problem(possibleAnswers3b, 0, "What is Avogadro's number?");
+		problems3.add(p3b);
+//		
+//		ArrayList<String> possibleAnswers3c = new ArrayList<String>();
+//		possibleAnswers3c.add("None of the above");
+//		possibleAnswers3c.add("3.1415 * 10^22");
+//		possibleAnswers3c.add("6.401 * 10^23");
+//		possibleAnswers3c.add("60.22 * 10^23");
+//		Problem p3c = new Problem(possibleAnswers3c, 0, "What is Avogadro's number?");
+//		problems3.add(p3c);
+//				
+//		
+//		ArrayList<String> possibleAnswers3d = new ArrayList<String>();
+//		possibleAnswers3d.add("None of the above");
+//		possibleAnswers3d.add("3.1415 * 10^22");
+//		possibleAnswers3d.add("6.401 * 10^23");
+//		possibleAnswers3d.add("60.22 * 10^23");
+//		Problem p3d = new Problem(possibleAnswers3d, 0, "What is Avogadro's number?");
+//		problems3.add(p3d);
+//				
+//		
+//		ArrayList<String> possibleAnswers3e = new ArrayList<String>();
+//		possibleAnswers3e.add("None of the above");
+//		possibleAnswers3e.add("3.1415 * 10^22");
+//		possibleAnswers3e.add("6.401 * 10^23");
+//		possibleAnswers3e.add("60.22 * 10^23");
+//		Problem p3e = new Problem(possibleAnswers3e, 0, "What is Avogadro's number?");
+//		problems3.add(p3e);
+//				
+//		
+		
+				
 		classroom.add(new Classroom(problems3, classImg));
 
+		
+		
+	//Business
+	
+		
+		
 		ArrayList<Problem> problems4 = new ArrayList<Problem>(); // C4
 		ArrayList<String> possibleAnswers4 = new ArrayList<String>();
-		possibleAnswers4.add("Barack");
-		possibleAnswers4.add("Big Man");
-		possibleAnswers4.add("Omaha");
-		possibleAnswers4.add("Obama");
-		Problem p4 = new Problem(possibleAnswers4, 3, "What is obamas last name");
+		possibleAnswers4.add("My Right Plan");
+		possibleAnswers4.add("Materials Requirement Planning");
+		possibleAnswers4.add("Manufacturing Revenue Plus");
+		possibleAnswers4.add("Marginal Rate of Principal");
+		Problem p4 = new Problem(possibleAnswers4, 1, "What is MRP? ");
 		problems4.add(p4);
+		
+//		ArrayList<String> possibleAnswers4b = new ArrayList<String>();
+//		possibleAnswers4b.add("Barack");
+//		possibleAnswers4b.add("Big Man");
+//		possibleAnswers4b.add("Omaha");
+//		possibleAnswers4b.add("Obama");
+//		Problem p4b = new Problem(possibleAnswers4b, 3, "What is obamas last name");
+//		problems4.add(p4b);
+//		
+//		ArrayList<String> possibleAnswers4c = new ArrayList<String>();
+//		possibleAnswers4c.add("Barack");
+//		possibleAnswers4c.add("Big Man");
+//		possibleAnswers4c.add("Omaha");
+//		possibleAnswers4c.add("Obama");
+//		Problem p4c = new Problem(possibleAnswers4c, 3, "What is obamas last name");
+//		problems4.add(p4c);
+//		
+//		ArrayList<String> possibleAnswers4d = new ArrayList<String>();
+//		possibleAnswers4d.add("Barack");
+//		possibleAnswers4d.add("Big Man");
+//		possibleAnswers4d.add("Omaha");
+//		possibleAnswers4d.add("Obama");
+//		Problem p4d = new Problem(possibleAnswers4d, 3, "What is obamas last name");
+//		problems4.add(p4d);
+//		
+//		ArrayList<String> possibleAnswers4e = new ArrayList<String>();
+//		possibleAnswers4e.add("Barack");
+//		possibleAnswers4e.add("Big Man");
+//		possibleAnswers4e.add("Omaha");
+//		possibleAnswers4e.add("Obama");
+//		Problem p4e = new Problem(possibleAnswers4e, 3, "What is obamas last name");
+//		problems4.add(p4e);
+//		
+		
 		classroom.add(new Classroom(problems4, classImg));
 
+		
+		
+		
+	//Final Java
 		ArrayList<Problem> problems5 = new ArrayList<Problem>(); // C5
 		ArrayList<String> possibleAnswers5 = new ArrayList<String>();
 		possibleAnswers5.add("30 mod 3");
