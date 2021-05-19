@@ -31,6 +31,7 @@ public class Classroom {
 	public Classroom(ArrayList<Problem> problems, PImage image) {
 
 		randomProblem = problems.get((int) (Math.random() * problems.size()));
+		//random choice spot, keep as field
 		classImage = image;
 		finished = false;
 		width = 800;
@@ -51,6 +52,7 @@ public class Classroom {
 
 		marker.text(randomProblem.getQuestion(), (float) (width / 2), (float) (height / 8));
 		marker.fill(0, 0, 0);
+		//Randomize answer by using random fields initialzed in constructor
 		if (randomProblem.getPossibleAnswers().get(0) != null) {
 			marker.text(randomProblem.getPossibleAnswers().get(0), (float) 170, (float) 185);
 		}
