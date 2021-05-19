@@ -54,16 +54,16 @@ public class Classroom {
 		marker.fill(0, 0, 0);
 		//Randomize answer by using random fields initialzed in constructor
 		if (randomProblem.getPossibleAnswers().get(0) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(0), (float) 170, (float) 185);
+			marker.text(randomProblem.getPossibleAnswers().get(0), (float) 100, (float) 185);
 		}
 		if (randomProblem.getPossibleAnswers().get(1) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(1), (float) 170, (float) 490);
+			marker.text(randomProblem.getPossibleAnswers().get(1), (float) 100, (float) 490);
 		}
 		if (randomProblem.getPossibleAnswers().get(2) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(2), (float) 640, (float) 185);
+			marker.text(randomProblem.getPossibleAnswers().get(2), (float) 570, (float) 185);
 		}
 		if (randomProblem.getPossibleAnswers().get(3) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(3), (float) 640, (float) 490);
+			marker.text(randomProblem.getPossibleAnswers().get(3), (float) 570, (float) 490);
 		}
 	}
 

@@ -200,7 +200,7 @@ public class DrawingSurface extends PApplet {
 		if (firstSetNot0) {
 			for (int i = 0; i < zombies.size(); i++) {
 				zombies.get(i).makeHidden();
-				int randomZombie = (int) (Math.random() * (4-i));
+				int randomZombie = (int) (Math.random() * (4 - i));
 				Point p = zombieLocations.get(randomZombie);
 				System.out.println(randomZombie + "Point: " + p);
 				zombieLocations.remove(randomZombie);
@@ -208,78 +208,77 @@ public class DrawingSurface extends PApplet {
 				zombies.get(i).setY(p.getY());
 				firstSetNot0 = false;
 			}
+		}
+
+		for (int i = 0; i < zombies.size(); i++) {
+			if (zombies.get(i).isShown()) {
+				zombies.get(i).draw(this, player);
 			}
 
-			for (int i = 0; i < zombies.size(); i++) {
-				if (zombies.get(i).isShown()) {
-					zombies.get(i).draw(this, player);
-				}
+		}
 
-			}
+		int tempSetting = setting;
 
-			int tempSetting = setting;
+		Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
+				(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
+		for (int i = 0; i < 4; i++) {
+			if (classroom.get(tempSetting).getProblem().getPossibleAnswers().get(i) != null) {
+				if (playerR.intersects(answerRect.get(i))) {
+					if (classroom.get(setting).getCorrectAnswer() == i) {
+						classroom.get(setting).changeClassToFinished();
+						setting = -3;
+						firstSetNot0 = true;
+						player.setX(map.returnStartPointX());
+						player.setY(map.returnStartPointY());
+						System.out.println("correct");
 
-			Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
-					(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
-			for (int i = 0; i < 4; i++) {
-				if (classroom.get(tempSetting).getProblem().getPossibleAnswers().get(i) != null) {
-					if (playerR.intersects(answerRect.get(i))) {
-						if (classroom.get(setting).getCorrectAnswer() == i) {
-							classroom.get(setting).changeClassToFinished();
-							setting = -3;
-							firstSetNot0 = true;
-							player.setX(map.returnStartPointX());
-							player.setY(map.returnStartPointY());
-							System.out.println("correct");
+					} else if (classroom.get(setting).getLives() == 1) {
+						classroom.get(setting).removeLives();
+						setting = -1;
+						System.out.println("incorrect no lives left");
 
-						} else if (classroom.get(setting).getLives() == 1) {
-							classroom.get(setting).removeLives();
-							setting = -1;
-							System.out.println("incorrect no lives left");
+					} else if (classroom.get(setting).getLives() == 2) {
+						player.setX(classroom.get(i).startPointX());
+						player.setY(classroom.get(i).startPointY());
+						classroom.get(setting).removeLives();
+						classroom.get(setting).removeAnswer(i);
+						System.out.println("incorrect 1 life left");
+						firstSetNot0 = true;
 
-						} else if (classroom.get(setting).getLives() == 2) {
-							player.setX(classroom.get(i).startPointX());
-							player.setY(classroom.get(i).startPointY());
-							classroom.get(setting).removeLives();
-							classroom.get(setting).removeAnswer(i);
-							System.out.println("incorrect 1 life left");
-							firstSetNot0 = true;
-
-						}
 					}
 				}
-
 			}
 
-			if (timer > 200) {
-				timer = 0;
-				if (zombies.get(0).isShown() == false) {
-					zombies.get(0).makeShown();
-				} else if (zombies.get(1).isShown() == false) {
-					zombies.get(1).makeShown();
-				} else if (zombies.get(2).isShown() == false) {
-					zombies.get(2).makeShown();
-				} else if (zombies.get(3).isShown() == false) {
-					zombies.get(3).makeShown();
-				} else if (zombies.get(4).isShown() == false) {
-					zombies.get(4).makeShown();
-				}
-			} else {
-				timer++;
-			}
+		}
 
+		if (timer > 400) {
+			timer = 0;
+			if (zombies.get(0).isShown() == false) {
+				zombies.get(0).makeShown();
+			} else if (zombies.get(1).isShown() == false) {
+				zombies.get(1).makeShown();
+			} else if (zombies.get(2).isShown() == false) {
+				zombies.get(2).makeShown();
+			} else if (zombies.get(3).isShown() == false) {
+				zombies.get(3).makeShown();
+			}
+		} else {
+			timer++;
+		}
+		if (setting >= 0) {
 			for (int i = 0; i < zombies.size(); i++) {
 				if (zombies.get(i).isTouching(player)) {
 					setting = -1;
 
 				}
 			}
-	
+		}
+
 	}
 
 	private void setting4() {
-		// setting = 4;
-		System.out.println("4");
+		
+		
 		classroom.get(setting).draw(this);
 		player.draw(this);
 		ArrayList<Point> zombieLocations = new ArrayList<Point>();
@@ -291,7 +290,7 @@ public class DrawingSurface extends PApplet {
 		if (firstSetNot0) {
 			for (int i = 0; i < zombies.size(); i++) {
 				zombies.get(i).makeHidden();
-				int randomZombie = (int) (Math.random() * (4-i));
+				int randomZombie = (int) (Math.random() * (4 - i));
 				Point p = zombieLocations.get(randomZombie);
 				System.out.println(randomZombie + "Point: " + p);
 				zombieLocations.remove(randomZombie);
@@ -299,7 +298,7 @@ public class DrawingSurface extends PApplet {
 				zombies.get(i).setY(p.getY());
 				firstSetNot0 = false;
 			}
-			}
+		}
 		for (int i = 0; i < zombies.size(); i++) {
 			if (zombies.get(i).isShown()) {
 				zombies.get(i).draw(this, player);
@@ -335,7 +334,7 @@ public class DrawingSurface extends PApplet {
 
 		}
 
-		if (timer > 200) {
+		if (timer > 300) {
 			timer = 0;
 			if (zombies.get(0).isShown() == false) {
 				zombies.get(0).makeShown();
@@ -345,8 +344,6 @@ public class DrawingSurface extends PApplet {
 				zombies.get(2).makeShown();
 			} else if (zombies.get(3).isShown() == false) {
 				zombies.get(3).makeShown();
-			} else if (zombies.get(4).isShown() == false) {
-				zombies.get(4).makeShown();
 			}
 		} else {
 			timer++;
@@ -368,7 +365,7 @@ public class DrawingSurface extends PApplet {
 		classroom = new ArrayList<Classroom>(5);
 
 		PImage classImg = loadImage("images/Classroom.png");
- //Math
+		// Math
 		ArrayList<Problem> problems1 = new ArrayList<Problem>(); // C1
 		ArrayList<String> possibleAnswers1 = new ArrayList<String>();
 		possibleAnswers1.add("x^3");
@@ -377,15 +374,16 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers1.add("3x^2");
 		Problem p1 = new Problem(possibleAnswers1, 3, "What is the derivative \n of x^3?");
 		problems1.add(p1);
-				
+
 		ArrayList<String> possibleAnswers1b = new ArrayList<String>();
 		possibleAnswers1b.add("3 cm");
 		possibleAnswers1b.add("5 cm");
 		possibleAnswers1b.add("6 cm");
 		possibleAnswers1b.add("2 cm");
-		Problem p1b = new Problem(possibleAnswers1b, 1, "A right triangle has legs of \n 3 cm, 4 cm. \n What is the hypotenuse");
+		Problem p1b = new Problem(possibleAnswers1b, 1,
+				"A right triangle has legs of \n 3 cm, 4 cm. \n What is the hypotenuse");
 		problems1.add(p1b);
-		
+
 		ArrayList<String> possibleAnswers1c = new ArrayList<String>();
 		possibleAnswers1c.add("1");
 		possibleAnswers1c.add("0");
@@ -393,7 +391,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers1c.add("Infinity");
 		Problem p1c = new Problem(possibleAnswers1c, 2, "What is 0^0");
 		problems1.add(p1c);
-		
+
 		ArrayList<String> possibleAnswers1d = new ArrayList<String>();
 		possibleAnswers1d.add("heptagon");
 		possibleAnswers1d.add("hexagon");
@@ -401,7 +399,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers1d.add("nonagon");
 		Problem p1d = new Problem(possibleAnswers1d, 1, "What is a shape \n that has 6 sides?");
 		problems1.add(p1d);
-		
+
 		ArrayList<String> possibleAnswers1e = new ArrayList<String>();
 		possibleAnswers1e.add("√2/2");
 		possibleAnswers1e.add("√2");
@@ -410,11 +408,8 @@ public class DrawingSurface extends PApplet {
 		Problem p1e = new Problem(possibleAnswers1e, 0, "Which of the following \n is sin(pi/4)");
 		problems1.add(p1e);
 		classroom.add(new Classroom(problems1, classImg));
-		
-		
-		
-		
-//History
+
+		//History
 		ArrayList<Problem> problems2 = new ArrayList<Problem>(); // C2
 		ArrayList<String> possibleAnswers2 = new ArrayList<String>();
 		possibleAnswers2.add("Christopher Columbus");
@@ -423,7 +418,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers2.add("Sull Burg");
 		Problem p2 = new Problem(possibleAnswers2, 1, "Who first discovered America?");
 		problems2.add(p2);
-	
+
 		ArrayList<String> possibleAnswers2b = new ArrayList<String>();
 		possibleAnswers2b.add("July 4, 1776");
 		possibleAnswers2b.add("Jul 4, 1777");
@@ -431,7 +426,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers2b.add("August 2, 1777");
 		Problem p2b = new Problem(possibleAnswers2b, 2, "When was the Declaration \n of Independence signed?");
 		problems2.add(p2b);
-		
+
 		ArrayList<String> possibleAnswers2c = new ArrayList<String>();
 		possibleAnswers2c.add("Germany");
 		possibleAnswers2c.add("Only United States");
@@ -439,8 +434,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers2c.add("Tuvalu");
 		Problem p2c = new Problem(possibleAnswers2c, 2, "Who helped pay for the \n statue of liberty?");
 		problems2.add(p2c);
-		
-		
+
 		ArrayList<String> possibleAnswers2d = new ArrayList<String>();
 		possibleAnswers2d.add("Franklin Pierce");
 		possibleAnswers2d.add("Abraham Lincoln");
@@ -448,8 +442,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers2d.add("John Tyler");
 		Problem p2d = new Problem(possibleAnswers2d, 0, "Who was the 14th president");
 		problems2.add(p2d);
-		
-		
+
 		ArrayList<String> possibleAnswers2e = new ArrayList<String>();
 		possibleAnswers2e.add("1914");
 		possibleAnswers2e.add("1916");
@@ -457,16 +450,10 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers2e.add("2001");
 		Problem p2e = new Problem(possibleAnswers2e, 0, "When did ww1 start?");
 		problems2.add(p2e);
-	
+
 		classroom.add(new Classroom(problems2, classImg));
 
-		
-		
-		
-		
-		
-		
-	//Science 	
+		// Science
 		ArrayList<Problem> problems3 = new ArrayList<Problem>(); // C3
 		ArrayList<String> possibleAnswers3 = new ArrayList<String>();
 		possibleAnswers3.add("F");
@@ -475,8 +462,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3.add("Rf");
 		Problem p3 = new Problem(possibleAnswers3, 1, "Which is a molecule");
 		problems3.add(p3);
-		
-		
+
 		ArrayList<String> possibleAnswers3b = new ArrayList<String>();
 		possibleAnswers3b.add("None of the above");
 		possibleAnswers3b.add("3.1415 * 10^22");
@@ -484,44 +470,39 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3b.add("60.22 * 10^23");
 		Problem p3b = new Problem(possibleAnswers3b, 0, "What is Avogadro's number?");
 		problems3.add(p3b);
-//		
-//		ArrayList<String> possibleAnswers3c = new ArrayList<String>();
-//		possibleAnswers3c.add("None of the above");
-//		possibleAnswers3c.add("3.1415 * 10^22");
-//		possibleAnswers3c.add("6.401 * 10^23");
-//		possibleAnswers3c.add("60.22 * 10^23");
-//		Problem p3c = new Problem(possibleAnswers3c, 0, "What is Avogadro's number?");
-//		problems3.add(p3c);
-//				
-//		
-//		ArrayList<String> possibleAnswers3d = new ArrayList<String>();
-//		possibleAnswers3d.add("None of the above");
-//		possibleAnswers3d.add("3.1415 * 10^22");
-//		possibleAnswers3d.add("6.401 * 10^23");
-//		possibleAnswers3d.add("60.22 * 10^23");
-//		Problem p3d = new Problem(possibleAnswers3d, 0, "What is Avogadro's number?");
-//		problems3.add(p3d);
-//				
-//		
-//		ArrayList<String> possibleAnswers3e = new ArrayList<String>();
-//		possibleAnswers3e.add("None of the above");
-//		possibleAnswers3e.add("3.1415 * 10^22");
-//		possibleAnswers3e.add("6.401 * 10^23");
-//		possibleAnswers3e.add("60.22 * 10^23");
-//		Problem p3e = new Problem(possibleAnswers3e, 0, "What is Avogadro's number?");
-//		problems3.add(p3e);
-//				
-//		
-		
-				
+		//		
+		//		ArrayList<String> possibleAnswers3c = new ArrayList<String>();
+		//		possibleAnswers3c.add("None of the above");
+		//		possibleAnswers3c.add("3.1415 * 10^22");
+		//		possibleAnswers3c.add("6.401 * 10^23");
+		//		possibleAnswers3c.add("60.22 * 10^23");
+		//		Problem p3c = new Problem(possibleAnswers3c, 0, "What is Avogadro's number?");
+		//		problems3.add(p3c);
+		//				
+		//		
+		//		ArrayList<String> possibleAnswers3d = new ArrayList<String>();
+		//		possibleAnswers3d.add("None of the above");
+		//		possibleAnswers3d.add("3.1415 * 10^22");
+		//		possibleAnswers3d.add("6.401 * 10^23");
+		//		possibleAnswers3d.add("60.22 * 10^23");
+		//		Problem p3d = new Problem(possibleAnswers3d, 0, "What is Avogadro's number?");
+		//		problems3.add(p3d);
+		//				
+		//		
+		//		ArrayList<String> possibleAnswers3e = new ArrayList<String>();
+		//		possibleAnswers3e.add("None of the above");
+		//		possibleAnswers3e.add("3.1415 * 10^22");
+		//		possibleAnswers3e.add("6.401 * 10^23");
+		//		possibleAnswers3e.add("60.22 * 10^23");
+		//		Problem p3e = new Problem(possibleAnswers3e, 0, "What is Avogadro's number?");
+		//		problems3.add(p3e);
+		//				
+		//		
+
 		classroom.add(new Classroom(problems3, classImg));
 
-		
-		
-	//Business
-	
-		
-		
+		// Business
+
 		ArrayList<Problem> problems4 = new ArrayList<Problem>(); // C4
 		ArrayList<String> possibleAnswers4 = new ArrayList<String>();
 		possibleAnswers4.add("My Right Plan");
@@ -530,46 +511,43 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers4.add("Marginal Rate of Principal");
 		Problem p4 = new Problem(possibleAnswers4, 1, "What is MRP? ");
 		problems4.add(p4);
-		
-//		ArrayList<String> possibleAnswers4b = new ArrayList<String>();
-//		possibleAnswers4b.add("Barack");
-//		possibleAnswers4b.add("Big Man");
-//		possibleAnswers4b.add("Omaha");
-//		possibleAnswers4b.add("Obama");
-//		Problem p4b = new Problem(possibleAnswers4b, 3, "What is obamas last name");
-//		problems4.add(p4b);
-//		
-//		ArrayList<String> possibleAnswers4c = new ArrayList<String>();
-//		possibleAnswers4c.add("Barack");
-//		possibleAnswers4c.add("Big Man");
-//		possibleAnswers4c.add("Omaha");
-//		possibleAnswers4c.add("Obama");
-//		Problem p4c = new Problem(possibleAnswers4c, 3, "What is obamas last name");
-//		problems4.add(p4c);
-//		
-//		ArrayList<String> possibleAnswers4d = new ArrayList<String>();
-//		possibleAnswers4d.add("Barack");
-//		possibleAnswers4d.add("Big Man");
-//		possibleAnswers4d.add("Omaha");
-//		possibleAnswers4d.add("Obama");
-//		Problem p4d = new Problem(possibleAnswers4d, 3, "What is obamas last name");
-//		problems4.add(p4d);
-//		
-//		ArrayList<String> possibleAnswers4e = new ArrayList<String>();
-//		possibleAnswers4e.add("Barack");
-//		possibleAnswers4e.add("Big Man");
-//		possibleAnswers4e.add("Omaha");
-//		possibleAnswers4e.add("Obama");
-//		Problem p4e = new Problem(possibleAnswers4e, 3, "What is obamas last name");
-//		problems4.add(p4e);
-//		
-		
+
+		//		ArrayList<String> possibleAnswers4b = new ArrayList<String>();
+		//		possibleAnswers4b.add("Barack");
+		//		possibleAnswers4b.add("Big Man");
+		//		possibleAnswers4b.add("Omaha");
+		//		possibleAnswers4b.add("Obama");
+		//		Problem p4b = new Problem(possibleAnswers4b, 3, "What is obamas last name");
+		//		problems4.add(p4b);
+		//		
+		//		ArrayList<String> possibleAnswers4c = new ArrayList<String>();
+		//		possibleAnswers4c.add("Barack");
+		//		possibleAnswers4c.add("Big Man");
+		//		possibleAnswers4c.add("Omaha");
+		//		possibleAnswers4c.add("Obama");
+		//		Problem p4c = new Problem(possibleAnswers4c, 3, "What is obamas last name");
+		//		problems4.add(p4c);
+		//		
+		//		ArrayList<String> possibleAnswers4d = new ArrayList<String>();
+		//		possibleAnswers4d.add("Barack");
+		//		possibleAnswers4d.add("Big Man");
+		//		possibleAnswers4d.add("Omaha");
+		//		possibleAnswers4d.add("Obama");
+		//		Problem p4d = new Problem(possibleAnswers4d, 3, "What is obamas last name");
+		//		problems4.add(p4d);
+		//		
+		//		ArrayList<String> possibleAnswers4e = new ArrayList<String>();
+		//		possibleAnswers4e.add("Barack");
+		//		possibleAnswers4e.add("Big Man");
+		//		possibleAnswers4e.add("Omaha");
+		//		possibleAnswers4e.add("Obama");
+		//		Problem p4e = new Problem(possibleAnswers4e, 3, "What is obamas last name");
+		//		problems4.add(p4e);
+		//		
+
 		classroom.add(new Classroom(problems4, classImg));
 
-		
-		
-		
-	//Final Java
+		// Final Java
 		ArrayList<Problem> problems5 = new ArrayList<Problem>(); // C5
 		ArrayList<String> possibleAnswers5 = new ArrayList<String>();
 		possibleAnswers5.add("30 mod 3");
