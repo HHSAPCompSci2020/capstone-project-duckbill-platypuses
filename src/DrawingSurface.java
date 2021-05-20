@@ -188,6 +188,8 @@ public class DrawingSurface extends PApplet {
 	}
 
 	private void settingBiggerOr0() {
+		
+	
 
 		classroom.get(setting).draw(this);
 		player.draw(this);
@@ -216,12 +218,13 @@ public class DrawingSurface extends PApplet {
 
 		}
 
-		int tempSetting = setting;
+	
 
 		Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
 				(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
 		for (int i = 0; i < 4; i++) {
-			if (classroom.get(tempSetting).getProblem().getPossibleAnswers().get(i) != null) {
+		
+			if (classroom.get(setting).getProblem().getPossibleAnswers().get(i) != null) {
 				if (playerR.intersects(answerRect.get(i))) {
 					if (classroom.get(setting).getCorrectAnswer() == i) {
 						classroom.get(setting).changeClassToFinished();
@@ -229,26 +232,31 @@ public class DrawingSurface extends PApplet {
 						firstSetNot0 = true;
 						player.setX(map.returnStartPointX());
 						player.setY(map.returnStartPointY());
-						System.out.println("correct");
+					
+						break;
 
 					} else if (classroom.get(setting).getLives() == 1) {
 						classroom.get(setting).removeLives();
 						setting = -1;
-						System.out.println("incorrect no lives left");
+					
+						break;
 
 					} else if (classroom.get(setting).getLives() == 2) {
 						player.setX(classroom.get(i).startPointX());
 						player.setY(classroom.get(i).startPointY());
 						classroom.get(setting).removeLives();
 						classroom.get(setting).removeAnswer(i);
-						System.out.println("incorrect 1 life left");
+					
 						firstSetNot0 = true;
+						break;
 
 					}
 				}
 			}
 
 		}
+		
+		
 
 		if (timer > 400) {
 			timer = 0;
@@ -264,7 +272,7 @@ public class DrawingSurface extends PApplet {
 		} else {
 			timer++;
 		}
-		if (setting >= 0) {
+		if (setting >= 0 && firstSetNot0 == false) {
 			for (int i = 0; i < zombies.size(); i++) {
 				if (zombies.get(i).isTouching(player)) {
 					setting = -1;
@@ -272,7 +280,7 @@ public class DrawingSurface extends PApplet {
 				}
 			}
 		}
-
+	
 	}
 
 	private void setting4() {
@@ -312,10 +320,12 @@ public class DrawingSurface extends PApplet {
 				if (playerR.intersects(answerRect.get(i))) {
 					if (classroom.get(setting).getCorrectAnswer() == i) {
 						setting = -2;
+						break;
 					} else if (classroom.get(setting).getLives() == 1) {
 						classroom.get(setting).removeLives();
 						setting = -1;
 						System.out.println("incorrect no lives left");
+						break;
 
 					} else if (classroom.get(setting).getLives() == 2) {
 						player.setX(classroom.get(i).startPointX());
@@ -324,6 +334,7 @@ public class DrawingSurface extends PApplet {
 						classroom.get(setting).removeAnswer(i);
 						System.out.println("incorrect 1 life left");
 						firstSetNot0 = true;
+						break;
 
 					}
 				}
@@ -346,14 +357,16 @@ public class DrawingSurface extends PApplet {
 			timer++;
 		}
 
+		if (setting >= 0 && firstSetNot0 == false) {
 		for (int i = 0; i < zombies.size(); i++) {
-			if (zombies.get(i).isTouching(player)) {
+			if (zombies.get(i).isTouching(player) ) {
 				setting = -1;
 
 			}
 		}
+		}
 		if (setting != -2) {
-			// setting = -4;
+		
 		}
 	}
 
@@ -517,7 +530,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers4c.add("Money available to invest");
 		possibleAnswers4c.add("Prohibitive cost of entry");
 		possibleAnswers4c.add("A guarantee that a \n company will be successful");
-		possibleAnswers4c.add("The building in which \n the legislative body of government meets");
+		possibleAnswers4c.add("The building in which \n the legislative \n body of government meets");
 		Problem p4c = new Problem(possibleAnswers4c, 0, "What is Capital");
 		problems4.add(p4c);
 
@@ -526,7 +539,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers4d.add("Number");
 		possibleAnswers4d.add("Less expensive supply sources");
 		possibleAnswers4d.add("All of the above");
-		Problem p4d = new Problem(possibleAnswers4d, 3, "What could you change \n to adjust your profit? ");
+		Problem p4d = new Problem(possibleAnswers4d, 3, "What could you change \n to adjust your \n profit? ");
 		problems4.add(p4d);
 
 		ArrayList<String> possibleAnswers4e = new ArrayList<String>();
@@ -534,7 +547,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers4e.add("A warranty");
 		possibleAnswers4e.add("Impulse buying");
 		possibleAnswers4e.add("Comparison shopping");
-		Problem p4e = new Problem(possibleAnswers4e, 2, "Making a purchase you \n had not planned is called:");
+		Problem p4e = new Problem(possibleAnswers4e, 2, "Making a purchase you \n had not planned is \n called:");
 		problems4.add(p4e);
 
 		classroom.add(new Classroom(problems4, classImg));
