@@ -202,7 +202,6 @@ public class DrawingSurface extends PApplet {
 				zombies.get(i).makeHidden();
 				int randomZombie = (int) (Math.random() * (4 - i));
 				Point p = zombieLocations.get(randomZombie);
-				System.out.println(randomZombie + "Point: " + p);
 				zombieLocations.remove(randomZombie);
 				zombies.get(i).setX(p.getX());
 				zombies.get(i).setY(p.getY());
@@ -291,7 +290,6 @@ public class DrawingSurface extends PApplet {
 				zombies.get(i).makeHidden();
 				int randomZombie = (int) (Math.random() * (4 - i));
 				Point p = zombieLocations.get(randomZombie);
-				System.out.println(randomZombie + "Point: " + p);
 				zombieLocations.remove(randomZombie);
 				zombies.get(i).setX(p.getX());
 				zombies.get(i).setY(p.getY());
@@ -475,7 +473,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3c.add("F x d");
 		possibleAnswers3c.add("Both answers");
 		possibleAnswers3c.add("Neither answer");
-		Problem p3c = new Problem(possibleAnswers3c, 2, "Which of the following is an expression for work?");
+		Problem p3c = new Problem(possibleAnswers3c, 2, "Which of the following \n is an expression for work?");
 		problems3.add(p3c);
 
 		ArrayList<String> possibleAnswers3d = new ArrayList<String>();
@@ -483,7 +481,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3d.add("hp");
 		possibleAnswers3d.add("J/s");
 		possibleAnswers3d.add("Kg*m^2/s");
-		Problem p3d = new Problem(possibleAnswers3d, 3, "Which of the following is not a unit of power?");
+		Problem p3d = new Problem(possibleAnswers3d, 3, "Which of the following \n is not a unit of power?");
 		problems3.add(p3d);
 
 		ArrayList<String> possibleAnswers3e = new ArrayList<String>();
@@ -501,25 +499,25 @@ public class DrawingSurface extends PApplet {
 		ArrayList<Problem> problems4 = new ArrayList<Problem>(); // C4
 		ArrayList<String> possibleAnswers4 = new ArrayList<String>();
 		possibleAnswers4.add("My Right Plan");
-		possibleAnswers4.add("Materials Requirement Planning");
+		possibleAnswers4.add("Materials Requirement \n Planning");
 		possibleAnswers4.add("Manufacturing Revenue Plus");
 		possibleAnswers4.add("Marginal Rate of Principal");
 		Problem p4 = new Problem(possibleAnswers4, 1, "What is MRP? ");
 		problems4.add(p4);
 
 		ArrayList<String> possibleAnswers4b = new ArrayList<String>();
-		possibleAnswers4b.add("A business taking a risk to make a profit");
-		possibleAnswers4b.add("A program administered by the Government");
-		possibleAnswers4b.add("People in business trying to make a profit");
-		possibleAnswers4b.add("A business adventure or undertaking");
+		possibleAnswers4b.add("A business taking a risk \n  to make a profit");
+		possibleAnswers4b.add("A program administered by \n the Government");
+		possibleAnswers4b.add("People in business trying \n to make a profit");
+		possibleAnswers4b.add("A business adventure or \n undertaking");
 		Problem p4b = new Problem(possibleAnswers4b, 0, "Define Free Enterprise");
 		problems4.add(p4b);
 
 		ArrayList<String> possibleAnswers4c = new ArrayList<String>();
 		possibleAnswers4c.add("Money available to invest");
 		possibleAnswers4c.add("Prohibitive cost of entry");
-		possibleAnswers4c.add("A guarantee that a company will be successful");
-		possibleAnswers4c.add("The building in which the legislative body of government meets");
+		possibleAnswers4c.add("A guarantee that a \n company will be successful");
+		possibleAnswers4c.add("The building in which \n the legislative body of government meets");
 		Problem p4c = new Problem(possibleAnswers4c, 0, "What is Capital");
 		problems4.add(p4c);
 
@@ -528,7 +526,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers4d.add("Number");
 		possibleAnswers4d.add("Less expensive supply sources");
 		possibleAnswers4d.add("All of the above");
-		Problem p4d = new Problem(possibleAnswers4d, 3, "What could you change to adjust your profit? ");
+		Problem p4d = new Problem(possibleAnswers4d, 3, "What could you change \n to adjust your profit? ");
 		problems4.add(p4d);
 
 		ArrayList<String> possibleAnswers4e = new ArrayList<String>();
@@ -536,7 +534,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers4e.add("A warranty");
 		possibleAnswers4e.add("Impulse buying");
 		possibleAnswers4e.add("Comparison shopping");
-		Problem p4e = new Problem(possibleAnswers4e, 2, "Making a purchase you had not planned is called:");
+		Problem p4e = new Problem(possibleAnswers4e, 2, "Making a purchase you \n had not planned is called:");
 		problems4.add(p4e);
 
 		classroom.add(new Classroom(problems4, classImg));
