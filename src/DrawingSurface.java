@@ -277,8 +277,7 @@ public class DrawingSurface extends PApplet {
 	}
 
 	private void setting4() {
-		
-		
+
 		classroom.get(setting).draw(this);
 		player.draw(this);
 		ArrayList<Point> zombieLocations = new ArrayList<Point>();
@@ -409,7 +408,7 @@ public class DrawingSurface extends PApplet {
 		problems1.add(p1e);
 		classroom.add(new Classroom(problems1, classImg));
 
-		//History
+		// History
 		ArrayList<Problem> problems2 = new ArrayList<Problem>(); // C2
 		ArrayList<String> possibleAnswers2 = new ArrayList<String>();
 		possibleAnswers2.add("Christopher Columbus");
@@ -470,34 +469,30 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3b.add("60.22 * 10^23");
 		Problem p3b = new Problem(possibleAnswers3b, 0, "What is Avogadro's number?");
 		problems3.add(p3b);
-		//		
-		//		ArrayList<String> possibleAnswers3c = new ArrayList<String>();
-		//		possibleAnswers3c.add("None of the above");
-		//		possibleAnswers3c.add("3.1415 * 10^22");
-		//		possibleAnswers3c.add("6.401 * 10^23");
-		//		possibleAnswers3c.add("60.22 * 10^23");
-		//		Problem p3c = new Problem(possibleAnswers3c, 0, "What is Avogadro's number?");
-		//		problems3.add(p3c);
-		//				
-		//		
-		//		ArrayList<String> possibleAnswers3d = new ArrayList<String>();
-		//		possibleAnswers3d.add("None of the above");
-		//		possibleAnswers3d.add("3.1415 * 10^22");
-		//		possibleAnswers3d.add("6.401 * 10^23");
-		//		possibleAnswers3d.add("60.22 * 10^23");
-		//		Problem p3d = new Problem(possibleAnswers3d, 0, "What is Avogadro's number?");
-		//		problems3.add(p3d);
-		//				
-		//		
-		//		ArrayList<String> possibleAnswers3e = new ArrayList<String>();
-		//		possibleAnswers3e.add("None of the above");
-		//		possibleAnswers3e.add("3.1415 * 10^22");
-		//		possibleAnswers3e.add("6.401 * 10^23");
-		//		possibleAnswers3e.add("60.22 * 10^23");
-		//		Problem p3e = new Problem(possibleAnswers3e, 0, "What is Avogadro's number?");
-		//		problems3.add(p3e);
-		//				
-		//		
+
+		ArrayList<String> possibleAnswers3c = new ArrayList<String>();
+		possibleAnswers3c.add("Change in energy");
+		possibleAnswers3c.add("F x d");
+		possibleAnswers3c.add("Both answers");
+		possibleAnswers3c.add("Neither answer");
+		Problem p3c = new Problem(possibleAnswers3c, 2, "Which of the following is an expression for work?");
+		problems3.add(p3c);
+
+		ArrayList<String> possibleAnswers3d = new ArrayList<String>();
+		possibleAnswers3d.add("W");
+		possibleAnswers3d.add("hp");
+		possibleAnswers3d.add("J/s");
+		possibleAnswers3d.add("Kg*m^2/s");
+		Problem p3d = new Problem(possibleAnswers3d, 3, "Which of the following is not a unit of power?");
+		problems3.add(p3d);
+
+		ArrayList<String> possibleAnswers3e = new ArrayList<String>();
+		possibleAnswers3e.add("6.67 x 10^-11");
+		possibleAnswers3e.add("9.81");
+		possibleAnswers3e.add("1.602176634 x 10−19");
+		possibleAnswers3e.add("1.380649	x 10−23");
+		Problem p3e = new Problem(possibleAnswers3e, 0, "What is the value of G?");
+		problems3.add(p3e);
 
 		classroom.add(new Classroom(problems3, classImg));
 
@@ -512,38 +507,37 @@ public class DrawingSurface extends PApplet {
 		Problem p4 = new Problem(possibleAnswers4, 1, "What is MRP? ");
 		problems4.add(p4);
 
-		//		ArrayList<String> possibleAnswers4b = new ArrayList<String>();
-		//		possibleAnswers4b.add("Barack");
-		//		possibleAnswers4b.add("Big Man");
-		//		possibleAnswers4b.add("Omaha");
-		//		possibleAnswers4b.add("Obama");
-		//		Problem p4b = new Problem(possibleAnswers4b, 3, "What is obamas last name");
-		//		problems4.add(p4b);
-		//		
-		//		ArrayList<String> possibleAnswers4c = new ArrayList<String>();
-		//		possibleAnswers4c.add("Barack");
-		//		possibleAnswers4c.add("Big Man");
-		//		possibleAnswers4c.add("Omaha");
-		//		possibleAnswers4c.add("Obama");
-		//		Problem p4c = new Problem(possibleAnswers4c, 3, "What is obamas last name");
-		//		problems4.add(p4c);
-		//		
-		//		ArrayList<String> possibleAnswers4d = new ArrayList<String>();
-		//		possibleAnswers4d.add("Barack");
-		//		possibleAnswers4d.add("Big Man");
-		//		possibleAnswers4d.add("Omaha");
-		//		possibleAnswers4d.add("Obama");
-		//		Problem p4d = new Problem(possibleAnswers4d, 3, "What is obamas last name");
-		//		problems4.add(p4d);
-		//		
-		//		ArrayList<String> possibleAnswers4e = new ArrayList<String>();
-		//		possibleAnswers4e.add("Barack");
-		//		possibleAnswers4e.add("Big Man");
-		//		possibleAnswers4e.add("Omaha");
-		//		possibleAnswers4e.add("Obama");
-		//		Problem p4e = new Problem(possibleAnswers4e, 3, "What is obamas last name");
-		//		problems4.add(p4e);
-		//		
+		ArrayList<String> possibleAnswers4b = new ArrayList<String>();
+		possibleAnswers4b.add("A business taking a risk to make a profit");
+		possibleAnswers4b.add("A program administered by the Government");
+		possibleAnswers4b.add("People in business trying to make a profit");
+		possibleAnswers4b.add("A business adventure or undertaking");
+		Problem p4b = new Problem(possibleAnswers4b, 0, "Define Free Enterprise");
+		problems4.add(p4b);
+
+		ArrayList<String> possibleAnswers4c = new ArrayList<String>();
+		possibleAnswers4c.add("Money available to invest");
+		possibleAnswers4c.add("Prohibitive cost of entry");
+		possibleAnswers4c.add("A guarantee that a company will be successful");
+		possibleAnswers4c.add("The building in which the legislative body of government meets");
+		Problem p4c = new Problem(possibleAnswers4c, 0, "What is Capital");
+		problems4.add(p4c);
+
+		ArrayList<String> possibleAnswers4d = new ArrayList<String>();
+		possibleAnswers4d.add("Price");
+		possibleAnswers4d.add("Number");
+		possibleAnswers4d.add("Less expensive supply sources");
+		possibleAnswers4d.add("All of the above");
+		Problem p4d = new Problem(possibleAnswers4d, 3, "What could you change to adjust your profit? ");
+		problems4.add(p4d);
+
+		ArrayList<String> possibleAnswers4e = new ArrayList<String>();
+		possibleAnswers4e.add("Consumer shopping");
+		possibleAnswers4e.add("A warranty");
+		possibleAnswers4e.add("Impulse buying");
+		possibleAnswers4e.add("Comparison shopping");
+		Problem p4e = new Problem(possibleAnswers4e, 2, "Making a purchase you had not planned is called:");
+		problems4.add(p4e);
 
 		classroom.add(new Classroom(problems4, classImg));
 
