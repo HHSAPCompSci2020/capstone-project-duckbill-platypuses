@@ -247,7 +247,7 @@ public class DrawingSurface extends PApplet {
 				(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
 		for (int i = 0; i < doorsCoord.size(); i++) {
 			if (playerR.intersects(doorsRect.get(i))) {
-				if (i == 4 && counter >= 0) {
+				if (i == 4 && counter >= 4) {
 					setting = 4;
 					player.setX(classroom.get(i).startPointX());
 					player.setY(classroom.get(i).startPointY());
