@@ -481,11 +481,11 @@ public class DrawingSurface extends PApplet {
 		// History
 		ArrayList<Problem> problems2 = new ArrayList<Problem>(); // C2
 		ArrayList<String> possibleAnswers2 = new ArrayList<String>();
-		possibleAnswers2.add("Christopher Columbus");
-		possibleAnswers2.add("Leif Erikson");
-		possibleAnswers2.add("Holen F Rib");
-		possibleAnswers2.add("Sull Burg");
-		Problem p2 = new Problem(possibleAnswers2, 1, "Who first discovered America?");
+		possibleAnswers2.add("Alexander Hamilton");
+		possibleAnswers2.add("Thomas Jefferson");
+		possibleAnswers2.add("James Madison");
+		possibleAnswers2.add("Aaron Burr");
+		Problem p2 = new Problem(possibleAnswers2, 1, "Who was the first \n Secretary of State?");
 		problems2.add(p2);
 
 		ArrayList<String> possibleAnswers2b = new ArrayList<String>();
@@ -614,12 +614,45 @@ public class DrawingSurface extends PApplet {
 		// Final Java
 		ArrayList<Problem> problems5 = new ArrayList<Problem>(); // C5
 		ArrayList<String> possibleAnswers5 = new ArrayList<String>();
-		possibleAnswers5.add("30 mod 3");
+		possibleAnswers5.add("30 % 3");
 		possibleAnswers5.add("(int)2.9");
-		possibleAnswers5.add("((Integer.MIN_VALUE)-(Integer.MAX_VALUE))*0");
+		possibleAnswers5.add("Math.sqrt(25)");
 		possibleAnswers5.add("2(3)");
-		Problem p5 = new Problem(possibleAnswers5, 2, "What is biggest in Java. ");
+		Problem p5 = new Problem(possibleAnswers5, 3, "Which expression is illegal?");
 		problems5.add(p5);
+		
+		ArrayList<String> possibleAnswers5b = new ArrayList<String>();
+		possibleAnswers4b.add("Dog extends Chihuahua");
+		possibleAnswers4b.add("Dog has a Chihuahua");
+		possibleAnswers4b.add("Chihuahua extends Dog");
+		possibleAnswers4b.add("Chihuahua has a Dog");
+		Problem p5b = new Problem(possibleAnswers5b, 2, "What should be the relationship \n between a Dog class and a \n Chihuahua class?");
+		problems4.add(p5b);
+
+		ArrayList<String> possibleAnswers5c = new ArrayList<String>();
+		possibleAnswers4c.add("1");
+		possibleAnswers4c.add("2");
+		possibleAnswers4c.add("6");
+		possibleAnswers4c.add("12/7");
+		Problem p5c = new Problem(possibleAnswers5c, 0, "int[][] grid = new int[x][2*x/7];\n What is the value of grid[0].length()\n if x = 6");
+		problems4.add(p5c);
+
+		ArrayList<String> possibleAnswers5d = new ArrayList<String>();
+		possibleAnswers4d.add("!A && !B");
+		possibleAnswers4d.add("!A || !B");
+		possibleAnswers4d.add("A || B");
+		possibleAnswers4d.add("A && B");
+		Problem p5d = new Problem(possibleAnswers5d, 1, "Which expression is \nequivalent to the following?\n!(A && B)");
+		problems4.add(p5d);
+
+		ArrayList<String> possibleAnswers5e = new ArrayList<String>();
+		possibleAnswers4e.add("Consumer shopping");
+		possibleAnswers4e.add("A warranty");
+		possibleAnswers4e.add("Impulse buying");
+		possibleAnswers4e.add("Comparison shopping");
+		Problem p5e = new Problem(possibleAnswers5e, 2, "Making a purchase you \n had not planned is \n called:");
+		problems4.add(p5e);
+		
 		classroom.add(new Classroom(problems5, classImg));
 	}
 	
