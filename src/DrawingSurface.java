@@ -1,5 +1,6 @@
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -13,14 +14,16 @@ import processing.core.PImage;
  */
 
 //In Class: Finish java class: Adding questions, finalizing flicker, 
-//          Add images for everything, 5 min. 
 //			Add instructions
 //			Ask shelby maybe for help with the movement
 //Extra: 
 //			Add music, sirens for the java room, make the answers go to random places
 
 public class DrawingSurface extends PApplet {
-
+	
+	private ArrayList<Integer> keys;
+	
+	
 	private ArrayList<Classroom> classroom;
 	private ArrayList<Zombie> zombies;
 	private Player player;
@@ -67,7 +70,7 @@ public class DrawingSurface extends PApplet {
 	 * 
 	 */
 	public DrawingSurface() {
-
+		keys = new ArrayList<Integer>();
 	}
 
 	/**
@@ -87,6 +90,7 @@ public class DrawingSurface extends PApplet {
 		background(0);
 		makeQuestions();
 
+		
 		zombies = new ArrayList<Zombie>(4);
 		PImage img2 = loadImage("images/Zombie.png");
 		PImage img = loadImage("images/Player.png");
@@ -168,9 +172,36 @@ public class DrawingSurface extends PApplet {
 			setting4();
 		}
 		else if (setting == 5 ) {
-		
 			setting5();
 		}
+		
+		//Movement
+		if (isPressed(KeyEvent.VK_LEFT)) {
+			if ((player.getX() > -30)) {
+				player.setX(player.getX() - 3);
+			}
+		}
+		if (isPressed(KeyEvent.VK_RIGHT)) {
+			if (((player.getX() + player.getWidth()) < 830)) {
+				player.setX(player.getX() + 3);
+			}
+		}
+		
+		if (isPressed(KeyEvent.VK_UP)) {
+			if ((player.getY() > 2)) {
+				player.setY(player.getY() - 3);
+			}
+		}
+		if (isPressed(KeyEvent.VK_DOWN)) {
+			if (((player.getY() + player.getHeight()) < 600)) {
+				player.setY(player.getY() + 3);
+			}
+		}
+		
+//		if (isPressed(KeyEvent.VK_RIGHT))
+//			mario.walk(1);
+//		if (isPressed(KeyEvent.VK_UP))
+//			mario.jump();
 
 	}
 
@@ -648,10 +679,12 @@ public class DrawingSurface extends PApplet {
 		fill(135, 206, 236);
 		rect(0,0,800,600);
 		
+		pushStyle();
 		fill(255, 255, 255);
-		
-		String s = "Instructions Go Here";
+		textSize(15);
+		String s = "Welcome to Homestead Chase";
 		text(s, width/2 - this.textWidth(s)/2, 50);
+		popStyle();
 		
 		image(info, xInfo, yInfo, widthInfo, heightInfo);
 		
@@ -683,4 +716,17 @@ public class DrawingSurface extends PApplet {
 
 	}
 
+	public void keyPressed() {
+		keys.add(keyCode);
+	}
+
+	public void keyReleased() {
+		while(keys.contains(keyCode))
+			keys.remove(new Integer(keyCode));
+	}
+
+	public boolean isPressed(Integer code) {
+		return keys.contains(code);
+	}
+	
 }
