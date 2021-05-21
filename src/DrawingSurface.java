@@ -662,7 +662,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers5.add("(int)2.9");
 		possibleAnswers5.add("Math.sqrt(25)");
 		possibleAnswers5.add("2(3)");
-		Problem p5 = new Problem(possibleAnswers5, 3, "Which expression is illegal?");
+		Problem p5 = new Problem(possibleAnswers5, 3, "Which expression is \n illegal?");
 		problems5.add(p5);
 		
 		ArrayList<String> possibleAnswers5b = new ArrayList<String>();
