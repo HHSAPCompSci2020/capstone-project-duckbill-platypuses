@@ -696,11 +696,11 @@ public class DrawingSurface extends PApplet {
 		problems4.add(p5d);
 
 		ArrayList<String> possibleAnswers5e = new ArrayList<String>();
-		possibleAnswers4e.add("Consumer shopping");
-		possibleAnswers4e.add("A warranty");
-		possibleAnswers4e.add("Impulse buying");
-		possibleAnswers4e.add("Comparison shopping");
-		Problem p5e = new Problem(possibleAnswers5e, 2, "Making a purchase you \n had not planned is \n called:");
+		possibleAnswers4e.add("(int)(Math.random()*100)");
+		possibleAnswers4e.add("(int)(Math.random()*100+1)");
+		possibleAnswers4e.add("(int)(Math.random())*100");
+		possibleAnswers4e.add("(int)(Math.random())*100+1");
+		Problem p5e = new Problem(possibleAnswers5e, 1, "Which expression returns a\n random number between 1-100?");
 		problems4.add(p5e);
 		
 		classroom.add(new Classroom(problems5, classImg));
