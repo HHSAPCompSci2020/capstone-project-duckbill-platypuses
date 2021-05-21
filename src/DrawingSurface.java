@@ -12,10 +12,10 @@ import processing.core.PImage;
  * @version 05/06/2021
  */
 
-//In Class: Finish java class: Adding questions, finalizing flicker, maybe (sirens)
+//In Class: Finish java class: Adding questions, finalizing flicker, 
 //          Add images for everything, 5 min. 
 //			Add instructions
-
+//Extra: Add music, sirens for the java room, make the answers go to random places
 
 public class DrawingSurface extends PApplet {
 
