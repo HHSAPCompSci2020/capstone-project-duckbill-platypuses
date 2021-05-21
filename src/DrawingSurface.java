@@ -12,6 +12,11 @@ import processing.core.PImage;
  * @version 05/06/2021
  */
 
+//In Class: Finish java class: Adding questions, finalizing flicker, maybe (sirens)
+//          Add images for everything, 5 min. 
+//			Add instructions
+
+
 public class DrawingSurface extends PApplet {
 
 	private ArrayList<Classroom> classroom;
@@ -35,10 +40,20 @@ public class DrawingSurface extends PApplet {
 	private int barWidth;
 	private int barHeight;
 	private ArrayList<Rectangle> answerRect;
-	ArrayList<Point> answerCoord;
-	Rectangle playerR;
-	ArrayList<Point> doorsCoord;
-	ArrayList<Rectangle> doorsRect;
+	private ArrayList<Point> answerCoord;
+	private ArrayList<Point> doorsCoord;
+	private ArrayList<Rectangle> doorsRect;
+	private PImage globe;
+	private PImage info; 
+	private boolean onInfo; 
+	private int xInfo; 
+	private int yInfo; 
+	private int widthInfo; 
+	private int heightInfo; 
+	private int timer1;
+
+
+
 
 	/**
 	 * Initializes a drawing surface, which will contain all things you need on the
@@ -54,7 +69,8 @@ public class DrawingSurface extends PApplet {
 	 * 
 	 */
 	public void settings() {
-		size(800, 620);
+	
+		size(800, 700);
 	}
 
 	/**
@@ -62,7 +78,7 @@ public class DrawingSurface extends PApplet {
 	 * 
 	 */
 	public void setup() {
-		background(255);
+		background(0);
 		makeQuestions();
 
 		zombies = new ArrayList<Zombie>(4);
@@ -73,7 +89,7 @@ public class DrawingSurface extends PApplet {
 		for (int i = 0; i < 4; i++) {
 			zombies.add(new Zombie(0, 0, img2, false));
 		}
-		setting = -3;
+		setting = 5;
 		PImage mapIm = loadImage("images/Map.png");
 		map = new Map(mapIm);
 		timer = 0;
@@ -84,14 +100,24 @@ public class DrawingSurface extends PApplet {
 		onButton = loadImage("images/On.png");
 		offButton = loadImage("images/Off.png");
 		on = true;
-		barX = 300;
-		barY = 100;
+		barX = 50;
+		barY = 625;
 		barWidth = 200;
 		barHeight = 30;
-		widthSwitch = 120;
+		widthSwitch = 140;
 		heightSwitch = 40;
-		xSwitch = 635;
-		ySwitch = 30;
+		xSwitch = 570;
+		ySwitch = 620;
+		globe = loadImage("images/Globe.png");
+		info = loadImage("images/info.png");
+		onInfo = true; 
+		xInfo = 380;
+		yInfo = 610;
+		widthInfo = 60;
+		heightInfo = 60;
+		timer1 = 0; 
+
+
 
 		answerCoord = classroom.get(1).answerLocations();
 		answerRect = new ArrayList<Rectangle>(answerCoord.size());
@@ -115,6 +141,8 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 
+		//background(0);
+		
 		if (setting == -1) { // Loose
 			settingNeg1();
 
@@ -128,6 +156,10 @@ public class DrawingSurface extends PApplet {
 			settingBiggerOr0();
 		} else if (setting == 4) { // Room 5
 			setting4();
+		}
+		else if (setting == 5 ) {
+		
+			setting5();
 		}
 
 	}
@@ -154,6 +186,13 @@ public class DrawingSurface extends PApplet {
 
 		map.draw(this);
 		player.draw(this);
+		
+			image(info, xInfo, yInfo, widthInfo, heightInfo);
+	
+		if (onInfo) {
+			setting = 5;
+		}
+		
 		if (on) {
 			image(onButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
 			fill(255, 255, 255);
@@ -164,14 +203,16 @@ public class DrawingSurface extends PApplet {
 			for (int i = 1; i < 4; i++) {
 				line(barX + (barWidth / 4) * i, barY, barX + (barWidth / 4) * i, barHeight + barY);
 			}
-		} else {
+		}
+		
+		else {
 			image(offButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
 		}
 		Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
 				(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
 		for (int i = 0; i < doorsCoord.size(); i++) {
 			if (playerR.intersects(doorsRect.get(i))) {
-				if (i == 4 && counter >= 4) {
+				if (i == 4 && counter >= 0) {
 					setting = 4;
 					player.setX(classroom.get(i).startPointX());
 					player.setY(classroom.get(i).startPointY());
@@ -185,6 +226,8 @@ public class DrawingSurface extends PApplet {
 				}
 			}
 		}
+		
+		
 	}
 
 	private void settingBiggerOr0() {
@@ -216,6 +259,12 @@ public class DrawingSurface extends PApplet {
 				zombies.get(i).draw(this, player);
 			}
 
+		}
+		
+		if (setting == 1) {
+			
+			image(globe, 270, 45, 75, 75);
+			
 		}
 
 	
@@ -285,6 +334,7 @@ public class DrawingSurface extends PApplet {
 
 	private void setting4() {
 
+		
 		classroom.get(setting).draw(this);
 		player.draw(this);
 		ArrayList<Point> zombieLocations = new ArrayList<Point>();
@@ -293,6 +343,12 @@ public class DrawingSurface extends PApplet {
 		zombieLocations.add(new Point(530, 400));
 		zombieLocations.add(new Point(530, 0));
 
+		if (timer1 > 5 ) {
+			timer1 = 0;
+			fill(255,0,0);
+			rect(0,0,800,600);
+		}
+		
 		if (firstSetNot0) {
 			for (int i = 0; i < zombies.size(); i++) {
 				zombies.get(i).makeHidden();
@@ -368,6 +424,8 @@ public class DrawingSurface extends PApplet {
 		if (setting != -2) {
 		
 		}
+		
+		timer1++;
 	}
 
 	private void makeQuestions() {
@@ -563,6 +621,27 @@ public class DrawingSurface extends PApplet {
 		problems5.add(p5);
 		classroom.add(new Classroom(problems5, classImg));
 	}
+	
+	
+	public void setting5(){
+		
+		fill(135, 206, 236);
+		rect(0,0,800,600);
+		
+		fill(255, 255, 255);
+		
+		String s = "Instructions Go Here";
+		text(s, width/2 - this.textWidth(s)/2, 50);
+		
+		image(info, xInfo, yInfo, widthInfo, heightInfo);
+		
+		if (!onInfo) {
+			setting = -3;
+		}
+		
+
+		
+	}
 
 	/*
 	 * This method is called once after every time a mouse button is pressed. It
@@ -574,6 +653,12 @@ public class DrawingSurface extends PApplet {
 		Rectangle r = new Rectangle(xSwitch, ySwitch, widthSwitch, heightSwitch);
 		if (r.contains(mouseX, mouseY)) {
 			on = !on;
+		}
+		else {
+			Rectangle info = new Rectangle(xInfo, yInfo, widthInfo, heightInfo);
+			if (info.contains(mouseX, mouseY)) {
+				onInfo = !onInfo;
+			}
 		}
 
 	}
