@@ -15,6 +15,7 @@ import processing.core.PImage;
 //In Class: Finish java class: Adding questions, finalizing flicker, 
 //          Add images for everything, 5 min. 
 //			Add instructions
+//			Ask shelby maybe for help with the movement
 //Extra: Add music, sirens for the java room, make the answers go to random places
 
 public class DrawingSurface extends PApplet {
