@@ -15,7 +15,6 @@ import processing.core.PImage;
 
 //In Class: Finish java class: Adding questions, finalizing flicker, 
 //			Add instructions
-//			Ask shelby maybe for help with the movement
 //Extra: 
 //			Add music, sirens for the java room, make the answers go to random places
 
@@ -197,11 +196,6 @@ public class DrawingSurface extends PApplet {
 				player.setY(player.getY() + 3);
 			}
 		}
-		
-//		if (isPressed(KeyEvent.VK_RIGHT))
-//			mario.walk(1);
-//		if (isPressed(KeyEvent.VK_UP))
-//			mario.jump();
 
 	}
 
@@ -394,7 +388,7 @@ public class DrawingSurface extends PApplet {
 		zombieLocations.add(new Point(530, 400));
 		zombieLocations.add(new Point(530, 0));
 
-		if (timer1 > 5 ) {
+		if (timer1 > 15) {
 			timer1 = 0;
 			fill(255,0,0);
 			rect(0,0,800,600);
@@ -465,17 +459,17 @@ public class DrawingSurface extends PApplet {
 		}
 
 		if (setting >= 0 && firstSetNot0 == false) {
-		for (int i = 0; i < zombies.size(); i++) {
-			if (zombies.get(i).isTouching(player) ) {
-				setting = -1;
+			for (int i = 0; i < zombies.size(); i++) {
+				if (zombies.get(i).isTouching(player) ) {
+					setting = -1;
 
+				}
 			}
 		}
-		}
 		if (setting != -2) {
-		
+
 		}
-		
+
 		timer1++;
 	}
 
