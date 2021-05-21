@@ -16,7 +16,8 @@ import processing.core.PImage;
 //          Add images for everything, 5 min. 
 //			Add instructions
 //			Ask shelby maybe for help with the movement
-//Extra: Add music, sirens for the java room, make the answers go to random places
+//Extra: 
+//			Add music, sirens for the java room, make the answers go to random places
 
 public class DrawingSurface extends PApplet {
 
@@ -45,6 +46,10 @@ public class DrawingSurface extends PApplet {
 	private ArrayList<Point> doorsCoord;
 	private ArrayList<Rectangle> doorsRect;
 	private PImage globe;
+	private PImage calculator;
+	private PImage beaker;
+	private PImage dollar;
+	private PImage computer;
 	private PImage info; 
 	private boolean onInfo; 
 	private int xInfo; 
@@ -110,6 +115,10 @@ public class DrawingSurface extends PApplet {
 		xSwitch = 570;
 		ySwitch = 620;
 		globe = loadImage("images/Globe.png");
+		calculator = loadImage("images/Calculator.png");
+		beaker = loadImage("images/Beaker.png");
+		dollar = loadImage("images/Dollar.png");
+		computer = loadImage("images/Computer.png");
 		info = loadImage("images/info.png");
 		onInfo = true; 
 		xInfo = 380;
@@ -262,10 +271,20 @@ public class DrawingSurface extends PApplet {
 
 		}
 		
+		if (setting == 0) {
+			image(calculator, 270, 45, 75, 75);
+		}
 		if (setting == 1) {
-			
 			image(globe, 270, 45, 75, 75);
-			
+		}
+		if (setting == 2) {
+			image(beaker, 270, 45, 75, 75);
+		}
+		if (setting == 3) {
+			image(dollar, 270, 45, 75, 75);
+		}
+		if (setting == 4) {
+			image(computer, 270, 45, 75, 75);
 		}
 
 	
