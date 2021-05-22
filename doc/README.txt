@@ -55,11 +55,14 @@ Problem - A class that holds a question and possible answers. Also holds the amo
 
 
 Credits:
-Itai: The lead classes Itai is responsible for are: Person, Zombie, and Drawing Surface. Itai also worked on debugging the code, which consisted of looking through all classes. Itai also added more features, such as the progress bar, and the on off button. 
-Ido: The lead classes Ido is responsible for are: Player and Classroom. Ido also worked on debugging the code, which consisted of looking through all classes. Ido also worked on creating images for the rooms, and characters. 
-Ophir: The lead classes Ophir is responsible for are:  Problem, Main, and Map. Ophir also worked on debugging which included looking through all classes. 
+Itai: The lead classes Itai is responsible for are: Person, Zombie, and Drawing Surface. Itai also worked on debugging the code, which consisted of looking through all classes. Itai also worked on adding the process bar, with the on and off button. Itai also worked on adding the wav sound. Itai wrote and added the instructions panel, button, and text. Itai also added the flickering effect for the final room, and made the final room only be accessible after the other rooms were finished. Itai also wrote the questions for around half the rooms. 
+Ido: The lead classes Ido is responsible for are: Player and Classroom. Ido also worked on debugging the code, which consisted of looking through all classes. Ido also worked on creating all the images for the rooms, the characters, the win and loose screens, and the objects in the rooms. 
+Ophir: The lead classes Ophir is responsible for are: Problem, Main, and Map. Ophir also worked on debugging which included looking through all classes. Ophir also wrote questions for around half of the rooms. 
 External Credit: 
 * We used the processing library for graphics and key detection.  
 * Mr. Shelby’s code was used as a template for the Main class.
+* The movement for the player was from the animation demo.
 * The image, for the off and on button was obtained from: https://www.elharrakfonts.com/2019/06/on-off-icon-button.html
-* Ido’s character’s and rooms were made using a website called Piskel
+* Our character’s and rooms were made using a website called Piskel
+* The siren sounds we used is the first siren from this website: https://www.findsounds.com/ISAPI/search.dll?keywords=siren
+* The info button we used was from this website: http://pixelartmaker.com/art/e9c7716c87f5037
