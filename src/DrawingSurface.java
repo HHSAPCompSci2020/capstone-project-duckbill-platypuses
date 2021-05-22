@@ -149,7 +149,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 
-		// background(0);
+		 background(0);
 
 		if (setting == -1) { // Loose
 			settingNeg1();
