@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * The Problem class represents a problem that is given in a class. The class
@@ -95,5 +96,18 @@ public class Problem {
 
 	public String getQuestion() {
 		return question;
+	}
+	
+	public void randomize() {
+		
+		String ans = possibleAnswers.get(correctAnswer);
+        Collections.shuffle(possibleAnswers);
+        
+        for (int i = 0; i < 4; i ++) {
+        	if (possibleAnswers.get(i).equals(ans) ) {
+        		correctAnswer = i;
+        	}
+        }
+
 	}
 }

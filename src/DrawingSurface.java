@@ -1,9 +1,13 @@
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
 import processing.core.PApplet;
 import processing.core.PImage;
+import javax.sound.sampled.*;
 
 /**
  * The DrawingSurface class uses all other classes, excluding main, to draw the
@@ -13,10 +17,6 @@ import processing.core.PImage;
  * @version 05/06/2021
  */
 
-//In Class: Finish java class: Adding questions, finalizing flicker, 
-//			Add instructions
-//Extra: 
-//			Add music, sirens for the java room, make the answers go to random places
 
 public class DrawingSurface extends PApplet {
 	
@@ -59,8 +59,9 @@ public class DrawingSurface extends PApplet {
 	private int widthInfo; 
 	private int heightInfo; 
 	private int timer1;
-
-
+	private boolean first; 
+	private int time = 0;
+	
 
 
 	/**
@@ -129,6 +130,8 @@ public class DrawingSurface extends PApplet {
 		widthInfo = 60;
 		heightInfo = 60;
 		timer1 = 0; 
+		first = true;
+		
 
 
 
@@ -199,18 +202,21 @@ public class DrawingSurface extends PApplet {
 
 	}
 
+	
 	private void settingNeg1() {
 		PImage looseScreen = loadImage("images/LooseScreen.png");
 		image(looseScreen, 0, 0, (float) width, (float) height);
 
 	}
 
+	
 	private void settingNeg2() {
 		PImage WinScreen = loadImage("images/WinScreen.png");
 		image(WinScreen, 0, 0, (float) width, (float) height);
 
 	}
 
+	
 	private void settingNeg3() {
 		int counter = 0;
 		for (int i = 0; i < classroom.size(); i++) {
@@ -251,9 +257,7 @@ public class DrawingSurface extends PApplet {
 					setting = 4;
 					player.setX(classroom.get(i).startPointX());
 					player.setY(classroom.get(i).startPointY());
-					System.out.println("Final");
 				} else if (i == 4) {
-					System.out.println("dont go into this room, final not unlocked.");
 				} else if (classroom.get(i).isFinished() == false) {
 					setting = i;
 					player.setX(classroom.get(i).startPointX());
@@ -265,11 +269,24 @@ public class DrawingSurface extends PApplet {
 		
 	}
 
+	
 	private void settingBiggerOr0() {
 		
 	
 
 		classroom.get(setting).draw(this);
+		if (setting == 0) {
+			image(calculator, 270, 45, 75, 75);
+		}
+		else if (setting == 1) {
+			image(globe, 270, 45, 75, 75);
+		}
+		else if (setting == 2) {
+			image(beaker, 270, 45, 75, 75);
+		}
+		else if (setting == 3) {
+			image(dollar, 270, 45, 75, 75);
+		}
 		player.draw(this);
 		ArrayList<Point> zombieLocations = new ArrayList<Point>();
 		zombieLocations.add(new Point(40, 0));
@@ -296,21 +313,8 @@ public class DrawingSurface extends PApplet {
 
 		}
 		
-		if (setting == 0) {
-			image(calculator, 270, 45, 75, 75);
-		}
-		if (setting == 1) {
-			image(globe, 270, 45, 75, 75);
-		}
-		if (setting == 2) {
-			image(beaker, 270, 45, 75, 75);
-		}
-		if (setting == 3) {
-			image(dollar, 270, 45, 75, 75);
-		}
-		if (setting == 4) {
-			image(computer, 270, 45, 75, 75);
-		}
+		
+		
 
 	
 
@@ -378,9 +382,10 @@ public class DrawingSurface extends PApplet {
 	}
 
 	private void setting4() {
-
+		
 		
 		classroom.get(setting).draw(this);
+		image(computer, 270, 45, 75, 75);
 		player.draw(this);
 		ArrayList<Point> zombieLocations = new ArrayList<Point>();
 		zombieLocations.add(new Point(40, 0));
@@ -389,10 +394,55 @@ public class DrawingSurface extends PApplet {
 		zombieLocations.add(new Point(530, 0));
 
 		if (timer1 > 15) {
+			if (timer >= 19) {
 			timer1 = 0;
+			}
 			fill(255,0,0);
 			rect(0,0,800,600);
 		}
+		
+
+		
+		if (first) {
+			File f = new File("images/sound1.wav");
+			AudioInputStream audioStream = null;
+			try {
+				audioStream = AudioSystem.getAudioInputStream(f);
+			} catch (UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Clip clip = null;
+			try {
+				clip = AudioSystem.getClip();
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				clip.open(audioStream);
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			clip.start();
+			first = false;
+		}
+		if (!first) {
+			time++;
+		}
+		if (time > 100) {
+			time = 0; 
+			first = true;
+		}
+		
 		
 		if (firstSetNot0) {
 			for (int i = 0; i < zombies.size(); i++) {
@@ -425,7 +475,6 @@ public class DrawingSurface extends PApplet {
 					} else if (classroom.get(setting).getLives() == 1) {
 						classroom.get(setting).removeLives();
 						setting = -1;
-						System.out.println("incorrect no lives left");
 						break;
 
 					} else if (classroom.get(setting).getLives() == 2) {
@@ -433,7 +482,6 @@ public class DrawingSurface extends PApplet {
 						player.setY(classroom.get(i).startPointY());
 						classroom.get(setting).removeLives();
 						classroom.get(setting).removeAnswer(i);
-						System.out.println("incorrect 1 life left");
 						firstSetNot0 = true;
 						break;
 
@@ -589,7 +637,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3c.add("F x d");
 		possibleAnswers3c.add("Both answers");
 		possibleAnswers3c.add("Neither answer");
-		Problem p3c = new Problem(possibleAnswers3c, 2, "Which of the following \n is an expression for work?");
+		Problem p3c = new Problem(possibleAnswers3c, 2, "Which of the following \n is an expression \n for work?");
 		problems3.add(p3c);
 
 		ArrayList<String> possibleAnswers3d = new ArrayList<String>();
@@ -597,7 +645,7 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers3d.add("hp");
 		possibleAnswers3d.add("J/s");
 		possibleAnswers3d.add("Kg*m^2/s");
-		Problem p3d = new Problem(possibleAnswers3d, 3, "Which of the following \n is not a unit of power?");
+		Problem p3d = new Problem(possibleAnswers3d, 3, "Which of the following \n is not a unit \n of power?");
 		problems3.add(p3d);
 
 		ArrayList<String> possibleAnswers3e = new ArrayList<String>();
@@ -666,53 +714,64 @@ public class DrawingSurface extends PApplet {
 		problems5.add(p5);
 		
 		ArrayList<String> possibleAnswers5b = new ArrayList<String>();
-		possibleAnswers4b.add("Dog extends Chihuahua");
-		possibleAnswers4b.add("Dog has a Chihuahua");
-		possibleAnswers4b.add("Chihuahua extends Dog");
-		possibleAnswers4b.add("Chihuahua has a Dog");
+		possibleAnswers5b.add("Dog extends Chihuahua");
+		possibleAnswers5b.add("Dog has a Chihuahua");
+		possibleAnswers5b.add("Chihuahua extends Dog");
+		possibleAnswers5b.add("Chihuahua has a Dog");
 		Problem p5b = new Problem(possibleAnswers5b, 2, "What should be the relationship \n between a Dog class and a \n Chihuahua class?");
-		problems4.add(p5b);
+		problems5.add(p5b);
 
 		ArrayList<String> possibleAnswers5c = new ArrayList<String>();
-		possibleAnswers4c.add("1");
-		possibleAnswers4c.add("2");
-		possibleAnswers4c.add("6");
-		possibleAnswers4c.add("12/7");
-		Problem p5c = new Problem(possibleAnswers5c, 0, "int[][] grid = new int[x][2*x/7];\n What is the value of grid[0].length()\n if x = 6");
-		problems4.add(p5c);
+		possibleAnswers5c.add("1");
+		possibleAnswers5c.add("2");
+		possibleAnswers5c.add("6");
+		possibleAnswers5c.add("12/7");
+		Problem p5c = new Problem(possibleAnswers5c, 0, "int[][] grid = new int[x][2*x/7];\n What is the value of \n grid[0].length()\n if x = 6");
+		problems5.add(p5c);
 
 		ArrayList<String> possibleAnswers5d = new ArrayList<String>();
-		possibleAnswers4d.add("!A && !B");
-		possibleAnswers4d.add("!A || !B");
-		possibleAnswers4d.add("A || B");
-		possibleAnswers4d.add("A && B");
+		possibleAnswers5d.add("!A && !B");
+		possibleAnswers5d.add("!A || !B");
+		possibleAnswers5d.add("A || B");
+		possibleAnswers5d.add("A && B");
 		Problem p5d = new Problem(possibleAnswers5d, 1, "Which expression is \nequivalent to the following?\n!(A && B)");
-		problems4.add(p5d);
+		problems5.add(p5d);
 
 		ArrayList<String> possibleAnswers5e = new ArrayList<String>();
-		possibleAnswers4e.add("(int)(Math.random()*100)");
-		possibleAnswers4e.add("(int)(Math.random()*100+1)");
-		possibleAnswers4e.add("(int)(Math.random())*100");
-		possibleAnswers4e.add("(int)(Math.random())*100+1");
+		possibleAnswers5e.add("(int)(Math.random()*100)");
+		possibleAnswers5e.add("(int)(Math.random()*100+1)");
+		possibleAnswers5e.add("(int)(Math.random())*100");
+		possibleAnswers5e.add("(int)(Math.random())*100+1");
 		Problem p5e = new Problem(possibleAnswers5e, 1, "Which expression returns a\n random number between 1-100?");
-		problems4.add(p5e);
+		problems5.add(p5e);
 		
 		classroom.add(new Classroom(problems5, classImg));
 	}
 	
 	
-	public void setting5(){
+	private void setting5(){
+		
 		
 		fill(135, 206, 236);
 		rect(0,0,800,600);
-		
-		pushStyle();
-		fill(255, 255, 255);
-		textSize(15);
-		String s = "Welcome to Homestead Chase";
-		text(s, width/2 - this.textWidth(s)/2, 50);
-		popStyle();
-		
+	
+
+		fill(0);
+		textSize(45);
+		String welcome = "Welcome to Homestead Chase";
+		text(welcome, width/2 - this.textWidth(welcome)/2, 45);
+		textSize(23);
+		String rules = " You came to school 10 minutes late to find that all your \n classmates have become zombies."
+				+ " The only way \n to save them is by answering questions in \n each classroom. The final classroom is special, "
+				+ "\n and you can only enter it after doing the others \n first. If one of your classmates (zombies)"
+				+ " \n attacks you, you die. If you get two quesitons \n wrong in one classroom, you die. To answer a \n"
+				+ " question or enter a door simply walk over it. \n To see your progress, toggle on or off \n the green or red button in the bottom \n right of your screen. To start (or see these \n instructions again) press the i button below. \n Good luck. ";
+		text(rules, width/2 - this.textWidth(rules)/2, 80);
+		textSize(30);
+		fill(255,0,0);
+		String warning = "Note: Epilepsy Warning";
+		text(warning, width/2 - this.textWidth(warning)/2, 560);
+		textSize(13);
 		image(info, xInfo, yInfo, widthInfo, heightInfo);
 		
 		if (!onInfo) {
@@ -724,9 +783,8 @@ public class DrawingSurface extends PApplet {
 	}
 
 	/*
-	 * This method is called once after every time a mouse button is pressed. It
-	 * then, depending on weather the user pressed the are of the switch, might
-	 * change the switch to on or off.
+	 * This method is called once after every time a mouse button is pressed.
+	 * Depending on what the user presses, It could affect the visibility of the progress bar. 
 	 */
 	public void mousePressed() {
 
@@ -743,16 +801,23 @@ public class DrawingSurface extends PApplet {
 
 	}
 
+	/*
+	 * This method is called once after every time a key button is pressed. 
+	 */
 	public void keyPressed() {
 		keys.add(keyCode);
 	}
 
+	/*
+	 * This method is called once after every time a key button is released. 
+	 */
 	public void keyReleased() {
 		while(keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
 
-	public boolean isPressed(Integer code) {
+	
+	private boolean isPressed(Integer code) {
 		return keys.contains(code);
 	}
 	

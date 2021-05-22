@@ -20,6 +20,7 @@ public class Classroom {
 	private double height;
 	private int lives = 2;
 
+
 	/**
 	 * Initializes a classroom, which will is where the user has to answer a
 	 * question.
@@ -31,7 +32,8 @@ public class Classroom {
 	public Classroom(ArrayList<Problem> problems, PImage image) {
 
 		randomProblem = problems.get((int) (Math.random() * problems.size()));
-		//random choice spot, keep as field
+		randomProblem.randomize();
+
 		classImage = image;
 		finished = false;
 		width = 800;
@@ -50,20 +52,20 @@ public class Classroom {
 
 		marker.image(classImage, 0, 0, 800, 600);
 
-		marker.text(randomProblem.getQuestion(), (float) (width / 2), (float) (height / 8));
+		marker.text(randomProblem.getQuestion(), (float) (width / 2) - 10, (float) (height / 8) - 10);
 		marker.fill(0, 0, 0);
 		//Randomize answer by using random fields initialzed in constructor
 		if (randomProblem.getPossibleAnswers().get(0) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(0), (float) 100, (float) 185);
+			marker.text(randomProblem.getPossibleAnswers().get(0), (float) 90, (float) 185);
 		}
 		if (randomProblem.getPossibleAnswers().get(1) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(1), (float) 100, (float) 490);
+			marker.text(randomProblem.getPossibleAnswers().get(1), (float) 90, (float) 490);
 		}
 		if (randomProblem.getPossibleAnswers().get(2) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(2), (float) 570, (float) 185);
+			marker.text(randomProblem.getPossibleAnswers().get(2), (float) 560, (float) 185);
 		}
 		if (randomProblem.getPossibleAnswers().get(3) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(3), (float) 570, (float) 490);
+			marker.text(randomProblem.getPossibleAnswers().get(3), (float) 560, (float) 490);
 		}
 	}
 
