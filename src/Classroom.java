@@ -20,7 +20,6 @@ public class Classroom {
 	private double height;
 	private int lives = 2;
 
-
 	/**
 	 * Initializes a classroom, which will is where the user has to answer a
 	 * question.
@@ -33,7 +32,6 @@ public class Classroom {
 
 		randomProblem = problems.get((int) (Math.random() * problems.size()));
 		randomProblem.randomize();
-
 		classImage = image;
 		finished = false;
 		width = 800;
@@ -54,7 +52,6 @@ public class Classroom {
 
 		marker.text(randomProblem.getQuestion(), (float) (width / 2) - 10, (float) (height / 8) - 10);
 		marker.fill(0, 0, 0);
-		//Randomize answer by using random fields initialzed in constructor
 		if (randomProblem.getPossibleAnswers().get(0) != null) {
 			marker.text(randomProblem.getPossibleAnswers().get(0), (float) 90, (float) 185);
 		}
@@ -157,7 +154,12 @@ public class Classroom {
 	public void removeAnswer(int remove) {
 		randomProblem.getPossibleAnswers().set(remove, null);
 	}
-	
+
+	/**
+	 * Gets the problem that is currently being used.
+	 * 
+	 * @return the problem that is being used.
+	 */
 	public Problem getProblem() {
 		return randomProblem;
 	}

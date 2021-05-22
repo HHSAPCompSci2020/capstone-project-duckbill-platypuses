@@ -13,6 +13,11 @@ import processing.core.PApplet;
  */
 public class Main {
 
+	/**
+	 * The main method, that runs the entire program.
+	 * 
+	 * @param args The command line arguments.
+	 **/
 	public static void main(String[] args) {
 		DrawingSurface panel = new DrawingSurface();
 		PApplet.runSketch(new String[] { "" }, panel);

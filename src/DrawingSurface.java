@@ -17,12 +17,10 @@ import javax.sound.sampled.*;
  * @version 05/06/2021
  */
 
-
 public class DrawingSurface extends PApplet {
-	
+
 	private ArrayList<Integer> keys;
-	
-	
+
 	private ArrayList<Classroom> classroom;
 	private ArrayList<Zombie> zombies;
 	private Player player;
@@ -52,17 +50,15 @@ public class DrawingSurface extends PApplet {
 	private PImage beaker;
 	private PImage dollar;
 	private PImage computer;
-	private PImage info; 
-	private boolean onInfo; 
-	private int xInfo; 
-	private int yInfo; 
-	private int widthInfo; 
-	private int heightInfo; 
+	private PImage info;
+	private boolean onInfo;
+	private int xInfo;
+	private int yInfo;
+	private int widthInfo;
+	private int heightInfo;
 	private int timer1;
-	private boolean first; 
+	private boolean first;
 	private int time = 0;
-	
-
 
 	/**
 	 * Initializes a drawing surface, which will contain all things you need on the
@@ -78,7 +74,7 @@ public class DrawingSurface extends PApplet {
 	 * 
 	 */
 	public void settings() {
-	
+
 		size(800, 700);
 	}
 
@@ -90,7 +86,6 @@ public class DrawingSurface extends PApplet {
 		background(0);
 		makeQuestions();
 
-		
 		zombies = new ArrayList<Zombie>(4);
 		PImage img2 = loadImage("images/Zombie.png");
 		PImage img = loadImage("images/Player.png");
@@ -124,16 +119,13 @@ public class DrawingSurface extends PApplet {
 		dollar = loadImage("images/Dollar.png");
 		computer = loadImage("images/Computer.png");
 		info = loadImage("images/info.png");
-		onInfo = true; 
+		onInfo = true;
 		xInfo = 380;
 		yInfo = 610;
 		widthInfo = 60;
 		heightInfo = 60;
-		timer1 = 0; 
+		timer1 = 0;
 		first = true;
-		
-
-
 
 		answerCoord = classroom.get(1).answerLocations();
 		answerRect = new ArrayList<Rectangle>(answerCoord.size());
@@ -157,8 +149,8 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void draw() {
 
-		//background(0);
-		
+		// background(0);
+
 		if (setting == -1) { // Loose
 			settingNeg1();
 
@@ -172,12 +164,11 @@ public class DrawingSurface extends PApplet {
 			settingBiggerOr0();
 		} else if (setting == 4) { // Room 5
 			setting4();
-		}
-		else if (setting == 5 ) {
+		} else if (setting == 5) {
 			setting5();
 		}
-		
-		//Movement
+
+		// Movement
 		if (isPressed(KeyEvent.VK_LEFT)) {
 			if ((player.getX() > -30)) {
 				player.setX(player.getX() - 3);
@@ -188,7 +179,7 @@ public class DrawingSurface extends PApplet {
 				player.setX(player.getX() + 3);
 			}
 		}
-		
+
 		if (isPressed(KeyEvent.VK_UP)) {
 			if ((player.getY() > 2)) {
 				player.setY(player.getY() - 3);
@@ -202,21 +193,18 @@ public class DrawingSurface extends PApplet {
 
 	}
 
-	
 	private void settingNeg1() {
 		PImage looseScreen = loadImage("images/LooseScreen.png");
 		image(looseScreen, 0, 0, (float) width, (float) height);
 
 	}
 
-	
 	private void settingNeg2() {
 		PImage WinScreen = loadImage("images/WinScreen.png");
 		image(WinScreen, 0, 0, (float) width, (float) height);
 
 	}
 
-	
 	private void settingNeg3() {
 		int counter = 0;
 		for (int i = 0; i < classroom.size(); i++) {
@@ -227,13 +215,13 @@ public class DrawingSurface extends PApplet {
 
 		map.draw(this);
 		player.draw(this);
-		
-			image(info, xInfo, yInfo, widthInfo, heightInfo);
-	
+
+		image(info, xInfo, yInfo, widthInfo, heightInfo);
+
 		if (onInfo) {
 			setting = 5;
 		}
-		
+
 		if (on) {
 			image(onButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
 			fill(255, 255, 255);
@@ -245,7 +233,7 @@ public class DrawingSurface extends PApplet {
 				line(barX + (barWidth / 4) * i, barY, barX + (barWidth / 4) * i, barHeight + barY);
 			}
 		}
-		
+
 		else {
 			image(offButton, xSwitch, ySwitch, widthSwitch, heightSwitch);
 		}
@@ -265,26 +253,19 @@ public class DrawingSurface extends PApplet {
 				}
 			}
 		}
-		
-		
+
 	}
 
-	
 	private void settingBiggerOr0() {
-		
-	
 
 		classroom.get(setting).draw(this);
 		if (setting == 0) {
 			image(calculator, 270, 45, 75, 75);
-		}
-		else if (setting == 1) {
+		} else if (setting == 1) {
 			image(globe, 270, 45, 75, 75);
-		}
-		else if (setting == 2) {
+		} else if (setting == 2) {
 			image(beaker, 270, 45, 75, 75);
-		}
-		else if (setting == 3) {
+		} else if (setting == 3) {
 			image(dollar, 270, 45, 75, 75);
 		}
 		player.draw(this);
@@ -312,16 +293,11 @@ public class DrawingSurface extends PApplet {
 			}
 
 		}
-		
-		
-		
-
-	
 
 		Rectangle playerR = new Rectangle((int) player.getX() + 32, (int) player.getY() + 32,
 				(int) player.getWidth() / 2 + 8, (int) player.getHeight() / 2 + 8);
 		for (int i = 0; i < 4; i++) {
-		
+
 			if (classroom.get(setting).getProblem().getPossibleAnswers().get(i) != null) {
 				if (playerR.intersects(answerRect.get(i))) {
 					if (classroom.get(setting).getCorrectAnswer() == i) {
@@ -330,13 +306,13 @@ public class DrawingSurface extends PApplet {
 						firstSetNot0 = true;
 						player.setX(map.returnStartPointX());
 						player.setY(map.returnStartPointY());
-					
+
 						break;
 
 					} else if (classroom.get(setting).getLives() == 1) {
 						classroom.get(setting).removeLives();
 						setting = -1;
-					
+
 						break;
 
 					} else if (classroom.get(setting).getLives() == 2) {
@@ -344,7 +320,7 @@ public class DrawingSurface extends PApplet {
 						player.setY(classroom.get(i).startPointY());
 						classroom.get(setting).removeLives();
 						classroom.get(setting).removeAnswer(i);
-					
+
 						firstSetNot0 = true;
 						break;
 
@@ -353,8 +329,6 @@ public class DrawingSurface extends PApplet {
 			}
 
 		}
-		
-		
 
 		if (timer > 400) {
 			timer = 0;
@@ -378,12 +352,11 @@ public class DrawingSurface extends PApplet {
 				}
 			}
 		}
-	
+
 	}
 
 	private void setting4() {
-		
-		
+
 		classroom.get(setting).draw(this);
 		image(computer, 270, 45, 75, 75);
 		player.draw(this);
@@ -395,14 +368,12 @@ public class DrawingSurface extends PApplet {
 
 		if (timer1 > 15) {
 			if (timer >= 19) {
-			timer1 = 0;
+				timer1 = 0;
 			}
-			fill(255,0,0);
-			rect(0,0,800,600);
+			fill(255, 0, 0);
+			rect(0, 0, 800, 600);
 		}
-		
 
-		
 		if (first) {
 			File f = new File("images/sound1.wav");
 			AudioInputStream audioStream = null;
@@ -431,7 +402,7 @@ public class DrawingSurface extends PApplet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			clip.start();
 			first = false;
 		}
@@ -439,11 +410,10 @@ public class DrawingSurface extends PApplet {
 			time++;
 		}
 		if (time > 100) {
-			time = 0; 
+			time = 0;
 			first = true;
 		}
-		
-		
+
 		if (firstSetNot0) {
 			for (int i = 0; i < zombies.size(); i++) {
 				zombies.get(i).makeHidden();
@@ -508,7 +478,7 @@ public class DrawingSurface extends PApplet {
 
 		if (setting >= 0 && firstSetNot0 == false) {
 			for (int i = 0; i < zombies.size(); i++) {
-				if (zombies.get(i).isTouching(player) ) {
+				if (zombies.get(i).isTouching(player)) {
 					setting = -1;
 
 				}
@@ -712,13 +682,14 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers5.add("2(3)");
 		Problem p5 = new Problem(possibleAnswers5, 3, "Which expression is \n illegal?");
 		problems5.add(p5);
-		
+
 		ArrayList<String> possibleAnswers5b = new ArrayList<String>();
 		possibleAnswers5b.add("Dog extends Chihuahua");
 		possibleAnswers5b.add("Dog has a Chihuahua");
 		possibleAnswers5b.add("Chihuahua extends Dog");
 		possibleAnswers5b.add("Chihuahua has a Dog");
-		Problem p5b = new Problem(possibleAnswers5b, 2, "What should be the relationship \n between a Dog class and a \n Chihuahua class?");
+		Problem p5b = new Problem(possibleAnswers5b, 2,
+				"What should be the relationship \n between a Dog class and a \n Chihuahua class?");
 		problems5.add(p5b);
 
 		ArrayList<String> possibleAnswers5c = new ArrayList<String>();
@@ -726,7 +697,8 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers5c.add("2");
 		possibleAnswers5c.add("6");
 		possibleAnswers5c.add("12/7");
-		Problem p5c = new Problem(possibleAnswers5c, 0, "int[][] grid = new int[x][2*x/7];\n What is the value of \n grid[0].length()\n if x = 6");
+		Problem p5c = new Problem(possibleAnswers5c, 0,
+				"int[][] grid = new int[x][2*x/7];\n What is the value of \n grid[0].length()\n if x = 6");
 		problems5.add(p5c);
 
 		ArrayList<String> possibleAnswers5d = new ArrayList<String>();
@@ -734,7 +706,8 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers5d.add("!A || !B");
 		possibleAnswers5d.add("A || B");
 		possibleAnswers5d.add("A && B");
-		Problem p5d = new Problem(possibleAnswers5d, 1, "Which expression is \nequivalent to the following?\n!(A && B)");
+		Problem p5d = new Problem(possibleAnswers5d, 1,
+				"Which expression is \nequivalent to the following?\n!(A && B)");
 		problems5.add(p5d);
 
 		ArrayList<String> possibleAnswers5e = new ArrayList<String>();
@@ -744,55 +717,50 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers5e.add("(int)(Math.random())*100+1");
 		Problem p5e = new Problem(possibleAnswers5e, 1, "Which expression returns a\n random number between 1-100?");
 		problems5.add(p5e);
-		
+
 		classroom.add(new Classroom(problems5, classImg));
 	}
-	
-	
-	private void setting5(){
-		
-		
+
+	private void setting5() {
+
 		fill(135, 206, 236);
-		rect(0,0,800,600);
-	
+		rect(0, 0, 800, 600);
 
 		fill(0);
 		textSize(45);
 		String welcome = "Welcome to Homestead Chase";
-		text(welcome, width/2 - this.textWidth(welcome)/2, 45);
+		text(welcome, width / 2 - this.textWidth(welcome) / 2, 45);
 		textSize(23);
 		String rules = " You came to school 10 minutes late to find that all your \n classmates have become zombies."
 				+ " The only way \n to save them is by answering questions in \n each classroom. The final classroom is special, "
 				+ "\n and you can only enter it after doing the others \n first. If one of your classmates (zombies)"
 				+ " \n attacks you, you die. If you get two quesitons \n wrong in one classroom, you die. To answer a \n"
 				+ " question or enter a door simply walk over it. \n To see your progress, toggle on or off \n the green or red button in the bottom \n right of your screen. To start (or see these \n instructions again) press the i button below. \n Good luck. ";
-		text(rules, width/2 - this.textWidth(rules)/2, 80);
+		text(rules, width / 2 - this.textWidth(rules) / 2, 80);
 		textSize(30);
-		fill(255,0,0);
+		fill(255, 0, 0);
 		String warning = "Note: Epilepsy Warning";
-		text(warning, width/2 - this.textWidth(warning)/2, 560);
+		text(warning, width / 2 - this.textWidth(warning) / 2, 560);
 		textSize(13);
 		image(info, xInfo, yInfo, widthInfo, heightInfo);
-		
+
 		if (!onInfo) {
 			setting = -3;
 		}
-		
 
-		
 	}
 
 	/*
 	 * This method is called once after every time a mouse button is pressed.
-	 * Depending on what the user presses, It could affect the visibility of the progress bar. 
+	 * Depending on what the user presses, It could affect the visibility of the
+	 * progress bar.
 	 */
 	public void mousePressed() {
 
 		Rectangle r = new Rectangle(xSwitch, ySwitch, widthSwitch, heightSwitch);
 		if (r.contains(mouseX, mouseY)) {
 			on = !on;
-		}
-		else {
+		} else {
 			Rectangle info = new Rectangle(xInfo, yInfo, widthInfo, heightInfo);
 			if (info.contains(mouseX, mouseY)) {
 				onInfo = !onInfo;
@@ -802,23 +770,22 @@ public class DrawingSurface extends PApplet {
 	}
 
 	/*
-	 * This method is called once after every time a key button is pressed. 
+	 * This method is called once after every time a key button is pressed.
 	 */
 	public void keyPressed() {
 		keys.add(keyCode);
 	}
 
 	/*
-	 * This method is called once after every time a key button is released. 
+	 * This method is called once after every time a key button is released.
 	 */
 	public void keyReleased() {
-		while(keys.contains(keyCode))
+		while (keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
 
-	
 	private boolean isPressed(Integer code) {
 		return keys.contains(code);
 	}
-	
+
 }

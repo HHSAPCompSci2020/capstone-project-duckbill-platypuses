@@ -77,15 +77,17 @@ public class Zombie extends Person {
 	/**
 	 * checks weather or not the zombie is touching a player
 	 * 
-	 * @param p the player that will be checked if touching. 
+	 * @param p the player that will be checked if touching.
 	 * @return weather or not the zombie is touching a player.
 	 */
 	public boolean isTouching(Player p) {
 
 		if (getShown()) {
-			
-			Rectangle playerR = new Rectangle((int) p.getX() + 32, (int) p.getY() + 32,(int) p.getWidth() / 2 + 8, (int) p.getHeight() / 2 + 8);			
-			Rectangle zombieR = new Rectangle((int) getX() + 32, (int) getY() + 32,(int) getWidth() / 2 + 8, (int) getHeight() / 2 + 8);			 	
+
+			Rectangle playerR = new Rectangle((int) p.getX() + 32, (int) p.getY() + 32, (int) p.getWidth() / 2 + 8,
+					(int) p.getHeight() / 2 + 8);
+			Rectangle zombieR = new Rectangle((int) getX() + 32, (int) getY() + 32, (int) getWidth() / 2 + 8,
+					(int) getHeight() / 2 + 8);
 			if (playerR.intersects(zombieR)) {
 				return true;
 

@@ -97,17 +97,22 @@ public class Problem {
 	public String getQuestion() {
 		return question;
 	}
-	
+
+	/**
+	 * Randomizes the questions answers, and maintains the right answer.
+	 * 
+	 * 
+	 */
 	public void randomize() {
-		
+
 		String ans = possibleAnswers.get(correctAnswer);
-        Collections.shuffle(possibleAnswers);
-        
-        for (int i = 0; i < 4; i ++) {
-        	if (possibleAnswers.get(i).equals(ans) ) {
-        		correctAnswer = i;
-        	}
-        }
+		Collections.shuffle(possibleAnswers);
+
+		for (int i = 0; i < 4; i++) {
+			if (possibleAnswers.get(i).equals(ans)) {
+				correctAnswer = i;
+			}
+		}
 
 	}
 }
