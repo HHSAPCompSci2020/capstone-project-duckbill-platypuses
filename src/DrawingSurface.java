@@ -651,14 +651,14 @@ public class DrawingSurface extends PApplet {
 		possibleAnswers4c.add("Money available to invest");
 		possibleAnswers4c.add("Prohibitive cost of entry");
 		possibleAnswers4c.add("A guarantee that a \n company will be successful");
-		possibleAnswers4c.add("The building in which \n the legislative \n body of government meets");
+		possibleAnswers4c.add("The building in which \n the legislative body \n of government meets");
 		Problem p4c = new Problem(possibleAnswers4c, 0, "What is Capital");
 		problems4.add(p4c);
 
 		ArrayList<String> possibleAnswers4d = new ArrayList<String>();
 		possibleAnswers4d.add("Price");
 		possibleAnswers4d.add("Number");
-		possibleAnswers4d.add("Less expensive supply sources");
+		possibleAnswers4d.add("Less expensive \nsupply sources");
 		possibleAnswers4d.add("All of the above");
 		Problem p4d = new Problem(possibleAnswers4d, 3, "What could you change \n to adjust your \n profit? ");
 		problems4.add(p4d);
@@ -734,7 +734,7 @@ public class DrawingSurface extends PApplet {
 		String rules = " You came to school 10 minutes late to find that all your \n classmates have become zombies."
 				+ " The only way \n to save them is by answering questions in \n each classroom. The final classroom is special, "
 				+ "\n and you can only enter it after doing the others \n first. If one of your classmates (zombies)"
-				+ " \n attacks you, you die. If you get two quesitons \n wrong in one classroom, you die. To answer a \n"
+				+ " \n attacks you, you die. If you get two questions \n wrong in one classroom, you die. To answer a \n"
 				+ " question or enter a door simply walk over it. \n To see your progress, toggle on or off \n the green or red button in the bottom \n right of your screen. To start (or see these \n instructions again) press the i button below. \n Good luck. ";
 		text(rules, width / 2 - this.textWidth(rules) / 2, 80);
 		textSize(30);
