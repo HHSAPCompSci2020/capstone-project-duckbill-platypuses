@@ -53,13 +53,13 @@ public class Classroom {
 		marker.text(randomProblem.getQuestion(), (float) (width / 2) - 10, (float) (height / 8) - 10);
 		marker.fill(0, 0, 0);
 		if (randomProblem.getPossibleAnswers().get(0) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(0), (float) 90, (float) 185);
+			marker.text(randomProblem.getPossibleAnswers().get(0), (float) 90, (float) 175);
 		}
 		if (randomProblem.getPossibleAnswers().get(1) != null) {
 			marker.text(randomProblem.getPossibleAnswers().get(1), (float) 90, (float) 490);
 		}
 		if (randomProblem.getPossibleAnswers().get(2) != null) {
-			marker.text(randomProblem.getPossibleAnswers().get(2), (float) 560, (float) 185);
+			marker.text(randomProblem.getPossibleAnswers().get(2), (float) 560, (float) 175);
 		}
 		if (randomProblem.getPossibleAnswers().get(3) != null) {
 			marker.text(randomProblem.getPossibleAnswers().get(3), (float) 560, (float) 490);
